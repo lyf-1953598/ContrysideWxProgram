@@ -1,0 +1,28 @@
+/* pages/certificateCard/certificateCard.wxss */
+
+#saveButton {
+  width: 80%;
+  position: absolute;
+  right: 5%;
+  left: 5%;
+  bottom: 2%;
+  opacity: 70%;
+  background-color: antiquewhite;
+}
+
+#returnButton {
+  position: absolute;
+  top: 2%;
+  left: 2%;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  opacity: 70%;
+  z-index: 999;
+
+  display: table;
+  margin: 0 auto;
+  padding-left: 3vw;
+  padding-right: 3vw;
+
+}

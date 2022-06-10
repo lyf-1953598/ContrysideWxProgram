@@ -1,0 +1,67 @@
+<!--pages/setUpActivity/setUpActivity.wxml-->
+<view class="pageContainer">
+  <!--奖项设置-->
+  <view class="prizeInfo" wx:for="{{prizeList}}" wx:key="index">
+    <image src="{{item.image}}"></image>
+    <view class="changeImg" id="{{index}}" bindtap="setPrizeImg">
+      <text class="iconfont icon-image"> </text>
+      更改图片
+    </view>
+    <view class="delPrize" wx:if="{{prizeList.length > 1}}" id="{{index}}" bindtap="delPrize">一</view>
+    <view class="inputContainer">
+      <text>{{(prizeList.length > 1) ? (character[index] + '等奖') : '奖品'}}名称</text>
+      <text style="color: #ee3f4d;width: 10rpx">*</text>
+      <input class="infoInput" placeholder="请输入奖品名称" placeholder-class="placehold" id="{{index}}" value="{{item.name}}"
+        bindinput="inputName" />
+    </view>
+    <view class="divider"></view>
+    <view class="inputContainer">
+      <text>{{(prizeList.length > 1) ? (character[index] + '等奖') : '奖品'}}数量</text>
+      <text style="color: #ee3f4d;width: 10rpx">*</text>
+      <input class="infoInput" placeholder="请输入奖品数量" placeholder-class="placehold" id="{{index}}" value="{{item.num}}"
+        bindinput="inputNum" />
+    </view>
+    <view class="divider"></view>
+    <view class="addPrize" wx:if="{{index == prizeList.length - 1}}" bindtap="addPrize">＋ 添加新的奖项</view>
+  </view>
+
+  <!--抽奖说明-->
+  <view class="introContainer">
+    <view class="title">
+      抽奖说明
+      <text style="color: #ee3f4d;">*</text>
+    </view>
+    <textarea class="introInput" placeholder="请输入抽奖说明" placeholder-class="textPlacehold"
+      value="{{lotteryIntro.textDescrip}}" bindblur="storageDescrip" maxlength="-1"></textarea>
+    <view class="introImageList">
+      <view class="imageItem" wx:for="{{lotteryIntro.imageList}}" wx:key="index">
+        <image src="{{item}}"></image>
+        <view class="delImg" id="{{index}}" bindtap="delIntroImg">一</view>
+      </view>
+    </view>
+    <view class="divider"></view>
+    <view class="addImg" wx:if="{{lotteryIntro.imageList.length < 3}}" bindtap="setIntroImg">
+      <text class="iconfont icon-image"> </text>
+      ＋添加图片
+    </view>
+  </view>
+
+  <!--开奖时间-->
+  <view class="timeContainer">
+    <view class="title">开奖设置</view>
+    <view class="divider"></view>
+    <view class="inputContainer">
+      <text>开奖时间</text>
+      <text style="color: #ee3f4d;width: 10rpx">*</text>
+      <!--时间选择器-->
+      <picker class="timePicker" header-text="选择开奖时间" mode="multiSelector" bindtap='initPicker'
+        bindchange="pickerChange" bindcolumnchange="pickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}"
+        style="{{(lotteryTime) && 'color: #303030;'}}">
+        <text>{{lotteryTime? lotteryTime : '请选择开奖时间'}}</text>
+      </picker>
+    </view>
+  </view>
+
+  <!--发布抽奖-->
+  <view class="releaseButton" bindtap="releaseLottery">{{new ? '发布抽奖' : '完成编辑'}}</view>
+</view>

@@ -1,0 +1,118 @@
+<!--pages/resultDetails/resultDetails.wxml-->
+<!--渐变背景-->
+<view class="background"></view>
+
+<!--页面详情内容-->
+<view class="pageContainer">
+  <!--抽奖信息-->
+  <view class="lotteryBannersContainer">
+    <swiper class="lotteryBanners" indicator-dots="true" indicator-color="ivory" indicator-active-color="#ee3f4d"
+      autoplay circular>
+      <swiper-item wx:for="{{bannerList}}" wx:key="index">
+        <image src="{{item}}"></image>
+      </swiper-item>
+    </swiper>
+    <view class="prizeList" wx:for="{{prizeList}}" wx:key="index">
+      <view class="prizeItem" style="{{(index == 0) && 'color: #ee3f4d;'}}">
+        <text>{{item.name}}</text>
+        <text class="number">{{'×' + item.count + '份'}}</text>
+      </view>
+    </view>
+    <view class="lotteryTime">
+      {{lotteryTime}}
+      <view class="over">已开奖</view>
+    </view>
+  </view>
+
+  <!--中奖信息-->
+  <view class="resultContainer">
+
+    <!--中奖情况-->
+    <view class="lotteryResult">{{lotteryResult}}</view>
+    <view class="lotteryPrize">{{lotteryPrize}}</view>
+    <view class="redirectButton" wx:if="{{lotteryResult === '恭喜！你已中奖'}}">
+      <view class="acceptContainer" bindtap="toContact">
+        <text class="iconfont icon-gift1"></text>
+        <view class="text">联系发起人领奖</view>
+      </view>
+      <button class="share" open-type="share">
+        <text class="iconfont icon-star"></text>
+        <view class="text">炫耀一下</view>
+      </button>
+    </view>
+
+    <!--中奖名单-->
+    <view class="winnerListContainer">
+      <view class="winnerListItem" wx:for="{{prizeList}}" wx:for-item="pItem" wx:for-index="pIndex" wx:key="pIndex">
+        <view class="winnerListTitle">{{pItem.name}} ×{{pItem.count}}名</view>
+        <view class="listContainer" wx:if="{{winnerInfo[pIndex].length}}">
+          <view class="winnerItem" wx:for="" wx:for="{{winnerInfo[pIndex]}}" wx:key="index">
+            <image src="{{item.avatarUrl}}"></image>
+            <text>{{item.nickName}}</text>
+          </view>
+        </view>
+        <view class="noWinners" wx:else>
+          中奖名单加载中...
+        </view>
+      </view>
+    </view>
+    <!--中奖名单
+    <view class="winnerListContainer">
+      <view class="winnerListItem">
+        <view class="winnerListTitle">{{prizeList[0].name}}</view>
+        <view class="listContainer">
+          <view class="winnerItem" wx:for="{{winnersInfo1}}" wx:key="index">
+            <image src="{{item.avatarUrl}}"></image>
+            <text>{{item.nickName}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="winnerListItem">
+        <view class="winnerListTitle">{{prizeList[1].name}}</view>
+        <view class="listContainer">
+          <view class="winnerItem" wx:for="{{winnersInfo2}}" wx:key="index">
+            <image src="{{item.avatarUrl}}"></image>
+            <text>{{item.nickName}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="winnerListItem">
+        <view class="winnerListTitle">{{prizeList[2].name}}</view>
+        <view class="listContainer">
+          <view class="winnerItem" wx:for="{{winnersInfo3}}" wx:key="index">
+            <image src="{{item.avatarUrl}}"></image>
+            <text>{{item.nickName}}</text>
+          </view>
+        </view>
+      </view>
+    </view>-->
+
+    <!--参与名单-->
+    <view class="partListContainer">
+      <view class="partNum">共有 {{partNum}} 人参与本次抽奖</view>
+      <view class="partList">
+        <view class="partItem" wx:for="{{participants}}" wx:key="index">
+          <image src="{{item.avatarUrl}}"></image>
+        </view>
+      </view>
+      {{((partNum) > 8)? '▪ ▪ ▪' : ''}}
+    </view>
+  </view>
+</view>
+
+<!--底部固定栏-->
+<view class="bottomContainer">
+  <view class="share">
+    <button open-type="share">
+      <text class="iconfont icon-share"></text>
+      <view class="shareText">分享</view>
+    </button>
+  </view>
+  <view class="backLottery" bindtap="backIndex">
+    <text class="iconfont icon-gift2"></text>
+    返回首页
+  </view>
+</view>
+
+<!--占位-->
+<view style="height:120rpx"></view>

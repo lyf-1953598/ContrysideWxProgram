@@ -1,0 +1,167 @@
+/* pages/participants/participants.wxss */
+.pageContainer {
+  padding: 20rpx;
+}
+
+/* 标题 */
+.title {
+  height: 60rpx;
+  line-height: 60rpx;
+  padding: 0 10rpx;
+  color: #303030;
+  font-size: 30rpx;
+  display: flex;
+}
+.title .num {
+  color: #A2B38B;
+  margin: 0 4rpx;
+}
+
+/* 搜索框 */
+.searchContainer {
+  display: flex;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.searchInput {
+  flex: 1;
+  background: #fff;
+  border-radius: 30rpx;
+  font-size: 28rpx;
+  color: #303030;
+}
+
+.searchInput .iconfont {
+  position: absolute;
+  left: 40rpx;
+  font-size: 40rpx;
+  color: #ee3f4d;
+}
+
+.searchInput input {
+  margin-left: 60rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+
+.searchPlaceHolder {
+  color: #707070;
+}
+
+.searchBtn {
+  width: 100rpx;
+  text-align: center;
+  color: #fff;
+  background: #ee3f4d;
+  border-radius: 10rpx;
+  margin-left: 20rpx;
+}
+
+/* 中奖名单 */
+.winnerListContainer {
+  border: 4rpx solid #cacaca;
+  margin: 30rpx 0;
+}
+
+.winnerListTitle {
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: left;
+  font-size: 28rpx;
+  padding: 0 20rpx;
+  color: #707070;
+  background: #fafafa;
+  position: relative;
+}
+.winnerListTitle .confirmBtn {
+  position: absolute;
+  right: 5rpx;
+  top: 5rpx;
+  width: 150rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 26rpx;
+  text-align: center;
+  color: #A2B38B;
+  border-radius: 25rpx;
+}
+
+.listContainer {
+  display: flex;
+  width: 94%;
+  height: 240rpx;
+  padding: 20rpx;
+  padding-top: 40rpx;
+  background: #fff;
+}
+
+.winnerItem {
+  width: 200rpx;
+  margin-left: 20rpx;
+}
+.winnerItem image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  border: 2rpx solid #cacaca;
+}
+.winnerItem text {
+  font-size: 26rpx;
+  text-align: center;
+  width: 120rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.winnerItem .delete {
+  font-size: 28rpx;
+  color: #A2B38B;
+  margin-top: 30rpx;
+}
+
+/* 参与者列表 */
+.participantsContainer {
+  margin-top: 20rpx;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30rpx;
+}
+
+.participantItem {
+  width: 45%;
+  height: 110rpx;
+  padding: 10rpx;
+  background: #fff;
+  border: 4rpx solid #fafafa;
+  border-left: 10rpx solid #fafafa;
+  display: flex;
+  align-items: center;
+}
+
+.participantItem image {
+  width: 100rpx;
+  height: 100rpx;
+  border: 2rpx solid #cacaca;
+  border-radius: 10rpx;
+}
+
+.participantItem text {
+  margin-left: 10rpx;
+  font-size: 28rpx;
+  color: #303030;
+  max-width: 200rpx;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.noResult {
+  color: #707070;
+  text-align: center;
+  flex: 1;
+}

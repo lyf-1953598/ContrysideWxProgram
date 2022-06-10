@@ -1,0 +1,185 @@
+/* pages/mine/mine.wxss */
+/* 红色背景 */
+.background {
+  width: 100%;
+  height: 350rpx;
+  /* background: #FAFDD6; */
+  position: absolute;
+}
+
+
+.pageContainer {
+  z-index: 1;
+  position: relative;
+  padding: 0 20rpx;
+}
+ 
+/* 用户信息容器 */
+.userInfoContainer {
+  margin-top: 20rpx;
+  padding: 50rpx;
+  /* background: #fff; */
+  border-radius: 10rpx;
+  /* background-image:ur */
+}
+
+.userInfoBackground{
+  position: absolute;
+  z-index: -999;
+  max-height: 100%;
+}
+
+/* 用户基本信息 */
+.userInfo {
+  display: flex;
+  margin-bottom: 80rpx;
+}
+.userInfo image {
+  width: 140rpx;
+  height: 140rpx;
+}
+
+/* 用户名 同步资料 */
+.syncInfo {
+  display: flex;
+  flex-direction: column; 
+  padding-left: 40rpx;
+  margin-top: 10rpx;
+  width: 400rpx;
+  height: 120rpx;
+}
+.syncInfo .userName {
+  font-size: 36rpx;
+  font-weight: 550;
+  height: 70rpx;
+  line-height: 70rpx;
+  color: #303030;
+}
+.syncInfo .syncWX {
+  font-size: 26rpx;
+  text-align: center;
+  width: 360rpx;
+  height: 50rpx;
+  line-height: 20rpx;
+  color: #ee3f4e;
+  border: 2rpx solid #ee3f4e;
+  border-radius: 35rpx;
+  background: none;
+}
+
+/* 抽奖/中奖记录 */
+.recordContainer {
+  display: flex;
+}
+.record {
+  display: flex;
+  flex-direction: column;
+  font-size: 26rpx;
+  text-align: center;
+  width: 50%;
+  line-height: 60rpx;
+  color: #c0c0c0;
+}
+.record .number {
+  font-size: 40rpx;
+  font-weight: 550;
+  color: #505050;
+}
+
+/* 工具栏 */
+.toolsContainer {
+  margin-top: 20rpx;
+  padding: 10rpx 30rpx;
+  background: #fff;
+}
+.buttonItems{
+  padding-top: 20rpx;
+  width: 100%;
+  height: 280rpx;
+  color: #A2B38B;
+  display: flex;
+}
+
+.bioItem{
+  margin: 1%;
+  height: 100%;
+  width: 50%;
+
+  /* display: flex; */
+  /* display: flex; */
+}
+.buttonImage{
+  margin-top: 5%;
+  height: 50%;
+  width: 100%;
+  font-size: 40px;
+  text-align: center;
+  float: left;
+  /* float: left; */
+
+}
+.buttonText{
+  text-align: center;
+  /* background-color: #303030; */
+  width: 100%;
+  float: left;
+  /* font-size: 15rpx; */
+  /* float: left; */
+}
+
+.toolItem {
+  display: flex;
+  font-size: 32rpx;
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #303030;
+}
+.toolItem .iconfont {
+  font-size: 50rpx;
+  text-align: center;
+  width: 80rpx;
+  height: 80rpx;
+  margin-left: -10rpx;
+  margin-right: 20rpx;
+  /* color: #ee3f4d; */
+  color: #A2B38B;
+}
+.toolItem .detailsButton {
+  flex: 1;
+  text-align: end;
+  color: #c0c0c0;
+}
+
+.divider {
+  width: 100%;
+  height: 2rpx;
+  background: #fafafa;
+}
+
+/* 底部信息 */
+.bottomInfo {
+  color: #c0c0c0;
+  width: 100%;
+  text-align: center;
+  position: absolute;
+  bottom: 20rpx;
+}
+.bottomInfo .feedback {
+  background: none;
+  font-size: 26rpx;
+  font-weight: 400;
+  color: #A2B38B;
+  padding-bottom: 10rpx;
+}
+.bottomInfo .feedback .iconfont {
+  font-size: 24rpx;
+}
+.bottomInfo .miniProg{
+  font-size: 32rpx;
+}
+.bottomInfo .producer {
+  font-size: 24rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+}

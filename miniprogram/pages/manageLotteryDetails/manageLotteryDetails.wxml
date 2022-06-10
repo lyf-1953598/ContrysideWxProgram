@@ -1,0 +1,83 @@
+<!--pages/manageLotteryDetails/manageLotteryDetails.wxml-->
+
+<!--渐变背景-->
+<view class="background"></view>
+
+<!--页面详情内容-->
+<view class="pageContainer">
+  <!--编辑抽奖信息-->
+  <view class="editInfo" bindtap="editInfo">
+    <text class="iconfont icon-edit"> </text>
+    编辑抽奖信息
+  </view>
+
+  <!--抽奖信息-->
+  <view class="lotteryBannersContainer">
+    <swiper class="lotteryBanners" indicator-dots="true" indicator-color="ivory" indicator-active-color="#ee3f4d"
+      autoplay circular>
+      <swiper-item wx:for="{{bannerList}}" wx:key="index">
+        <image src="{{item}}"></image>
+      </swiper-item>
+    </swiper>
+    <view class="prizeList" wx:for="{{prizeList}}" wx:key="index">
+      <view class="prizeItem" style="{{(index == 0) && 'color: #ee3f4d;'}}">
+        <text>{{item.prize}}</text>
+        <text class="number">{{'×' + item.num + '份'}}</text>
+        <view class="setWinners" id="{{index}}" bindtap="setWinners">
+          设置中奖人
+          <text class="iconfont icon-right"></text>
+        </view>
+      </view>
+    </view>
+    <view class="lotteryTime">{{lotteryTime}}</view>
+  </view>
+
+  <!--中奖名单-->
+  <view class="winnerListContainer">
+    <view class="winnerListItem" wx:for="{{prizeList}}" wx:for-item="pItem" wx:for-index="pIndex" wx:key="pIndex">
+      <view class="winnerListTitle">{{pItem.prize}} ×{{pItem.num}}名</view>
+      <view class="listContainer" wx:if="{{winnerInfo[pIndex].length}}">
+        <view class="winnerItem" wx:for="" wx:for="{{winnerInfo[pIndex]}}" wx:key="index">
+          <image src="{{item.avatarUrl}}"></image>
+          <text>{{item.nickName}}</text>
+        </view>
+      </view>
+      <view class="noWinners" wx:else>
+        未设置中奖者
+      </view>
+    </view>
+  </view>
+
+  <!--抽奖说明-->
+  <view class="introContainer">
+    <view class="introTitle">
+      抽奖说明
+    </view>
+    <view class="lotteryIntro">
+      {{lotteryIntro}}
+    </view>
+    <view class="imageList">
+      <view class="imageItem" wx:for="{{imageList}}" wx:key="index">
+        <image src="{{item}}"></image>
+      </view>
+    </view>
+  </view>
+
+  <!--参与名单-->
+  <view class="partListContainer">
+    <view class="partNum">
+      共有 {{partNum}} 人参与本次抽奖
+    </view>
+    <view class="partList">
+      <view class="partItem" wx:for="{{participants}}" wx:key="index">
+        <image src="{{item.avatarUrl}}"></image>
+      </view>
+    </view>
+    {{((partNum) > 8)? '▪ ▪ ▪' : ''}}
+  </view>
+
+  <!--删除抽奖-->
+  <view class="delLottery" bindtap="delLottery">
+    关闭抽奖
+  </view>
+</view>

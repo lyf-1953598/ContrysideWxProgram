@@ -1,0 +1,21 @@
+<!--pages/indexNew/index.wxml-->
+<view class="currentActivity" bindtap="toCurrent">
+<view>你好，您现在正在参加的志愿活动是：</view>
+</view>
+<view class="secondCantainer">
+  <view class="signIn">签到</view>
+  <view class="apply" bindtap="toApply">申请成为主办方</view>
+  <text class="fa fa-home"></text>
+</view>
+
+<scroll-view class="recommend" scroll-y>
+<view>test</view>
+<view>test</view>
+<view>test</view>
+<view>test</view>
+<view class="moreActivity">
+  <button>查看更多活动</button>
+</view>
+</scroll-view>
+
+

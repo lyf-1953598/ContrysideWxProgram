@@ -1,0 +1,5 @@
+<!--pages/certificateCard/certificateCard.wxml-->
+<!-- <button id="returnButton" bindtap="returnToMine">◀</button> -->
+<canvas canvas-id="certificateCanvas" style="width:{{canvasWidth}}px;height:{{canvasHeight}}px"></canvas> 
+<button id="saveButton" bindtap="generateCanvasBackgroundImg">点击此处保存至本地</button>
+  <!-- // "disableScroll":true -->

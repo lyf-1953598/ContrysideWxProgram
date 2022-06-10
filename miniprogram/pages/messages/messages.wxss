@@ -1,0 +1,16 @@
+/* pages/messages/messages.wxss */
+.messageItem image{
+  width: 90rpx;
+  height: 90rpx;
+  border-radius: 50%;
+  margin-left: 30rpx;
+  margin-right: 30rpx;
+}
+
+.messageItem{
+  height:160rpx;
+  /* width: 99%; */
+  align-items: center;
+  /* box-shadow: 2px 2px 2px 2px rgba(128, 128, 128, 0.249); */
+  background-color: rgba(128, 128, 128, 0.112);
+}

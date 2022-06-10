@@ -1,0 +1,4 @@
+<!--pages/apply/apply.wxml-->
+<view class="applyBox">
+  <button type="primary">申请成为主办方</button>
+</view>

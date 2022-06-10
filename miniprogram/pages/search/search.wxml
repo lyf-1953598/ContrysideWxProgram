@@ -1,0 +1,18 @@
+<!--pages/search/search.wxml-->
+<view class="searchBox">
+  <view>请输入活动名称：</view>
+  <input bindinput="search">test</input>
+  <button type="primary">搜索</button>
+</view>
+<view class="section">
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker">
+      当前选择：{{array[index]}}
+    </view>
+  </picker>
+</view>
+<scroll-view class="activityInfo" scroll-y>
+
+</scroll-view>
+
+

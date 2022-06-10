@@ -1,0 +1,23 @@
+/* pages/winningRecord/winningRecord.wxss */
+.recordListContainer {
+  padding: 20rpx;
+  margin-top: 20rpx;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-size: 36rpx;
+  line-height: 60rpx;
+  height: calc(100vh - 80rpx);
+  color: #909090;
+}
+.empty text {
+  line-height: 70rpx;
+}
+.empty .iconfont {
+  font-size: 300rpx;
+  line-height: 280rpx;
+}

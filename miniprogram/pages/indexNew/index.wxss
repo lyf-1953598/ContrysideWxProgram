@@ -1,0 +1,63 @@
+/* pages/indexNew/index.wxss */
+.currentActivity{
+  border: 1px solid black;
+  margin-top: 20px;
+  margin-left: 25px;
+  width: 80%;
+  height: 100px;
+  /* display: flex; */
+}
+.currentActivity view {
+  /* background-color: blue; */
+  text-align: center;
+  line-height: 100px;
+}
+.secondCantainer{
+  border: 1px solid black;
+  margin-top: 20px;
+  margin-left: 25px;
+  width: 80%;
+  height: 100px;
+  display: flex;
+  justify-content: space-around;
+}
+.secondCantainer view{
+  border:1px solid black;
+  display: flex;
+  margin-top: 20px;
+  height: 50px;
+  text-align: center;
+}
+.signIn{
+  width: 50px;
+  line-height: 50px;
+}
+.apply{
+  text-align: center;
+  line-height: 50px;
+}
+.popularActivity{
+  border: 1px solid black;
+  height: 300px;
+  margin-top: 10px;
+  margin-left: 25px;
+  width: 80%;
+}
+.recommend{
+  border: 1px solid black;
+  margin-top: 20px;
+  margin-left: 30px;
+  height: 400px;
+  width: 80%;
+}
+.recommend view{
+  display: flex;
+  padding: 10px;
+  /* border: 1px solid blue; */
+  height: 100px;
+  /* width: 80%; */
+  justify-content: center;
+}
+.moreActivity{
+  margin-top: 50px;
+}

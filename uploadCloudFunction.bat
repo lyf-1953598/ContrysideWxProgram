@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\Tencent\微信web开发者工具\cli.bat" cloud functions deploy --e realsad-5gf3okr86e531451 --n quickstartFunctions --r --project "E:\wxContryside"

@@ -1,0 +1,77 @@
+<!--pages/lotteryDetails/lotteryDetails.wxml-->
+<!--渐变背景-->
+<view class="background"></view>
+
+<!--页面详情内容-->
+<view class="pageContainer">
+  <!--抽奖信息-->
+  <view class="lotteryBannersContainer">
+    <swiper class="lotteryBanners" indicator-dots="true" indicator-color="ivory" indicator-active-color="#ee3f4d"
+      autoplay circular>
+      <swiper-item wx:for="{{bannerList}}" wx:key="index">
+        <image src="{{item}}"></image>
+      </swiper-item>
+    </swiper>
+    <view class="prizeList" wx:for="{{prizeList}}" wx:key="index">
+      <view class="prizeItem" style="{{(index == 0) && 'color: #ee3f4d;'}}">
+        <text>{{item.prize}}</text>
+        <text class="number">{{'×' + item.num + '份'}}</text>
+      </view>
+    </view>
+    <view class="lotteryTime">{{curLotteryEndTime}}</view>
+  </view>
+
+  <!--抽奖说明-->
+  <view class="introContainer">
+    <view class="introTitle">
+      抽奖说明
+    </view>
+    <view class="lotteryIntro">
+      {{curLotteryDescrip}}
+    </view>
+    <view class="imageList">
+      <view class="imageItem" wx:for="{{imageList}}" wx:key="index">
+        <image src="{{item}}"></image>
+      </view>
+    </view>
+  </view>
+
+  <!--已经参与-->
+  <view class="ispart" wx:if="{{ispart}}">
+    <view>已经参与抽奖</view>
+    <view>开奖记得回来查看中奖信息哦</view>
+  </view>
+
+  <!--参与抽奖-->
+  <view class="joinContainer" wx:else>
+    <view class="joinButton" bindtap="joinLottery">立即参加</view>
+  </view>
+
+  <!--参与名单-->
+  <view class="partListContainer">
+    <view class="partNum">共有 {{partNum}} 人参与本次抽奖</view>
+    <view class="partList">
+      <view class="partItem" wx:for="{{participants}}" wx:key="index">
+        <image src="{{item.avatarUrl}}"></image>
+      </view>
+    </view>
+    {{((partNum) > 8)? '▪ ▪ ▪' : ''}}
+  </view>
+</view>
+
+<!--底部固定栏-->
+<view class="bottomContainer">
+  <view class="share">
+    <button open-type="share">
+      <text class="iconfont icon-share"></text>
+      <view class="shareText">分享</view>
+    </button>
+  </view>
+  <view class="backLottery" bindtap="backIndex">
+    <text class="iconfont icon-gift2"></text>
+    返回首页
+  </view>
+</view>
+
+<!--占位-->
+<view style="height:120rpx"></view>

@@ -1,0 +1,11 @@
+<!--pages/winningRecord/winningRecord.wxml-->
+<!--抽奖页面-->
+<view class="recordListContainer">
+  <recordList wx:if="{{lotteryList.length}}" title="已中奖" lotteryList="{{lotteryList}}">
+  </recordList>
+  <view class="empty" wx:if="{{!lotteryList.length}}">
+    <text class="iconfont icon-empty"></text>
+    <text>这里什么都没有</text>
+    <text>快去首页参与抽奖活动吧</text>
+  </view>
+</view>

@@ -1,0 +1,26 @@
+/* pages/lotteryRecord/lotteryRecord.wxss */
+.recordListContainer {
+  padding: 20rpx;
+  margin-top: 20rpx;
+}
+
+.divider {
+  height: 40rpx;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-size: 36rpx;
+  height: calc(100vh - 80rpx);
+  color: #909090;
+}
+.empty text {
+  line-height: 70rpx;
+}
+.empty .iconfont {
+  font-size: 300rpx;
+  line-height: 280rpx;
+}

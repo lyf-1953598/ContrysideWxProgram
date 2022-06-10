@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "recordList": "/components/recordList/recordList"
+  },
+  "navigationBarTitleText": "志愿活动记录"
+}

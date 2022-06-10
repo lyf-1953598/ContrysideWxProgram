@@ -1,0 +1,14 @@
+<!--pages/currentActivity/currentActivity.wxml-->
+<view class="title">活动详情</view>
+<view class="activityName">项目名称:</view>
+<swiper class="swiper-container" indicator-dots>
+  <swiper-item class="item">
+    <view>test1</view>
+  </swiper-item>
+  <swiper-item class="item">
+    <view>test1</view>
+  </swiper-item>
+  <swiper-item class="item">
+    <view>test1</view>
+  </swiper-item>
+</swiper>

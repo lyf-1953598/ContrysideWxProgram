@@ -1,0 +1,69 @@
+{
+
+  "pages":[
+    
+    "pages/indexNew/index",
+    "pages/setUpActivity/setUpActivity",
+    "pages/apply/apply",
+    "pages/search/search",
+    "pages/index/index",
+    "pages/certificateCard/certificateCard",
+    "pages/userInfo/userInfo",
+    "pages/currentActivity/currentActivity",
+    "pages/recommendActivity/recommendActivity",
+    "pages/lotteryDetails/lotteryDetails",
+    "pages/messageDetail/messagesDetail",
+    "pages/messages/messages",
+    "pages/rankingList/rankingList",
+    "pages/editInfo/editInfo",
+    "pages/manageLotteryDetails/manageLotteryDetails",
+    "pages/mine/mine",
+    "pages/resultDetails/resultDetails",
+    "pages/management/management",
+    "pages/participants/participants",
+    "pages/contact/contact",
+    "pages/lotteryRecord/lotteryRecord",
+    "pages/help/help"
+
+  ],
+
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#A2B38B",
+    "navigationBarTitleText": "乡村志愿者平台",
+    "navigationBarTextStyle": "white"
+
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "tabBar": {
+    "color": "#707070",
+    "selectedColor": "#A2B38B",
+    "list": [
+      {
+        "pagePath": "pages/indexNew/index",
+        "text": "首页",
+        "iconPath": "/static/images/tabs/home-smile.png",
+        "selectedIconPath": "/static/images/tabs/home-smile2.png"
+      },
+      {
+        "pagePath": "pages/messages/messages",
+        "text": "消息",
+        "iconPath": "/static/images/tabs/message.png",
+        "selectedIconPath": "/static/images/tabs/message2.png"
+      },
+      {
+        "pagePath": "pages/rankingList/rankingList",
+        "text": "排行榜",
+        "iconPath": "/static/images/tabs/medal.png",
+        "selectedIconPath": "/static/images/tabs/medal2.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "个人中心",
+        "iconPath": "/static/images/tabs/user.png",
+        "selectedIconPath": "/static/images/tabs/user2.png"
+      }
+    ]
+  }
+}

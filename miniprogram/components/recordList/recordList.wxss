@@ -1,0 +1,36 @@
+/* Components/recordList/recordList.wxss */
+@import "/static/iconfont/iconfont";
+/* 标题 */ 
+.title {
+  font-size: 32rpx;
+  color: #707070;
+}
+
+.lotteryList {
+  margin-top: 20rpx;
+}
+
+.lotteryItem {
+  display: flex;
+  line-height: 120rpx;
+  background: #fff;
+  padding: 0 20rpx;
+}
+.lotteryItem .lotteryName { 
+  display: block;
+  max-width: 500rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.lotteryItem .lotteryDate {
+  flex: 1;  
+  display: block;
+  color: #c0c0c0;
+  text-align: end;
+}
+.lotteryItem .iconfont {
+  font-size: 36rpx;
+  color: #c0c0c0;
+  margin-left: 10rpx;
+}

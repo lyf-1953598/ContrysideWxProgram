@@ -1,0 +1,14 @@
+<!--pages/help/help.wxml-->
+<view class="helpContainer">
+  <view class="helpItem" wx:for="{{helpData}}" wx:key="index">
+    <view class="QA" id="{{index}}" bindtap="flod">
+      <text class="iconfont icon-Q iconQ"></text>
+      <text class="question">{{' : ' + item.question}}</text>
+      <text class="iconfont {{(showIndex == index)? 'icon-down' : 'icon-up'}}"></text>
+    </view>
+    <view class="answerContainer" wx:if="{{showIndex == index}}">
+      <text class="iconfont icon-A iconA"> </text>
+      <text class="answer">{{' : ' + item.answer}}</text>
+    </view>
+  </view>
+</view>

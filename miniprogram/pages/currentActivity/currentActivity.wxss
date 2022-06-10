@@ -1,0 +1,21 @@
+/* pages/currentActivity/currentActivity.wxss */
+.title{
+  text-align: center;
+  margin-top: 10px;
+}
+.activityName{
+  margin-left: 30px;
+  margin-top: 20px;
+  height: 50px;
+  width: 80%;
+  border: 1px solid black;
+  line-height: 50px;
+}
+.swiper-container{
+  height: 150px;
+}
+.item{
+  height: 100%;
+  line-height: 150px;
+  text-align: center;
+}

@@ -1,0 +1,25 @@
+/* pages/search/search.wxss */
+.searchBox{
+  margin-top: 20px;
+  margin-left: 40px;
+  height: 200px;
+  width: 70%;
+}
+.searchBox input{
+  border: 1px solid black;
+  height: 50px;
+  margin: 10px;
+}
+.selectConditional view{
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  line-height: 100px;
+}
+.activityInfo{
+  border:1px solid black;
+  height: 300px;
+  width: 80%;
+  margin-left: 30px;
+  margin-top: 20px;
+}

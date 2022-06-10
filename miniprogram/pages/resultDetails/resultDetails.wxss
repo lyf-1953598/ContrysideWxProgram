@@ -1,0 +1,258 @@
+/* pages/resultDetails/resultDetails.wxss */
+/* 渐变背景 */
+.background {
+  width: 100%;
+  height: 400rpx;
+  background: -webkit-linear-gradient(top, #ee3f4d, #fafafa);
+  position: absolute;
+}
+
+.pageContainer {
+  z-index: 1;
+  padding: 0 20rpx;
+}
+
+/* 抽奖信息 */
+.lotteryBannersContainer {
+  background: #fff;
+  border-radius: 10rpx;
+}
+
+.lotteryBanners {
+  width: 100%;
+  height: 400rpx;
+}
+
+.lotteryBanners image {
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx 10rpx 0 0;
+}
+
+.prizeList {
+  padding: 0 30rpx;
+  margin-top: 10rpx;
+}
+
+.prizeItem {
+  font-size: 32rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #303030;
+}
+
+.prizeItem .number {
+  margin-left: 10rpx;
+  color: #707070;
+}
+
+.lotteryTime {
+  display: flex;
+  padding: 0 30rpx;
+  font-size: 26rpx;
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  color: #707070;
+}
+.lotteryTime .over {
+  position: relative;
+  bottom: 40rpx;
+  left: 190rpx;
+  padding: 0 10rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 36rpx;
+  color: #ee3f4d;
+  border: 4rpx solid #ee3f4d;
+  border-radius: 10rpx;
+}
+
+/* 中奖信息 */
+.resultContainer {
+  background: #fff;
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+  padding: 10rpx 30rpx;
+}
+
+.lotteryResult {
+  font-size: 45rpx;
+  font-weight: 600;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: #ee3f4d;
+}
+
+.lotteryPrize {
+  font-size: 28rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  color: #303030;
+}
+
+/* 跳转按钮 */
+.redirectButton {
+  display: flex;
+  justify-content: center;
+  margin-top: 40rpx;
+}
+
+.redirectButton .acceptContainer {
+  width: 50vw;
+  height: 24vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-right: 2%;
+  color: #fff;
+  background: #ee3f4d;
+  border: 2rpx solid #ee3f4d;
+}
+.redirectButton .share {
+  width: 50vw;
+  height: 24vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #ee3f4d;
+  border: 4rpx solid #ee3f4d;
+}
+.redirectButton .iconfont {
+  font-size: 60rpx;
+  margin-bottom: 20rpx;
+}
+.redirectButton .text {
+  font-size: 32rpx;
+  font-weight: 550;
+} 
+
+/* 中奖名单 */
+.winnerListItem {
+  border: 4rpx solid #cacaca;
+  margin: 30rpx 0;
+}
+
+.noWinners {
+  font-size: 28rpx;
+  text-align: center;
+  margin: 30rpx 0;
+  color: #303030;
+}
+
+.winnerListTitle {
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #707070;
+  background: #fafafa;
+}
+
+.listContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 20rpx 0;
+}
+
+.winnerItem {
+  width: 30%;
+  height: 160rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.winnerItem image {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 50%;
+  border: 2rpx solid #dadada;
+}
+.winnerItem text {
+  font-size: 26rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  color: #505050;
+}
+
+/* 参与名单 */
+.partListContainer {
+  text-align: center;
+  color: #707070;
+  margin-bottom: 10rpx;
+}
+
+.partNum {
+  font-size: 30rpx;
+  color: #707070;
+}
+
+.partList {
+  display: flex;
+  justify-content: center;
+  margin-top: 20rpx;
+}
+.partList .partItem {
+  width: 80rpx;
+  height: 80rpx;
+}
+.partList .partItem image {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 5rpx;
+}
+
+/* 底部栏 */
+.bottomContainer {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  width: 100%;
+  height: 100rpx;
+  padding: 0 20rpx;
+}
+
+.share {
+  width: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.share button {
+  background: none;
+  height: 100rpx;
+  padding: 0;
+}
+.share .iconfont {
+  font-size: 50rpx;
+  color: #ee3f4d;
+}
+.share .shareText {
+  margin-top: -10rpx;
+  font-size: 26rpx;
+  font-weight: 500;
+  color: #303030;
+}
+
+.backLottery {
+  font-size: 30rpx;
+  text-align: center;
+  width: 60%;
+  height: 70rpx;
+  line-height: 70rpx;
+  border-radius: 40rpx;
+  background: #ee3f4d;
+  color: #fff;
+}
+.backLottery text {
+  font-size: 32rpx;
+}

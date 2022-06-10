@@ -1,0 +1,44 @@
+<!--index.wxml-->
+<!--标题-->
+<view class="titleContainer">
+  <text>非精选福利</text>
+  <view class="titleButton">
+    <text bindtap="toMine">个人中心 |</text>    
+    <button open-type="share">分享</button>
+  </view>
+</view>
+
+<!--抽奖-->
+<block wx:if="{{lotteryInfo.length>0}}">
+  <view class="lotteryListContainer">
+    <view class="lotteryItem" wx:for="{{lotteryInfo}}" wx:key="index">
+      <image class="cover" src="{{item.cover}}"></image>
+      <view class="prizeList" wx:for="{{item.prizeList}}" wx:key="index" wx:for-item="pItem">
+        <view class="prizeItem" style="{{(index == 0) && 'color: #ee3f4d;'}}">
+          <text>{{pItem.prize}}</text>
+          <text class="number">{{'×' + pItem.num + '份'}}</text>
+        </view>
+      </view>
+      <view class="bottomContainer">
+        <view class="detailsCard">
+          <text>距离开奖剩余</text>
+          <text class="time" wx:if="{{item.remainningTime.day}}"> {{item.remainningTime.day}} </text>
+          <text wx:if="{{item.remainningTime.day}}">天</text>
+          <text class="time"> {{item.remainningTime.hour}} </text>
+          <text>小时</text>
+        </view>
+        <view class="joinNow" bindtap="toDetails" id="{{index}}">
+          <text class="iconfont icon-gift2"></text>
+          立即参与
+        </view>
+      </view>
+    </view>
+  </view>
+</block>
+<block wx:else>
+  <view class="empty" wx:if="{{!lotteryList.length}}">
+    <text class="iconfont icon-empty"></text>
+    <text>当前无更多抽奖活动</text>
+    <text>可前往个人中心查询抽奖记录</text>
+  </view>
+</block>

@@ -1,0 +1,4 @@
+/* pages/apply/apply.wxss */
+.applyBox{
+  margin-top: 50px;
+}

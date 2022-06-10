@@ -1,0 +1,48 @@
+<!--pages/rankingList/rankingList.wxml-->
+<view class="background"></view>
+<view class="pageContainer">
+  <!-- 选择器 -->
+  <view class="section">
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker" style="flex-direction:row;display:flex;align-items: center;">
+        <view >{{array[index]}}</view>
+        <view class="iconfont icon-down" style="font-size:small"></view>
+    </view>
+  </picker>
+</view>
+<!-- 前三名 -->
+<view style="flex-direction:row;display:flex;margin-top:16rpx">
+<view class="rank-23">
+  <view class="iconfont icon-yajun"></view>
+
+  <view class="avatar23">
+  
+  <image src="../../static/images/lottery/avatar.jpg"></image>
+</view>
+<view style="font-size:small;margin-top: 6px;">狼月锋</view>
+</view>
+<view class="rank-1">
+  <view class="iconfont icon-guanjun"></view>
+  <view class="avatar1">
+    <image src="../../static/images/lottery/avatar.jpg"></image>
+</view>
+<view style="font-size:small;margin-top: 6px;">狼月锋</view>
+</view>
+<view class="rank-23">
+  <view class="iconfont icon-jijun"></view>
+  <view class="avatar23">
+  <image src="../../static/images/lottery/avatar.jpg"></image>
+</view>
+<view style="font-size:small;margin-top: 6px;">狼月锋</view>
+</view>
+</view>
+
+<view class="nextList" style="margin-top:70rpx">
+  <view class="listItem" style="flex-direction:row;display:flex;" wx:for="{{ranklist}}" wx:key="index">
+  <view style="width:20rpx;margin-left: 30rpx;margin-right: 30rpx;">{{index+4}}</view>
+  <image src="../../static/images/lottery/avatar.jpg"></image>
+   <view style="margin-left:40rpx">狼月锋</view>
+  </view>
+</view>
+</view>
+

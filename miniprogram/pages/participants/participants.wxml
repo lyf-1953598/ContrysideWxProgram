@@ -1,0 +1,48 @@
+<!--pages/participants/participants.wxml-->
+<view class="pageContainer">
+  <!--标题-->
+  <view class="title">
+    请选择
+    <text class="num">{{winNum}}</text>
+    位中奖者
+  </view>
+
+  <!--搜索框-->
+  <view class="searchContainer">
+    <view class="searchInput">
+      <text class="iconfont icon-search"></text>
+      <input style="margin-left: 70rpx" type="text" placeholder="搜索参与者的昵称" placeholder-class="searchPlaceHolder"
+      bindinput="handleSearchInput" />
+    </view>
+    <text class="searchBtn">搜索</text>
+  </view>
+
+  <!--中奖名单-->
+  <view class="winnerListContainer">
+    <view class="winnerListTitle">
+      {{title}} ×{{winnerInfo.length}}名
+      <view class="confirmBtn" bindtap="confirmWinners">确认名单</view>
+    </view>
+    <scroll-view class="listContainer" enable-flex scroll-x>
+      <view class="winnerItem" wx:for="{{winnerInfo}}" wx:key="index">
+        <image src="{{item.avatarUrl}}"></image>
+        <text>{{item.nickName}}</text>
+        <text class="delete" id="{{index}}" bindtap="delWinner">删除</text>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!--参与者列表-->
+  <view class="participantsContainer">
+    <view class="participantItem" wx:for="{{resultList}}" wx:key="index" id="{{index}}" bindtap="chooseWinner"
+      style="{{(item.chosen) && 'background: #D4F2E7;'}}">
+      <image src="{{item.avatarUrl}}"></image>
+      <text>{{item.nickName}}</text>
+    </view>
+
+    <!--无结果-->
+    <view class="noResult" wx:if="{{resultList.length == 0}}">
+      没有符合条件的参与者
+    </view>
+  </view>
+</view>

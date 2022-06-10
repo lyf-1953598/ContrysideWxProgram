@@ -1,0 +1,29 @@
+<!--Components/recordList/recordList.wxml-->
+
+
+<view class="title">{{title}}</view>
+<view wx:if="{{title===('已中奖')}}">
+<view class="lotteryList" wx:for="{{lotteryList}}" wx:key="index">
+  <navigator url="/pages/resultDetails/resultDetails?mid={{item.lottery_id}}">
+  <view class="lotteryItem" >
+    <text class="lotteryName">{{item.prize_name}}</text>
+    <!-- <wxs src="../../utils/string.wxs" module="tools" /> -->
+    <!-- <view class="lotteryDate">{{tools.subDate(item.lottery_detail[0].start_time)}}</view> -->
+    <view class="lotteryDate">{{item.lottery_detail[0].end_time}}</view>
+    <text class="iconfont icon-right"></text>
+  </view>
+</navigator>
+</view>
+</view>
+<view wx:if="{{title===('未开奖')}}">
+  <view class="lotteryList" wx:for="{{lotteryList}}" wx:key="index">
+  <navigator url="/pages/lotteryDetails/lotteryDetails?mid={{item.lottery_id}}">
+  <view class="lotteryItem" >
+    <text class="lotteryName">奖品：一等奖：{{item.lottery_prize[0].name}}*{{item.lottery_prize[0].count}} 二等奖：{{item.lottery_prize[1].name}}*{{item.lottery_prize[1].count}} 三等奖：{{item.lottery_prize[2].name}}*{{item.lottery_prize[2].count}}</text>
+   
+    <text class="iconfont icon-right"></text>
+  </view>
+</navigator>
+</view>
+
+</view>
