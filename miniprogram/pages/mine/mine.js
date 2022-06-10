@@ -398,16 +398,35 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    // wx.cloud.callFunction({
-    //   name:'isAdmin',
-    //   data:{}
-    // }).then(res=>{
-    //   // console.log(res)
-    //   this.setData({
-    //     isAdmin:res.result
-    //   })
-    //   console.log(this.data.isAdmin)
-    // }).catch(console.error)
+    var that = this
+    wx.getStorage({
+      key:'openID',
+      success (res) {
+        console.log(res);
+        if(res.data){
+          var openId = res.data
+          wx.request({
+            url: 'http://localhost:8080/user/getAuthorizationStatus',
+            method:'GET',
+            data:{
+            userId:openId
+          },
+            success:(res)=> {
+              console.log(res);
+              if(res.data.data.info=="组织者"){
+                that.setData({
+                  isAdmin:1
+                })
+              }
+             console.log(that.data); 
+          },
+            fail:function(res){
+              console.log("接口调取失败！");
+          }
+        })
+        }}
+    }
+    )
   },
 
   /**

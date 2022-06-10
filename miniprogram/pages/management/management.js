@@ -1,11 +1,10 @@
-const {
-  get
-} = require("management")
+// const {
+//   get
+// } = require("management")
 /*import {
   rejects
 } from 'assert'*/
 //const regeneratorRuntime = require('../../utils/runtime')
-import regeneratorRuntime from '../../utils/runtime'
 // pages/management/management.js
 Page({
   /**
@@ -74,12 +73,12 @@ Page({
   },
 
   //跳转到发布抽奖
-  toReleaseLottery() {
-    let ok = true
-    wx.navigateTo({
-      url: '/pages/editInfo/editInfo',
-    })
-  },
+  // toReleaseLottery() {
+  //   let ok = true
+  //   wx.navigateTo({
+  //     url: '/pages/editInfo/editInfo',
+  //   })
+  // },
 
   //跳转到查看结果
   toResult() {
@@ -183,7 +182,7 @@ Page({
         },
         fail: err => {
           console.log(err)
-          rejects()
+          // rejects()
         }
       })
     })
@@ -287,31 +286,5 @@ Page({
           }
         })
       
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {},
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
   }
 })

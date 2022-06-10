@@ -9,7 +9,7 @@
 }
 .navBar .nav {
   width: 30%;
-  margin: 0 8%;
+  margin: 0 10%;
   color: #505050;
   font-size: 32rpx;
   text-align: center;
@@ -106,7 +106,7 @@
   line-height: 80rpx;
 }
 
-.noLottery {
+.noVolunteer {
   font-size: 36rpx;
   text-align: center;
   color: #707070;
