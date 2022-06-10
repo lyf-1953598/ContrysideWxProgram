@@ -5,41 +5,31 @@ Page({
    * 页面的初始数据
    */
   data: {
-    array: ['本地榜', '全国榜'],
+    array: ['总榜', '月榜','周榜'],
     index:0,
     ranklist:[
-      {
-        avatar:'',
-        name:"lyf"
-      },
-      {
-        avatar:'',
-        name:"lyf"
-      },
-      {
-        avatar:'',
-        name:"lyf"
-      }
+
     ]
   },
 
   bindPickerChange: function(e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
-      index: e.detail.value
+      index: parseInt(e.detail.value)
     })
+    this.onReady()
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
+    this.getList();
 
   },
 
@@ -83,5 +73,34 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+
+  async getList(){
+    var that = this
+    console.log(that.data.index+1)
+    wx.request({
+      url: 'http://localhost:8080/rank/getRankList',
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      data: {
+        rankType: that.data.index+1,
+      },
+      success: function (res) {
+        console.log(res.data);
+        that.setData({
+          ranklist : res.data.data.rankList
+        });
+        console.log(that.data.ranklist);
+       
+      },
+      fail: function () {
+        console.log("调用接口失败");
+      }
+    })
+  
+  },
+
 })

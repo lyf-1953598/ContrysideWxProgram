@@ -5,7 +5,7 @@
   <view class="section">
   <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
     <view class="picker" style="flex-direction:row;display:flex;align-items: center;">
-        <view >{{array[index]}}</view>
+        <view>{{array[index]}}</view>
         <view class="iconfont icon-down" style="font-size:small"></view>
     </view>
   </picker>
@@ -17,31 +17,35 @@
 
   <view class="avatar23">
   
-  <image src="../../static/images/lottery/avatar.jpg"></image>
+  <image src="{{ranklist[1].avatar}}"></image>
 </view>
-<view style="font-size:small;margin-top: 6px;">狼月锋</view>
+<view style="font-size:medium;margin-top: 6px;">{{ranklist[1].name}}</view>
+<view style="font-size:x-small;color:grey" wx:if="{{rankList.length>1}}">{{ranklist[1].timeSum}}h</view>
 </view>
 <view class="rank-1">
   <view class="iconfont icon-guanjun"></view>
   <view class="avatar1">
-    <image src="../../static/images/lottery/avatar.jpg"></image>
+    <image src="{{ranklist[0].avatar}}"></image>
 </view>
-<view style="font-size:small;margin-top: 6px;">狼月锋</view>
+<view style="font-size:medium;margin-top: 6px;">{{ranklist[0].name}}</view>
+<view style="font-size:x-small;color:grey" wx:if="{{rankList.length>0}}">{{ranklist[0].timeSum}}h</view>
 </view>
 <view class="rank-23">
   <view class="iconfont icon-jijun"></view>
   <view class="avatar23">
-  <image src="../../static/images/lottery/avatar.jpg"></image>
+  <image src="{{ranklist[2].avatar}}"></image>
 </view>
-<view style="font-size:small;margin-top: 6px;">狼月锋</view>
+<view style="font-size:medium;margin-top: 6px;">{{ranklist[2].name}}</view>
+<view style="font-size:x-small;color:grey" wx:if="{{rankList.length>2}}">{{ranklist[2].timeSum}}h</view>
 </view>
 </view>
 
-<view class="nextList" style="margin-top:70rpx">
-  <view class="listItem" style="flex-direction:row;display:flex;" wx:for="{{ranklist}}" wx:key="index">
+<view class="nextList" style="margin-top:70rpx" wx:if="{{rankList.length>3}}">
+  <view class="listItem" style="flex-direction:row;display:flex;" wx:for="{{ranklist}}" wx:key="index" >
   <view style="width:20rpx;margin-left: 30rpx;margin-right: 30rpx;">{{index+4}}</view>
-  <image src="../../static/images/lottery/avatar.jpg"></image>
-   <view style="margin-left:40rpx">狼月锋</view>
+  <image src="{{ranklist[index+4].avatar}}"></image>
+   <view style="margin-left:40rpx">{{ranklist[index+4].name}}</view>
+   <view style="font-size:x-small;margin-left:10rpx">{{ranklist[index+4].timeSum}}</view>
   </view>
 </view>
 </view>
