@@ -5,25 +5,17 @@ Page({
    * 页面的初始数据
    */
   data: {
+    openID:'',
+    list1:[],
     messageList:[
       {
-        name:"系统通知",
-        avatar:'../../static/images/notice.png',
-        content:'你被举报了！！！',
-        time:'2020-05-16 12:00'
-      },
-      {
-        name:"狼月锋",
-        avatar:'../../static/images/lottery/avatar.jpg',
-        content:'你好你好你好你好',
-        time:'2020-05-16 12:00'
-      },
-      {
-        name:"狼月锋",
-        avatar:'../../static/images/lottery/avatar.jpg',
-        content:'你好qqqq你好你好你好',
-        time:'2020-05-16 13:00'
+        withName:"系统通知",
+        withAvatar:'../../static/images/notice.png',
+        messageContent:'你被举报了！！！',
+        sendTime:'2020-05-16 12:00',
+        withId:'oln6h4lnZLCd56x_c_FpXsAgcpNA'
       }
+
     ]
   },
 
@@ -31,8 +23,44 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+   this.getopenID()
   },
+async getopenID(){
+  var that = this
+  wx.getStorage({
+    key:'openID',
+    success (res) {
+      console.log(res);
+      that.data.openID = res.data
+      that.setData({
+        openID:res.data});
+        console.log(that.data.openID)
+       that.getChatList()
+
+      }
+    })
+},
+
+async getChatList(){
+  var that = this
+  wx.request({
+    url: 'http://localhost:8080/message/getchatList?',
+    method: 'GET',
+    data: {
+      myId: that.data.openID
+    },
+    success: function (res) {
+      console.log(res.data.chatDetailList);
+      that.setData({
+        messageList : res.data.chatDetailList
+      });
+      console.log(that.data.messageList);
+    },
+    fail: function () {
+      console.log("调用接口失败");
+    }
+  })
+},
 
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -81,5 +109,15 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+
+  toDetail(event) {
+    console.log(event.currentTarget.dataset.id);
+    wx.navigateTo({
+      url: '/pages/messageDetail/messagesDetail?userId='+event.currentTarget.dataset.id+'&openID='+this.data.openID+'&withAvatar='+event.currentTarget.dataset.avatar+'&withName='+event.currentTarget.dataset.name,
+    })
   }
+
+  
 })
+

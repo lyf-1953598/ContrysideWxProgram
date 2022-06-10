@@ -1,5 +1,7 @@
 // pages/messageDetail/messagesDetail.js
 
+
+
 Page({
 
   /**
@@ -8,43 +10,16 @@ Page({
   data: {
     toView:'',
     height:0,
+    userId:'',
+    openID:'',
+    
     actionSheetHidden: true,   //作为开关控制弹窗是否从底部弹出
     name:"狼月锋",
-    avatar:"../../static/images/lottery/avatar.jpg",
+    avatar:"",
+    myavatar:"../../static/images/lottery/avatar.jpg",
     inputValue:'',
     recordContent:[
-      {
-        id:1,
-        contactText:'nihao2222222222'
-      },
-      {
-        id:2,
-        contactText:'哈哈哈'
-      },
-      {
-        id:1,
-        contactText:'nihao'
-      },
-      {
-        id:1,
-        contactText:'nihao'
-      },
-      {
-        id:1,
-        contactText:'nihao'
-      },
-      {
-        id:1,
-        contactText:'nihao'
-      },
-      {
-        id:1,
-        contactText:'噢噢噢噢噢噢噢噢哦哦哦哦哦哦噢噢噢噢噢噢噢噢哦哦哦哦哦哦哦哦哦噢噢噢噢哦哦哦噢噢噢噢哦哦哦哦哦哦哦哦哦'
-      },
-      {
-        id:2,
-        contactText:'噢噢噢噢噢噢噢噢哦哦哦哦哦哦噢噢噢噢噢噢噢噢哦哦哦哦哦哦哦哦哦噢噢噢噢哦哦哦噢噢噢噢哦哦哦哦哦哦哦哦哦'
-      },]
+      ]
   },
 
   choosePicture:function(){
@@ -83,32 +58,87 @@ Page({
    */
   onLoad: function (options) {
 
-    // console.log(this.data.recordContent)
-
     this.setData({
-      toView: 'msg-' + (this.data.recordContent.length - 1)
+      toView: 'msg-' + (this.data.recordContent.length - 1),
+      userId: options.userId,
+      openID:options.openID,
+      avatar:options.withAvatar,
+      name:options.withName
+
     })
-    // console.log(this.data.toView)
+    this.getopenID()
+    this.getMessages()
 
-
-    // let res = wx.getSystemInfoSync() ///微信api方法
-    // let titleH;
-    // if (res && res['system']) {
-    //     // 判断是否是安卓操作系统 （标题栏苹果为44px,安卓为48px）
-    //   if (res['system'].indexOf('Android') > 0) {
-    //     titleH = 48
-    //   } else {
-    //     titleH = 44
-    //   }
-    //   var height = titleH + res['statusBarHeight'];
-    //   console.log(height, 'height');
-    //   this.setData({
-    //     height: height
-    //   })
-    // }
 
   },
+  async getopenID(){
+    var that = this
+    wx.getStorage({
+      key:'openID',
+      success (res) {
+        console.log(res);
+        that.data.openID = res.data
+        that.setData({
+          openID:res.data});
+          // console.log(that.data.openID)
+        }
+      })
+      wx.getStorage({
+        key:'userProfile',
+        success (res) {
+          // console.log(res);
+          that.data.amyvatar = res.data.avatarUrl
+          that.setData({
+            myavatar:res.data.avatarUrl});
+            // console.log(that.data.myavatar)
+    
+          }
+        })
+  },
+  
 
+  async getMessages(){
+    var that = this
+    console.log(that.data.userId)
+    console.log(that.data.openID)
+    wx.request({
+      url: 'http://localhost:8080/message/getmessageList?',
+      method: 'GET',
+      data: {
+        fromId: that.data.userId,
+        toId: that.data.openID,
+      },
+      success: function (res) {
+        // console.log(res.data);
+        that.setData({
+          messageList : res.data.messageList
+        });
+        console.log(that.data.messageList);
+        var list = that.data.recordContent
+        for(var i = 0;i<that.data.messageList.length;i++)
+        {
+          if(that.data.messageList[i].fromId == that.data.openID)
+          {
+            var obj = {id:"1",contactText:that.data.messageList[i].content,time:that.data.messageList[i].sendTime}
+            list.push(obj)
+          }
+          else if(that.data.messageList[i].fromId == that.data.userId)
+          {
+            var obj = {id:"2",contactText:that.data.messageList[i].content,time:that.data.messageList[i].sendTime}
+            list.push(obj)
+          }
+        }
+        that.setData({
+          recordContent:list
+        })
+        console.log(that.data.recordContent)
+      },
+      fail: function () {
+        console.log("调用接口失败");
+      }
+    })
+  
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -134,7 +164,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    
   },
 
   /**
@@ -156,5 +186,9 @@ Page({
    */
   onShareAppMessage: function () {
 
-  }
+  },
+
+
+ 
+
 })

@@ -10,25 +10,25 @@
         <!-- 对方 -->
         <view class="word" wx:if="{{item.id == 2}}" id='msg-{{index}}'>
             <view>
-                <image class="avater" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
+                <image class="avater" src="{{avatar}}" />
             </view>
             <view class="info">
                 <view class="info-content">{{ item.contactText }}</view>
             </view>
             <view class="time">
-            2022-05-20 18:00
+            {{item.time}}
             </view>
         </view>
         <!-- 我的 -->
         <view class="word-my" wx:else id='msg-{{index}}'>
            <view class="time">
-            2022-05-20 18:00
+            {{item.time}}
 
            </view>
             <view class="info">
                 <view class="info-content">{{ item.contactText }}</view>
             </view> <view>
-                <image class="avater" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" />
+                <image class="avater" src="{{myavatar}}" />
             </view>
         </view>
     </view>
@@ -43,7 +43,7 @@
   </view>
   <view style="display:flex;align-content:center">
     <button class="mini-btn" type="plain" size="mini" style="font-size:38rpx;margin-left:18rpx;margin-right:18rpx;padding:0;background-color:transplant" bindtap="listenerButton">
-    <view   class="iconfont icon-tianjia" style="font-size:20px;height:38px;background-color:transplant" ></view>
+    <view   class="iconfont icon-tianjia" style="font-size:20px;height:38px;background-color:transplant" bindtap="otherButton" ></view>
     </button>
   </view>
   <view style="display:flex;align-content:center">

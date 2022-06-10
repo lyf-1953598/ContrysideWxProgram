@@ -1,13 +1,13 @@
 <!--pages/messages/messages.wxml-->
-<view class="messageItem" style="flex-direction:row;display:flex;" wx:for="{{messageList}}" wx:key="index" wx:for-item="mItem">
+<view class="messageItem" style="flex-direction:row;display:flex;" wx:for="{{messageList}}" wx:key="index" wx:for-item="mItem" bindtap="toDetail" data-id="{{mItem.withId}}" data-avatar="{{mItem.withAvatar}}" data-name="{{mItem.withName}}">
 <view>  
-<image src='{{mItem.avatar}}'></image>
+<image src='{{mItem.withAvatar}}'></image>
 </view>
 <view style="flex-direction:column;width:70%">
-<view style="font-size:medium">{{mItem.name}}</view>
-<view style="font-size:32rpx;color:grey">{{mItem.content}}</view>
+<view style="font-size:medium">{{mItem.withName}}</view>
+<view style="font-size:32rpx;color:grey">{{mItem.messageContent}}</view>
 </view>
 <view style="font-size:28rpx;color:grey">
-{{mItem.time}}
+{{mItem.sendTime}}
 </view>
   </view>
