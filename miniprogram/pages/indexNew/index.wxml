@@ -1,21 +1,133 @@
 <!--pages/indexNew/index.wxml-->
-<view class="currentActivity" bindtap="toCurrent">
-<view>你好，您现在正在参加的志愿活动是：</view>
-</view>
-<view class="secondCantainer">
-  <view class="signIn">签到</view>
-  <view class="apply" bindtap="toApply">申请成为主办方</view>
-  <text class="fa fa-home"></text>
-</view>
+<view class="pageContainer">
 
-<scroll-view class="recommend" scroll-y>
-<view>test</view>
-<view>test</view>
-<view>test</view>
-<view>test</view>
-<view class="moreActivity">
-  <button>查看更多活动</button>
+  <view class="currentActivity">
+    <view class="currentActivityTitle">
+      <view class="iconfont icon-weibiaoti-"></view>
+      <text>你好，您现在正在参加的志愿活动是：</text>
+    </view>
+    <view class="divider-x"></view>
+    <view class="currentAvtivityContent" bindtap="toCurrent" >
+      <text>{{activityName}}</text>
+    </view>
+  </view>
+  <view class="divider-x"></view>
+  <view class="secondCantainer">
+    <view class="signIn">
+      <view class="signInTitle">
+        <view class="iconfont icon-qiandao"></view>
+        <text class="signInText">   签到:</text>
+      </view>
+
+      <view class="sinInContent">
+        <input type="text" placeholder="请输入签到码" placeholder-class="placehold" class="signInBox"></input>
+      </view>
+    </view>
+    <view class="divider-y"></view>
+    <view class="apply">
+      <view class="iconfont icon-apply"></view>
+      <text class="applyButton" bindtap="toApply">{{applyLabel}}</text>
+    </view>
+  </view>
+  <view class="divider-x"></view>
+  <scroll-view class="recommend" scroll-y>
+  <view class="item" bindtap="toDetail" data-index="{{0}}">
+    <image src="/static/images/lotteryEdit/prize.jpeg" mode="widthFix"></image>
+    <view class="intro">
+      <view class="iconfont icon-shebeimingcheng"></view>
+      <text class="introTitle">活动名称：</text>
+      <text>{{taskList[0].title}}</text>
+    </view>
+    <view class="intro">
+      <view class="iconfont icon-detailsoriginator"></view>
+      <text class="introTitle">活动发起人：</text>
+      <text>{{taskList[0].startTime}}</text>
+    </view>
+    <view class="intro">
+      <view class="iconfont icon-didiandingwei"></view>
+      <text class="introTitle">活动地点:</text>
+      <text>{{taskList[0].place}}</text>
+    </view>
+    <view class="descintro">
+      <view class="iconfont icon-jianjie"></view>
+      <text class="introTitle">活动简介：</text>
+      <text class="descContent">{{taskList[0].description}}</text>
+    </view>
+  </view>
+  <view class="item" bindtap="toDetail" data-index="{{1}}">
+    <image src="/static/images/lotteryEdit/prize.jpeg" mode="widthFix"></image>
+    <view class="intro">
+      <view class="iconfont icon-shebeimingcheng"></view>
+      <text class="introTitle">活动名称：</text>
+      <text>{{taskList[1].title}}</text>
+    </view>
+    <view class="intro">
+      <view class="iconfont icon-detailsoriginator"></view>
+      <text class="introTitle">活动发起人：</text>
+      <text>{{taskList[1].startTime}}</text>
+    </view>
+    <view class="intro">
+      <view class="iconfont icon-didiandingwei"></view>
+      <text class="introTitle">活动地点:</text>
+      <text>{{taskList[1].place}}</text>
+    </view>
+    <view class="descintro">
+      <view class="iconfont icon-jianjie"></view>
+      <text class="introTitle">活动简介：</text>
+      <text class="descContent">{{taskList[1].description}}</text>
+    </view>
+  </view>
+  <view class="item" bindtap="toDetail" data-index="{{2}}">
+    <image src="/static/images/lotteryEdit/prize.jpeg" mode="widthFix"></image>
+    <view class="intro">
+      <view class="iconfont icon-shebeimingcheng"></view>
+      <text class="introTitle">活动名称：</text>
+      <text>{{taskList[2].title}}</text>
+    </view>
+    <view class="intro">
+      <view class="iconfont icon-detailsoriginator"></view>
+      <text class="introTitle">活动发起人：</text>
+      <text>{{taskList[2].startTime}}</text>
+    </view>
+    <view class="intro">
+      <view class="iconfont icon-didiandingwei"></view>
+      <text class="introTitle">活动地点:</text>
+      <text>{{taskList[2].place}}</text>
+    </view>
+    <view class="descintro">
+      <view class="iconfont icon-jianjie"></view>
+      <text class="introTitle">活动简介：</text>
+      <text class="descContent">{{taskList[2].description}}</text>
+    </view>
+  </view>
+  <view class="item" bindtap="toDetail" data-index="{{3}}">
+    <image src="/static/images/lotteryEdit/prize.jpeg" mode="widthFix"></image>
+    <view class="intro">
+      <view class="iconfont icon-shebeimingcheng"></view>
+      <text class="introTitle">活动名称：</text>
+      <text>{{taskList[3].title}}</text>
+    </view>
+    <view class="intro">
+      <view class="iconfont icon-detailsoriginator"></view>
+      <text class="introTitle">活动发起人：</text>
+      <text>{{taskList[3].startTime}}</text>
+    </view>
+    <view class="intro">
+      <view class="iconfont icon-didiandingwei"></view>
+      <text class="introTitle">活动地点:</text>
+      <text>{{taskList[3].place}}</text>
+    </view>
+    <view class="descintro">
+      <view class="iconfont icon-jianjie"></view>
+      <text class="introTitle">活动简介：</text>
+      <text class="descContent">{{taskList[3].description}}</text>
+    </view>
+  </view>
+  <button type="default" plain="true" bindtap="toMoreActivity">
+    <text>查看更多活动</text>
+  </button>
+  </scroll-view>
+
+
+
 </view>
-</scroll-view>
-
-

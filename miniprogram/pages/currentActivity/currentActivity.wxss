@@ -1,15 +1,49 @@
 /* pages/currentActivity/currentActivity.wxss */
+.pageContainer {
+  padding: 20rpx;
+}
 .title{
   text-align: center;
+  height: 30px;
   margin-top: 10px;
+  background-color: rgb(255, 255, 255);
+}
+.title text{
+  font-size: 28rpx;
 }
 .activityName{
-  margin-left: 30px;
+  background-color: rgb(255, 255, 255);
   margin-top: 20px;
+  height: 100px;
+  width: 100%;
+  /* border: 1px solid black; */
+  line-height: 30px;
+}
+.activityName text{
+  font-size: 28rpx;
+}
+.activityNameTitle{
+  height: 30px;
+}
+.activityNameContent{
+  background-color: rgb(255, 255, 255);
+  text-align: center;
   height: 50px;
-  width: 80%;
-  border: 1px solid black;
-  line-height: 50px;
+}
+.activityIntro{
+  background-color: rgb(255, 255, 255);
+  height: 100px;
+  margin-top: 20px;
+}
+.activityIntro text{
+  font-size: 28rpx;
+}
+.activityIntroTitle{
+  height: 30px;
+}
+.activityIntroContent{
+  height: 50px;
+  text-align: center;
 }
 .swiper-container{
   height: 150px;
@@ -18,4 +52,9 @@
   height: 100%;
   line-height: 150px;
   text-align: center;
+}
+.divider-x {
+  width: 1000px;
+  height: 2px;
+  background: #fafafa;
 }

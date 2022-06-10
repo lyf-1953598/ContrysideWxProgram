@@ -1,14 +1,41 @@
 <!--pages/currentActivity/currentActivity.wxml-->
-<view class="title">活动详情</view>
-<view class="activityName">项目名称:</view>
-<swiper class="swiper-container" indicator-dots>
-  <swiper-item class="item">
-    <view>test1</view>
-  </swiper-item>
-  <swiper-item class="item">
-    <view>test1</view>
-  </swiper-item>
-  <swiper-item class="item">
-    <view>test1</view>
-  </swiper-item>
-</swiper>
+<view class="pageContainer">
+      <view class="title">
+        <text>活动详情</text>
+      </view>
+    <view class="activityName">
+      <view class="activityNameTitle">
+        <text>项目名称</text>
+      </view>
+      <view class="divider-x"></view>
+      <view class="activityNameContent">
+        <text>{{activityName}}</text>
+      </view>
+    </view>
+    <view class="activityIntro">
+      <view class="activityIntroTitle">
+        <text>项目介绍</text>
+      </view>
+      <view class="divider-x"></view>
+      <view class="activityIntroContent">
+        <text>{{activityDescription}}</text>
+      </view>
+    </view>
+    <swiper class="swiper-container" indicator-dots>
+      <swiper-item class="item">
+        <view>
+          <text>test1</text>
+        </view>
+      </swiper-item>
+      <swiper-item class="item">
+        <view><text>test1</text></view>
+      </swiper-item>
+      <swiper-item class="item">
+        <view><text>test1</text></view>
+      </swiper-item>
+    </swiper>
+
+    <button type="default" plain="true" bindtap="tolotteryDetails">
+    <text>报名页面！</text>
+    </button>
+</view>

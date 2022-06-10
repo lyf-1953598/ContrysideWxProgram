@@ -1,0 +1,16 @@
+<!--pages/moreActivity/moreActivity.wxml-->
+<view class="pageContainer">
+  <view class="searchBox">
+    <text>搜索</text>
+    <view class="divider-x"></view>
+    <input type="text" placeholder="请输入活动名称" placeholder-class="placehold" class="search"></input>
+  </view>
+  <view class="searchCondition">
+    <text>当前分类：</text>
+    <picker class="timePicker" header-text="请选择活动分类类型" mode="multiSelector" bindtap='initPicker'
+        bindchange="pickerChange" bindcolumnchange="pickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}"
+        style="{{(lotteryTime) && 'color: #303030;'}}">
+        <text>{{lotteryTime? lotteryTime : '请选择活动分类类型'}}</text>
+      </picker>
+  </view>
+</view>

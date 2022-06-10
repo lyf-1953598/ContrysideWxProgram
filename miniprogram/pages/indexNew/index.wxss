@@ -1,63 +1,115 @@
 /* pages/indexNew/index.wxss */
+.pageContainer {
+  padding: 10rpx;
+  background-color: #eeeeee;
+}
 .currentActivity{
-  border: 1px solid black;
-  margin-top: 20px;
-  margin-left: 25px;
-  width: 80%;
+  background-color: rgb(255, 255, 255);
+  /* border: 1px solid black; */
+  /* margin-top: 10px; */
+  width: 100%;
   height: 100px;
+  align-items: center;
   /* display: flex; */
 }
-.currentActivity view {
-  /* background-color: blue; */
+.currentActivity text{
+  font-size: 28rpx;
+}
+.currentActivityTitle{
+  display: flex;
+  height: 40px;
+  line-height: 40px;
+}
+.currentAvtivityContent{
   text-align: center;
-  line-height: 100px;
+  line-height: 60px;
 }
 .secondCantainer{
-  border: 1px solid black;
-  margin-top: 20px;
-  margin-left: 25px;
-  width: 80%;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
   height: 100px;
   display: flex;
+  flex-direction: row;
   justify-content: space-around;
 }
-.secondCantainer view{
-  border:1px solid black;
-  display: flex;
-  margin-top: 20px;
-  height: 50px;
-  text-align: center;
+.secondCantainer text{
+  font-size: 28rpx;
 }
-.signIn{
-  width: 50px;
-  line-height: 50px;
+.placehold{
+  font-size: 28rpx;
+  color: rgb(108, 96, 96);
+}
+.signIn{  
+  margin-top: 20px;
+  width: 130px;
+  height: 100px;
+}
+.signInTitle{
+  display: flex;
+  width: 130px;
+  height: 20px;
+}
+.sinInContent{
+  width: 130px;
+  height: 20px;
+}
+.signInBox{
+  border: 1px solid #7d7676;
+  height: 30px;
 }
 .apply{
+  display: flex;
+  margin-top: 20px;
+  width: 35%;
   text-align: center;
   line-height: 50px;
 }
 .popularActivity{
-  border: 1px solid black;
+  /* border: 1px solid black; */
   height: 300px;
   margin-top: 10px;
   margin-left: 25px;
-  width: 80%;
+  width: 100%;
 }
 .recommend{
-  border: 1px solid black;
-  margin-top: 20px;
-  margin-left: 30px;
-  height: 400px;
-  width: 80%;
-}
-.recommend view{
+  /* border: 1px solid black; */
   display: flex;
+  /* margin-top: 20px; */
+  height: 400px;
+  width: 100%;
+  background-color: #fff;
+}
+.item{
+  display: block;
   padding: 10px;
   /* border: 1px solid blue; */
-  height: 100px;
+  height: 350px;
   /* width: 80%; */
   justify-content: center;
 }
-.moreActivity{
-  margin-top: 50px;
+.item text{
+  display: block;
+}
+.item view{
+  display: flex;
+}
+.divider-y {
+  width: 5px;
+  height: 100px;
+  background: #eeeeee;
+}
+.divider-x {
+  width: 1000px;
+  height: 2px;
+  background: #eeeeee;
+}
+.introTitle{
+  width: 100px;
+  height: 30px;
+}
+.descintro{
+  height: 70px;
+}
+.descContent{
+  width: 220px;
 }

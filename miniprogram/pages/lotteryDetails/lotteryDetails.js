@@ -115,9 +115,14 @@ Page({
   //返回首页
   backIndex() {
     wx.reLaunch({
-      url: '/pages/index/index',
+      url: '/pages/indexNew/index',
     })
   },
+  // backIndex:function(e){
+  //   wx.navigateTo({
+  //     url: '/pages/lotteryDetails/lotteryDetails',
+  //   })
+  // },
 
   /**
    * 生命周期函数--监听页面初次渲染完成

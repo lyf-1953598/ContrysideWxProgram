@@ -1,0 +1,29 @@
+/* pages/moreActivity/moreActivity.wxss */
+.pageContainer{
+  padding: 20rpx;
+}
+.divider-y {
+  width: 5px;
+  height: 100px;
+  background: #fafafa;
+}
+.divider-x {
+  width: 1000px;
+  height: 2px;
+  background: #fafafa;
+}
+.searchBox{
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #fff;
+}
+.search{
+  height: 40px;
+}
+.searchCondition{
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  height: 90rpx;
+  padding: 0 30rpx;
+}
