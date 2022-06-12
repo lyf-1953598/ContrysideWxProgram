@@ -34,7 +34,10 @@
     "packNpmManually": false,
     "packNpmRelationList": [],
     "minifyWXSS": true,
-    "showES6CompileOption": false
+    "showES6CompileOption": false,
+    "useStaticServer": true,
+    "disableUseStrict": false,
+    "useCompilerPlugins": false
   },
   "appid": "wx09dd702f9906ed15",
   "projectname": "%E4%B9%A1%E6%9D%91%E5%BF%97%E6%84%BF%E8%80%85%E5%B9%B3%E5%8F%B0",

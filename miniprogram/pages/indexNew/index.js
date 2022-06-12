@@ -20,7 +20,7 @@ Page({
     }
     else{
       wx.navigateTo({
-        url: '/pages/currentActivity/currentActivity',
+        url: '/pages/currentActivity/currentActivity?activityId='+this.data.currentActivityID,
       })
     }
     
