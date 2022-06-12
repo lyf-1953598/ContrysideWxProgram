@@ -1,9 +1,10 @@
-<!--pages/management/management.wxml-->
+pages/management/management.wxml
 <!--顶部导航栏-->
 <view class="navBar">
   <view class="nav ongoing {{!selectNav && 'selected'}}" bindtap="selectOngoing">进行中志愿活动</view>
   <!-- <view><text class="iconfont icon-add-solid" bindtap="toReleaseLottery"></text></view> -->
   <view class="nav closing {{selectNav && 'selected'}}" bindtap="selectClosing">已结束志愿活动</view>
+  
 </view>
 
 <!--抽奖信息-->

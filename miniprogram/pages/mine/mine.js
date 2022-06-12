@@ -1,7 +1,7 @@
 // pages/mine/mine.js
 wx.cloud.init()
 const app = getApp()
-import requestCloud from '../../utils/request'
+
 
 Page({
 
@@ -390,7 +390,8 @@ Page({
   //跳转到抽奖管理
   toManagement() {
     wx.navigateTo({
-      url: '/pages/management/management',
+      // url: '/pages/management/management',
+      url:'/pages/activityManage/activityManage?openID='+this.data.userInfo.openID
     })
   },
 

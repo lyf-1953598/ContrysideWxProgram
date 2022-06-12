@@ -2,7 +2,7 @@
   "miniprogramRoot": "miniprogram/",
   "cloudfunctionRoot": "cloudfunctions/",
   "setting": {
-    "urlCheck": true,
+    "urlCheck": false,
     "es6": true,
     "enhance": true,
     "postcss": true,
@@ -34,27 +34,12 @@
     "packNpmManually": false,
     "packNpmRelationList": [],
     "minifyWXSS": true,
-    "useStaticServer": true,
-    "showES6CompileOption": false,
-    "disableUseStrict": false,
-    "useCompilerPlugins": false,
-    "minifyWXML": true
+    "showES6CompileOption": false
   },
   "appid": "wx09dd702f9906ed15",
   "projectname": "%E4%B9%A1%E6%9D%91%E5%BF%97%E6%84%BF%E8%80%85%E5%B9%B3%E5%8F%B0",
   "libVersion": "2.20.1",
   "cloudfunctionTemplateRoot": "cloudfunctionTemplate/",
-  "condition": {
-    "miniprogram": {
-      "list": [
-        {
-          "name": "db guide",
-          "pathName": "pages/databaseGuide/databaseGuide",
-          "query": ""
-        }
-      ]
-    }
-  },
   "compileType": "miniprogram",
   "srcMiniprogramRoot": "miniprogram/",
   "packOptions": {
@@ -65,5 +50,16 @@
     "tabIndent": "insertSpaces",
     "tabSize": 2
   },
-  "description": "项目配置文件，详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html"
+  "description": "项目配置文件，详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "db guide",
+          "pathName": "pages/databaseGuide/databaseGuide",
+          "query": ""
+        }
+      ]
+    }
+  }
 }

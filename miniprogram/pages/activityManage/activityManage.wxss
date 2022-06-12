@@ -1,0 +1,67 @@
+page{ 
+  display: flex; 
+  flex-direction: column; 
+  height: 100%; 
+ } 
+ .navbar{ 
+  flex: none; 
+  display: flex; 
+  /* background: #fff;  */
+  font-size: 13px;
+ } 
+ .navbar .item{ 
+  position: relative; 
+  flex: auto; 
+  text-align: center; 
+  line-height: 80rpx; 
+ } 
+ .navbar .item.active{ 
+  color: #ee3f4d; 
+ } 
+ .navbar .item.active:after{ 
+  content: ""; 
+  display: block; 
+  position: absolute; 
+  bottom: 0; 
+  left: 0; 
+  right: 0; 
+  height: 4rpx; 
+  background:  #ee3f4d; 
+ } 
+
+
+ /* pages/lotteryRecord/lotteryRecord.wxss */
+.recordListContainer {
+  
+  margin-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.divideTitle{
+  font-size:14px;
+  color: #A2B38B;
+  font-weight:bold;
+}
+
+.divider {
+  /* height: 40rpx; */
+  border-bottom: 2px solid #A2B38B;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-size: 36rpx;
+  height: calc(100vh - 80rpx);
+  color: #909090;
+}
+.empty text {
+  line-height: 70rpx;
+}
+.empty .iconfont {
+  font-size: 300rpx;
+  line-height: 280rpx;
+}

@@ -13,7 +13,9 @@
                 <image class="avater" src="{{avatar}}" />
             </view>
             <view class="info">
-                <view class="info-content">{{ item.contactText }}</view>
+                <view class="info-content" wx:if="{{item.type=='text'}}">{{ item.contactText }}</view>
+                <image wx:if="{{item.type=='image'}}" style="height:30px" mode="aspectFill" src="{{item.contactText}}"></image>
+                <image wx:if="{{item.type=='record'}}" style="height:30px" mode="aspectFill" ></image>
             </view>
             <view class="time">
             {{item.time}}
@@ -26,7 +28,8 @@
 
            </view>
             <view class="info">
-                <view class="info-content">{{ item.contactText }}</view>
+              <view class="info-content" wx:if="{{item.type=='text'}}">{{ item.contactText }}</view>
+                <image wx:if="{{item.type=='image'}}" style="height:150px;width:150px"  src="{{item.contactText}}"></image>
             </view> <view>
                 <image class="avater" src="{{myavatar}}" />
             </view>
@@ -58,7 +61,7 @@
     <button type="default" style="width:80rpx;display: flex;justify-content: center;background-color:white" bindtap="choosePicture">
     <view class="iconfont icon-picture" style="font-size:50rpx">
     </view></button>
-    <button type="default" style="width:80rpx;display: flex;justify-content: center;background-color:white">
+    <button type="default" style="width:80rpx;display: flex;justify-content: center;background-color:white" bindtap="chooseFile">
     <view class="iconfont icon-file" style="font-size:50rpx">
     </view></button>
     <button type="default" style="width:80rpx;display: flex;justify-content: center;background-color:white" bindtap="listenerButton1">
@@ -74,11 +77,28 @@
 
 <!-- 录音 -->
 <action-sheet hidden="{{actionSheetHidden1}}" bindchange="listenerActionSheet1" >
-	<view style="flex-direction:row;display:flex;height:80px;align-items:center" >
-    <button type="default" style="width:80rpx;display: flex;justify-content: center;" >
-    <image src="../../static/images/messagesDetail/mic-line.png"></image>
+<view  style="display:flex;flex-direction:row;justify-content:center">
+	<view wx:if="{{status==='stop'}}" style="flex-direction:column;display:flex;height:140px;align-items:center;margin-right:20px" >
+  <view style="width:100%;margin-top:20px">
+    <button type="default" style="width:140rpx;padding:0;" bindtap="recordManage1">
+    <image style="height:80rpx;width:80rpx;margin:20rpx" src="../../static/images/messagesDetail/play-circle-fill.png"></image>
     </button>
+    
 	</view>
+  <view style="font-size:small">点击回放录音</view>
+
+</view>
+<view style="flex-direction:column;display:flex;height:140px;align-items:center" >
+  <view style="width:100%;margin-top:20px">
+    <button type="default" style="width:140rpx;padding:0;" bindtap="recordManage">
+    <image style="height:80rpx;width:80rpx;margin:20rpx" src="{{btnimg}}"></image>
+    </button>
+    
+	</view>
+  <view style="font-size:small">{{recordText}}</view>
+
+</view>
+</view>
 	<!--自动隐藏action-sheet-->
 	<!-- <action-sheet-cancel bindtap="showInput">确认</action-sheet-cancel> -->
 </action-sheet>

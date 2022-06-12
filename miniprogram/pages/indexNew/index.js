@@ -34,6 +34,7 @@ Page({
     console.log(activityId)
   },
   toApply: function (e) {
+    console.log(this.data.canApply)
     if(this.data.canApply==0){
       console.log(this.data.canApply)
       wx.navigateTo({
@@ -41,7 +42,7 @@ Page({
       })
     }
     else if(this.data.canApply==1){
-      
+      console.log(this.canApply);
     }
     else if(this.data.canApply==2){
       wx.navigateTo({

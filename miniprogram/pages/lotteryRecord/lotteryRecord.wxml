@@ -1,0 +1,14 @@
+<!--pages/lotteryRecord/lotteryRecord.wxml-->
+<!--抽奖页面-->
+<view class="recordListContainer">
+  <recordList wx:if="{{lotteryList.length}}" title="未开奖" lotteryList="{{lotteryList}}">
+  </recordList>
+  <view class="divider"></view>
+  <recordList wx:if="{{pastlotteryList.length}}" title="已开奖" lotteryList="{{pastlotteryList}}">
+  </recordList>
+  <view class="empty" wx:if="{{!pastlotteryList.length && !lotteryList.length}}">
+    <text class="iconfont icon-empty"></text>
+    <text>这里什么都没有</text>
+    <text>快去首页参与志愿活动吧</text>
+  </view>
+</view>

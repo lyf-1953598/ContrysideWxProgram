@@ -4,7 +4,7 @@ var util = require('../../utils/util'); //参数是util.js所在的路径，参�
 
 var recorderManager = wx.getRecorderManager()
 const audioCtx = wx.createInnerAudioContext()
-
+var tempFilePath = ''
 //开始录音回调
 recorderManager.onStart(() => {
   console.log('开始录音')
@@ -17,6 +17,8 @@ recorderManager.onPause(() => {
 recorderManager.onStop((res) => {
   console.log('录音停止', res)
   console.log('录音保存路径' + res.tempFilePath)
+  tempFilePath = res.tempFilePath
+
 })
 
 audioCtx.onPlay(()=>{
@@ -29,6 +31,13 @@ Page({
    * 页面的初始数据
    */
   data: {
+    picPath:'',
+    files:'',
+    tempFilePath:'',
+    recordText:'点击开始录音',
+    // recordText1:'点击回放录音',
+    btnimg:'../../static/images/messagesDetail/mic-line.png',
+    status:'ready',
     srcI:'',
     toView:'',
     height:0,
@@ -44,7 +53,39 @@ Page({
     recordContent:[
       ]
   },
-
+  chooseFile() {
+    var that = this
+    wx.chooseMessageFile({
+      count: 1,
+      type: 'file',
+      success(res) {
+        var file = 'voucherData.matterapply_file'
+        const tempFilePaths = res.tempFiles
+        that.setData({
+          files: tempFilePaths[0]
+        })
+        console.log(that.data.files)
+      }
+    })
+  },
+  async uploadFile1(){
+    var that = this
+    wx.uploadFile({
+      url: 'http://localhost:8080/message/uploadFile', 
+      filePath: files.path,                  //要传的图片路径
+      name: 'file',                  //获取图片二进制文件的key
+      formData: {
+        'fromId' : that.data.openID,
+        'targetId' :  that.data.userId                //其他需要携带的参数
+        // 'user': 'test'
+      },
+      success (res){
+        console.log(res.data)
+        //do something
+      }
+    })
+  },
+  
   choosePicture:function(){
     var that = this
     wx.chooseMedia({
@@ -69,8 +110,10 @@ async uploadFile(){
   wx.uploadFile({
     url: 'http://localhost:8080/message/uploadImage', 
     filePath: that.data.srcI,                  //要传的图片路径
-    name: 'file',                                //获取图片二进制文件的key
-    formData: {                                  //其他需要携带的参数
+    name: 'file',                  //获取图片二进制文件的key
+    formData: {
+      'fromId' : that.data.openID,
+      'targetId' :  that.data.userId                //其他需要携带的参数
       // 'user': 'test'
     },
     success (res){
@@ -118,6 +161,7 @@ async uploadFile(){
     })
     this.getopenID()
     this.getMessages()
+    this.getPic()
 
 
   },
@@ -169,12 +213,38 @@ async uploadFile(){
         {
           if(that.data.messageList[i].fromId == that.data.openID)
           {
-            var obj = {id:"1",contactText:that.data.messageList[i].content,time:that.data.messageList[i].sendTime}
+            if(that.data.messageList[i].type=='text')
+            {
+              var obj = {id:"1",contactText:that.data.messageList[i].content,time:that.data.messageList[i].sendTime,type:'text'}
+            }
+            else if(that.data.messageList[i].type=='image')
+            {
+              that.getPic(that.data.messageList[i].content);
+              var obj = {id:"1",contactText:that.data.picPath,time:that.data.messageList[i].sendTime,type:'image'}
+            }
+            else if(that.data.messageList[i].type=='record')
+            {
+              that.getPic(that.data.messageList[i].content);
+              var obj = {id:"1",contactText:that.data.picPath,time:that.data.messageList[i].sendTime,type:'record'}
+            }
             list.push(obj)
           }
           else if(that.data.messageList[i].fromId == that.data.userId)
           {
-            var obj = {id:"2",contactText:that.data.messageList[i].content,time:that.data.messageList[i].sendTime}
+            if(that.data.messageList[i].type=='text')
+            {
+              var obj = {id:"2",contactText:that.data.messageList[i].content,time:that.data.messageList[i].sendTime,type:'text'}
+            }
+            else if(that.data.messageList[i].type=='image')
+            {
+              that.getPic(that.data.messageList[i].content);
+              var obj = {id:"2",contactText:that.data.picPath,time:that.data.messageList[i].sendTime,type:'image'}
+            }
+            else if(that.data.messageList[i].type=='record')
+            {
+              that.getPic(that.data.messageList[i].content);
+              var obj = {id:"1",contactText:that.data.picPath,time:that.data.messageList[i].sendTime,type:'record'}
+            }
             list.push(obj)
           }
         }
@@ -190,6 +260,37 @@ async uploadFile(){
       }
     })
   
+  },
+  async getPic(filename){
+    var that = this
+    wx.downloadFile({
+      url: 'http://localhost:8080/message/download/'+filename, 
+      // header: {
+      //   'Content-Type': 'multipart/form-data',
+      // },
+      success (res) {
+        // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+        console.log(res)
+        that.setData({
+          picPath : res.tempFilePath
+        })
+        // if (res.statusCode === 200) {
+        //   wx.playVoice({
+        //     filePath: res.tempFilePath
+        //   })
+        // }
+      }
+    })
+    // wx.request({
+    //   url: 'http://localhost:8080/message/download/38.jpg',
+    //   method: 'POST',
+    //   data: {
+    //     fileName:'38.jpg'
+    //   },
+    //   success (res){
+    //     console.log(res.data)
+    //   }
+    // })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
@@ -301,17 +402,64 @@ async uploadFile(){
   })
   },
 
+  recordManage1(){
+    this.playback()
+  },
+  recordManage(){
+    if(this.data.status === 'ready')
+    {
+      this.record()
+    }
+    else if(this.data.status === 'recording')
+    {
+      this.stop()
+    }
+    else if(this.data.status === 'stop'){
+      //发送
+      wx.uploadFile({
+        url: 'http://localhost:8080/message/uploadRecord', 
+        filePath: tempFilePath,                  //要传的图片路径
+        name: 'file',                  //获取图片二进制文件的key
+        formData: {
+          'fromId' : this.data.openID,
+          'targetId' :  this.data.userId                //其他需要携带的参数
+          // 'user': 'test'
+        },
+        success (res){
+          console.log(res.data)
+          //do something
+        }
+      })
+
+    }
+    
+  },
+
   //开始录音
   record: function () {
     recorderManager.start()
+    this.setData({
+      status : 'recording',
+      btnimg:'../../static/images/messagesDetail/stop-fill.png',
+      recordText:'点击停止录音'
+    })
   },
   //暂停
   pause: function () {
     recorderManager.pause()
+    this.setData({
+      status : 'pause'
+    })
   },
   //停止
   stop: function () {
     recorderManager.stop()
+    this.setData({
+      status : 'stop',
+      btnimg:'../../static/images/messagesDetail/send-plane-fill.png',
+      recordText:'点击发送',
+      
+    })
   },
 //回放
 playback:function(){

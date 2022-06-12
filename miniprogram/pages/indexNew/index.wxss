@@ -13,8 +13,9 @@
   /* display: flex; */
 }
 .currentActivity text{
-  font-size: 28rpx;
+  font-size: 16px;
 }
+
 .currentActivityTitle{
   display: flex;
   height: 40px;
