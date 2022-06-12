@@ -17,13 +17,13 @@ Page({
    */
   onLoad(options) {
     var that = this
-    console.log(options);
+    console.log(options.openID);
     wx.request({
       url: 'http://localhost:8080/task/getMyTaskDetails',
       method:'GET',
       data:{
-        organizerId:"odWjH4qlWkZ0hNwaVRSexGVd-0Dc"
-      // userId:'odWjH4qlWkZ0hNwaVRSexGVd-0Dc'
+        // organizerId:"odWjH4qlWkZ0hNwaVRSexGVd-0Dc"
+      organizerId:options.openID
     },
       success:(res)=> {
         console.log(res);

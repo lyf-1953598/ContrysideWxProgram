@@ -14,7 +14,7 @@
 
 .divider {
   /* height: 40rpx; */
-  border-bottom: 2px solid #A2B38B;
+  border-bottom: 2px dashed #A2B38B;
 }
 
 .empty {

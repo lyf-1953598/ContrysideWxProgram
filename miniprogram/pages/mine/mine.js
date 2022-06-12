@@ -391,7 +391,7 @@ Page({
   toManagement() {
     wx.navigateTo({
       // url: '/pages/management/management',
-      url:'/pages/activityManage/activityManage'
+      url:'/pages/activityManage/activityManage?openID='+this.data.userInfo.openID
     })
   },
 
