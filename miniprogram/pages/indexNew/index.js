@@ -34,16 +34,17 @@ Page({
     console.log(activityId)
   },
   toApply: function (e) {
+    console.log(this.data.canApply)
     if(this.data.canApply==0){
       console.log(this.data.canApply)
       wx.navigateTo({
         url: '/pages/apply/apply',
       })
     }
-    else if(this.canApply==1){
-      
+    else if(this.data.canApply==1){
+      console.log(this.canApply);
     }
-    else if(this.canApply==2){
+    else if(this.data.canApply==2){
       wx.navigateTo({
         url: '/pages/setUpActivity/setUpActivity',
       })
@@ -86,8 +87,8 @@ Page({
           }
           else{
             that.setData({
-              activityName:acticityList[0].title,
-              currentActivityID:acticityList[0].assignment_id
+              activityName:activityList[0].title,
+              currentActivityID:activityList[0].assignment_id
             })
             wx.setStorage({
               key:'currentActivityID',
@@ -135,6 +136,9 @@ Page({
   wx.request({
     url: 'http://localhost:8080/task/getHomepageTask',
     method:'GET',
+    data:{
+      pagenum:0
+    },
     success:(res)=> {
       console.log(res.data)
       this.setData({

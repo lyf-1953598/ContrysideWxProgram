@@ -74,7 +74,7 @@
     <view class="divider"></view>
     <view wx:if="{{isAdmin}}" class="toolItem" bindtap="toManagement">
       <text class="iconfont icon-setting"></text>
-      抽奖管理
+      我组织的志愿活动
       <text class="detailsButton">></text>
     </view>
   </view>

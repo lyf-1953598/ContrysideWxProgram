@@ -1,7 +1,5 @@
 {
-
-  "pages":[
-    
+  "pages": [
     "pages/indexNew/index",
     "pages/setUpActivity/setUpActivity",
     "pages/apply/apply",
@@ -22,17 +20,17 @@
     "pages/management/management",
     "pages/participants/participants",
     "pages/contact/contact",
-    "pages/lotteryRecord/lotteryRecord",
-    "pages/help/help"
-
+    "pages/taskRecord/taskRecord",
+    "pages/help/help",
+    "pages/moreActivity/moreActivity",
+    "pages/activityManage/activityManage"
+    
   ],
-
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#A2B38B",
     "navigationBarTitleText": "乡村志愿者平台",
     "navigationBarTextStyle": "white"
-
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",

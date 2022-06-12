@@ -1,9 +1,10 @@
-<!--pages/management/management.wxml-->
+pages/management/management.wxml
 <!--顶部导航栏-->
 <view class="navBar">
-  <view class="nav ongoing {{!selectNav && 'selected'}}" bindtap="selectOngoing">进行中的抽奖</view>
-  <view><text class="iconfont icon-add-solid" bindtap="toReleaseLottery"></text></view>
-  <view class="nav closing {{selectNav && 'selected'}}" bindtap="selectClosing">已结束的抽奖</view>
+  <view class="nav ongoing {{!selectNav && 'selected'}}" bindtap="selectOngoing">进行中志愿活动</view>
+  <!-- <view><text class="iconfont icon-add-solid" bindtap="toReleaseLottery"></text></view> -->
+  <view class="nav closing {{selectNav && 'selected'}}" bindtap="selectClosing">已结束志愿活动</view>
+  
 </view>
 
 <!--抽奖信息-->
@@ -32,11 +33,11 @@
   </view>
 
   <!--发起新的抽奖活动-->
-  <view class="addNew" wx:if="{{!selectNav}}" bindtap="toReleaseLottery">
+  <!-- <view class="addNew" wx:if="{{!selectNav}}" bindtap="toReleaseLottery">
     <view><text class="iconfont icon-add"></text></view>
     <text>发起抽奖活动</text>
-  </view>
+  </view> -->
 </view>
 
 <!--暂无活动-->
-<view class="noLottery" wx:if="{{selectNav && !showList.length}}">暂无抽奖活动</view>
+<view class="noVolunteer" wx:if="{{selectNav && !showList.length}}">暂无组织的已结束志愿活动</view>

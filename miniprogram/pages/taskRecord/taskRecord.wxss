@@ -1,11 +1,20 @@
 /* pages/lotteryRecord/lotteryRecord.wxss */
 .recordListContainer {
-  padding: 20rpx;
-  margin-top: 20rpx;
+  
+  margin-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.divideTitle{
+  font-size:14px;
+  color: #A2B38B;
+  font-weight:bold;
 }
 
 .divider {
-  height: 40rpx;
+  /* height: 40rpx; */
+  border-bottom: 2px dashed #A2B38B;
 }
 
 .empty {

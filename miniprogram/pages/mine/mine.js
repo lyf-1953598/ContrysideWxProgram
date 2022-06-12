@@ -1,7 +1,7 @@
 // pages/mine/mine.js
 wx.cloud.init()
 const app = getApp()
-import requestCloud from '../../utils/request'
+
 
 Page({
 
@@ -345,7 +345,7 @@ Page({
   toRecord() {
     console.log(this.data.userInfo.openID);
     wx.navigateTo({
-      url: '/pages/lotteryRecord/lotteryRecord?openID='+this.data.userInfo.openID,
+      url: '/pages/taskRecord/taskRecord?openID='+this.data.userInfo.openID,
     })
   },
   
@@ -390,7 +390,8 @@ Page({
   //跳转到抽奖管理
   toManagement() {
     wx.navigateTo({
-      url: '/pages/management/management',
+      // url: '/pages/management/management',
+      url:'/pages/activityManage/activityManage?openID='+this.data.userInfo.openID
     })
   },
 
@@ -398,16 +399,46 @@ Page({
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-    // wx.cloud.callFunction({
-    //   name:'isAdmin',
-    //   data:{}
-    // }).then(res=>{
-    //   // console.log(res)
-    //   this.setData({
-    //     isAdmin:res.result
-    //   })
-    //   console.log(this.data.isAdmin)
-    // }).catch(console.error)
+    var that = this
+    wx.getStorage({
+      key:'openID',
+      success (res) {
+        console.log(res);
+        if(res.data){
+          var openId = res.data
+          wx.request({
+            url: 'http://localhost:8080/user/getAuthorizationStatus',
+            method:'GET',
+            data:{
+            userId:openId
+          },
+            success:(res)=> {
+              console.log(res);
+              if(res.data.data.info=="组织者"){
+                that.setData({
+                  isAdmin:1
+                })
+
+                wx.setStorage({
+                  key:'isAdmin',
+                  data:1
+                })
+              }else{
+                wx.setStorage({
+                  key:'isAdmin',
+                  data:0
+                })
+              }
+
+             console.log(that.data); 
+          },
+            fail:function(res){
+              console.log("接口调取失败！");
+          }
+        })
+        }}
+    }
+    )
   },
 
   /**
