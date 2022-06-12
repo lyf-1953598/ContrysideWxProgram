@@ -4,29 +4,34 @@
   <view class="currentActivity">
     <view class="currentActivityTitle">
       <view class="iconfont icon-weibiaoti-"></view>
-      <text>你好，您现在正在参加的志愿活动是：</text>
+      <text style="font-size:small">你好，您现在正在参加的志愿活动是：</text>
     </view>
-    <view class="divider-x"></view>
+    <!-- <view class="divider-x"></view> -->
     <view class="currentAvtivityContent" bindtap="toCurrent" >
-      <text>{{activityName}}</text>
+      <text style="color: #E6BA95;font-weight: bold;">{{activityName}}</text>
     </view>
   </view>
   <view class="divider-x"></view>
   <view class="secondCantainer">
     <view class="signIn">
-      <view class="signInTitle">
-        <view class="iconfont icon-qiandao"></view>
-        <text class="signInText">   签到:</text>
+      <view class="signInTitle" style="display: flex; align-items: center; padding:5px">
+        <view class="iconfont icon-qiandao" ></view>
+        <text class="signInText" style="font-size:medium;color:#a2b38b;font-weight: bold;">   签到:</text>
       </view>
 
-      <view class="sinInContent">
-        <input type="text" placeholder="请输入签到码" placeholder-class="placehold" class="signInBox"></input>
+      <view class="sinInContent" style="display:flex;flex-direction:row">
+      <view>
+        <input type="text" placeholder="请输入签到码" placeholder-class="placehold" class="signInBox" style="width:90px"></input>
+      </view>
+      <view style="margin-left:8px">
+      <button type="plain" style="width:38px;font-size:small;padding:0;background-color:#a2b38b;height:30px;padding:4px">签到</button>
+      </view>
       </view>
     </view>
     <view class="divider-y"></view>
     <view class="apply">
       <view class="iconfont icon-apply"></view>
-      <text class="applyButton" bindtap="toApply">{{applyLabel}}</text>
+      <text class="applyButton" bindtap="toApply" style="font-weight:bold;font-size:medium;color:#a2b38b;margin-left:5px">{{applyLabel}}</text>
     </view>
   </view>
   <view class="divider-x"></view>
