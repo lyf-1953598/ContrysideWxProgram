@@ -46,6 +46,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/activityManage/activityManage",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }
