@@ -24,7 +24,7 @@
         <input type="text" placeholder="请输入签到码" placeholder-class="placehold" class="signInBox" style="width:90px"></input>
       </view>
       <view style="margin-left:8px">
-      <button type="plain" style="width:38px;font-size:small;padding:0;background-color:#a2b38b;height:30px;padding:4px">签到</button>
+      <button type="plain" style="width:38px;font-size:small;padding:0;background-color:#a2b38b;height:30px;padding:4px;color:whitesmoke">签到</button>
       </view>
       </view>
     </view>
@@ -45,7 +45,7 @@
     </view>
     <view class="intro">
       <view class="iconfont icon-detailsoriginator"></view>
-      <text class="introTitle">活动发起人：</text>
+      <text class="introTitle">活动开始时间：</text>
       <text>{{taskList[0].startTime}}</text>
     </view>
     <view class="intro">
@@ -68,7 +68,7 @@
     </view>
     <view class="intro">
       <view class="iconfont icon-detailsoriginator"></view>
-      <text class="introTitle">活动发起人：</text>
+      <text class="introTitle">活动开始时间：</text>
       <text>{{taskList[1].startTime}}</text>
     </view>
     <view class="intro">
@@ -91,7 +91,7 @@
     </view>
     <view class="intro">
       <view class="iconfont icon-detailsoriginator"></view>
-      <text class="introTitle">活动发起人：</text>
+      <text class="introTitle">活动开始时间：</text>
       <text>{{taskList[2].startTime}}</text>
     </view>
     <view class="intro">
@@ -114,7 +114,7 @@
     </view>
     <view class="intro">
       <view class="iconfont icon-detailsoriginator"></view>
-      <text class="introTitle">活动发起人：</text>
+      <text class="introTitle">活动开始时间：</text>
       <text>{{taskList[3].startTime}}</text>
     </view>
     <view class="intro">
