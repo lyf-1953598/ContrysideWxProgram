@@ -1,4 +1,4 @@
-/* pages/setUpActivity/setUpActivity.wxss */
+/* pages/apply/apply.wxss */
 .pageContainer {
   padding: 20rpx;
 }
@@ -59,7 +59,7 @@
 }
 .inputContainer .infoInput {
   flex: 1;
-  font-size: 28rpx;
+  font-size: 26rpx;
   text-align: end;
 }
 
@@ -82,33 +82,33 @@
 }
 
 /* 抽奖说明 */
-.introContainer {
+.reasonContainer {
   padding: 20rpx;
   padding-bottom: 0;
   background: #fff;
   border-radius: 10rpx;
   margin-bottom: 20rpx;
 }
-.introContainer .title {
+.reasonContainer .title {
   font-size: 32rpx;
   font-weight: 550;
   height: 50rpx;
   line-height: 50rpx;
   color: #303030;
 }
-.introContainer .introInput {
+.reasonContainer .reasonInput {
   font-size: 28rpx;
   color: #303030;
   height: 320rpx;
   line-height: 40rpx;
 }
-.introContainer .textPlacehold {
+.reasonContainer .textPlacehold {
   font-size: 28rpx;
   color: #cacaca;
   height: 320rpx;
   line-height: 40rpx;
 }
-.introContainer .addImg {
+.reasonContainer .addImg {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -117,7 +117,7 @@
   font-size: 28rpx;
   color: #A2B38B;
 }
-.introContainer .addImg .iconfont {
+.reasonContainer .addImg .iconfont {
   font-size: 48rpx;
   margin-top: 4rpx;
 }
@@ -152,24 +152,30 @@
   border: 2rpx solid #fff;
 }
 
-/* 开奖时间 */
-.timeContainer {
+
+.itemContainer {
   padding: 20rpx;
   padding-bottom: 0;
   background: #fff;
   border-radius: 10rpx;
+  border-bottom: #A2B38B 1px dashed;
 }
-.timeContainer .title {
+.itemContainer .title {
   font-size: 32rpx;
   font-weight: 550;
   height: 50rpx;
   line-height: 50rpx;
   color: #303030;
 }
-.timeContainer .inputContainer{
+.itemContainer .inputContainer{
   padding: 0;
 }
-
+.itemTitle{
+  font-size: 32rpx;
+  font-weight: 550;
+  color: #303030;
+  width: 100px;
+}
 .timePicker {
   flex: 1;
   font-size: 28rpx;
@@ -186,6 +192,27 @@
   height: 80rpx;
   line-height: 80rpx;
   color: #fff;
-  background: #ee3f4d;
+  background: #a2b38b;
   border-radius: 40rpx;
+}
+.nameInput{
+  margin-left: 70px;
+  width: 200px;
+}
+.placehold{
+  font-size: 28rpx;
+  color: rgb(152, 145, 145);
+}
+.typePicker{
+  margin-left: 70px;
+  width: 200px;
+  height: 30px;
+}
+.startPicker{
+  margin-left: 90rpx;
+  width: 200px;
+}
+.endPicker{
+  margin-left: 90rpx;
+  width: 200px;
 }

@@ -129,9 +129,9 @@
   padding-left: 5px;
 
 }
-.descintro{
-  /* height: 70px; */
-}
 .descContent{
   width: 220px;
+}
+.iconfont icon-shebeimingcheng{
+  background-color: #A2b38b;
 }

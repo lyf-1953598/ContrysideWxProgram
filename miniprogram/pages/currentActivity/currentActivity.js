@@ -7,15 +7,38 @@ Page({
   data: {
     activityID:'',
     activityName:'',
-    activityStartName:'',
+    activityCode:'',
+    activityAddress:'',
+    activityStartTime:'',
     activityEndTime:'',
+    activityNumber:'',
+    activityType:'',
     activityDescription:'',
-
 
   },
   tolotteryDetails:function(e){
     wx.navigateTo({
       url: '/pages/lotteryDetails/lotteryDetails',
+    })
+  },
+  signUp:function(e){
+    wx.request({
+      url: 'http://localhost:8080/task/signUp',
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        // 'Content-Type': 'application/json'
+      },
+      data:{
+        assignmentId:this.data.activityID,
+        userId:wx.getStorageSync('openID')
+      },
+      success:  (res)=>  {
+        console.log(res.data)
+      },
+      fail: function (res) {
+        console.log(res.data)
+      }
     })
   },
   /**
@@ -36,9 +59,13 @@ Page({
         console.log(res.data.data)
         this.setData({
           activityName:res.data.data.info.title,
-          activityStartName:res.data.data.info.startName,
+          activityCode:res.data.data.info.signinCode,
+          activityAddress:res.data.data.info.place,
+          activityStartTime:res.data.data.info.startTime,
           activityEndTime:res.data.data.info.endTime,
-          activityDescription:res.data.data.info.description
+          activityNumber:res.data.data.info.number,
+          activityType:res.data.data.info.type,
+          activityDescription:res.data.data.info.description,
         })
     },
       fail:function(res){

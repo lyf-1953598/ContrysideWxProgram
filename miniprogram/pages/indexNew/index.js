@@ -40,10 +40,10 @@ Page({
         url: '/pages/apply/apply',
       })
     }
-    else if(this.canApply==1){
+    else if(this.data.canApply==1){
       
     }
-    else if(this.canApply==2){
+    else if(this.data.canApply==2){
       wx.navigateTo({
         url: '/pages/setUpActivity/setUpActivity',
       })
@@ -79,19 +79,36 @@ Page({
       },
         success:(res)=> {
           var activityList=res.data.data.list
-          if(activityList.length==0){        
+          if(activityList.length==0){  
+            console.log("没有志愿活动")      
             that.setData({
               activityName:'还未报名活动哦，快去参加志愿活动吧！'
             })
           }
           else{
             that.setData({
-              activityName:acticityList[0].title,
-              currentActivityID:acticityList[0].assignment_id
+              currentActivityID:activityList[0].assignmentId
             })
+            console.log(this.data.currentActivityID)
             wx.setStorage({
               key:'currentActivityID',
               data:this.currentActivityID
+            })
+            wx.request({
+              url: 'http://localhost:8080/task/getOneTask',
+              method:'GET',
+              data:{
+                assignmentId:this.data.currentActivityID
+              },
+              success:(res)=> {
+                console.log(res.data.data.info.title)
+                this.setData({
+                  activityName:res.data.data.info.title
+                })
+              },
+              fail:(res)=>{
+
+              }
             })
           }
       },
@@ -121,11 +138,11 @@ Page({
           })
         }
         else if(res.data.data.info=='组织者'){
-          console.log(this.data.canApply)
           this.setData({
             canApply:2,
             applyLabel:'发布活动'
           })
+          console.log(this.data.canApply)
         }
     },
       fail:function(res){

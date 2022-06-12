@@ -1,41 +1,96 @@
 <!--pages/currentActivity/currentActivity.wxml-->
+<!--pages/apply/apply.wxml-->
 <view class="pageContainer">
-      <view class="title">
-        <text>活动详情</text>
-      </view>
-    <view class="activityName">
-      <view class="activityNameTitle">
-        <text>项目名称</text>
-      </view>
-      <view class="divider-x"></view>
-      <view class="activityNameContent">
-        <text>{{activityName}}</text>
-      </view>
-    </view>
-    <view class="activityIntro">
-      <view class="activityIntroTitle">
-        <text>项目介绍</text>
-      </view>
-      <view class="divider-x"></view>
-      <view class="activityIntroContent">
-        <text>{{activityDescription}}</text>
-      </view>
-    </view>
-    <swiper class="swiper-container" indicator-dots>
-      <swiper-item class="item">
-        <view>
-          <text>test1</text>
-        </view>
-      </swiper-item>
-      <swiper-item class="item">
-        <view><text>test1</text></view>
-      </swiper-item>
-      <swiper-item class="item">
-        <view><text>test1</text></view>
-      </swiper-item>
-    </swiper>
 
-    <button type="default" plain="true" bindtap="tolotteryDetails">
-    <text>报名页面！</text>
-    </button>
+<view class="itemContainer">
+  <view class="inputContainer">
+  <view class="itemTitle">
+    <text>活动名称:</text>
+    <text style="color: #ee3f4d;width: 10rpx">*</text>
+  </view>
+    <input disabled="" type="text" class="nameInput" value="{{activityName}}" bindinput="nameGetValue"
+    placeholder-class="placehold" placeholder="请输入活动名称"/>
+  </view>
 </view>
+
+<view class="itemContainer">
+  <view class="inputContainer">
+  <view class="itemTitle">
+    <text>签到码:</text>
+    <text style="color: #ee3f4d;width: 10rpx">*</text>
+  </view>
+    <input disabled="" type="text" class="nameInput" value="{{activityCode}}" bindinput="codeGetValue"
+    placeholder-class="placehold" placeholder="请输入签到码"/>
+  </view>
+</view>
+
+<view class="itemContainer">
+  <view class="inputContainer">
+    <view class="itemTitle">
+    <text>活动地址:</text>
+    <text style="color: #ee3f4d;width: 10rpx">*</text>
+  </view>
+    <input disabled type="text" class="nameInput" value="{{activityAddress}}" bindinput="addressGetValue"
+    placeholder-class="placehold" placeholder="请输入活动地址"/>
+  </view>
+</view>
+
+<view class="itemContainer">
+  <view class="inputContainer">
+  <view class="itemTitle">
+    <text>开始时间:</text>
+    <text style="color: #ee3f4d;width: 10rpx">*</text>
+  </view>
+  <input disabled type="text" class="nameInput" value="{{activityStartTime}}" bindinput="addressGetValue"
+    placeholder-class="placehold" placeholder="请输入活动地址"/>
+  </view>
+</view>
+
+<view class="itemContainer">
+  <view class="inputContainer">
+  <view class="itemTitle">
+    <text>截止时间:</text>
+    <text style="color: #ee3f4d;width: 10rpx">*</text>
+  </view>
+  <input disabled type="text" class="nameInput" value="{{activityEndTime}}" bindinput="addressGetValue"
+    placeholder-class="placehold" placeholder="请输入活动地址"/>
+  </view>
+</view>
+
+<view class="itemContainer">
+  <view class="inputContainer">
+  <view class="itemTitle">
+    <text>人数要求:</text>
+    <text style="color: #ee3f4d;width: 10rpx">*</text>
+  </view>
+    <input disabled type="text" class="nameInput" value="{{activityNumber}}" bindinput="numberGetValue"
+    placeholder-class="placehold" placeholder="请输入正整数"/>
+  </view>
+</view>
+
+<view class="itemContainer">
+  <view class="inputContainer">
+  <view class="itemTitle">
+    <text>活动类型:</text>
+    <text style="color: #ee3f4d;width: 10rpx">*</text>
+  </view>
+  <input disabled type="text" class="nameInput" value="{{activityType}}" bindinput="numberGetValue"
+    placeholder-class="placehold" placeholder="请输入正整数"/>
+  </view>
+</view>
+
+<!--信息填写-->
+<view class="reasonContainer">
+  <view class="title">
+    活动详情说明
+    <text style="color: #ee3f4d;">*</text>
+  </view>
+  <textarea class="reasonInput" placeholder="请输入活动详情说明" placeholder-class="textPlacehold"
+    value="{{activityDescription}}" bindinput="descGetValue" maxlength="-1"></textarea>
+  <view class="divider"></view>
+</view>
+
+<!--发布抽奖-->
+<view class="releaseButton" bindtap="signUp">报名参加！</view>
+</view>
+
