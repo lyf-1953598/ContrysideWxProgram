@@ -345,7 +345,7 @@ Page({
   toRecord() {
     console.log(this.data.userInfo.openID);
     wx.navigateTo({
-      url: '/pages/lotteryRecord/lotteryRecord?openID='+this.data.userInfo.openID,
+      url: '/pages/taskRecord/taskRecord?openID='+this.data.userInfo.openID,
     })
   },
   
@@ -417,7 +417,18 @@ Page({
                 that.setData({
                   isAdmin:1
                 })
+
+                wx.setStorage({
+                  key:'isAdmin',
+                  data:1
+                })
+              }else{
+                wx.setStorage({
+                  key:'isAdmin',
+                  data:0
+                })
               }
+
              console.log(that.data); 
           },
             fail:function(res){

@@ -1,0 +1,22 @@
+<!--components/volunteerList.wxml-->
+<view class="taskList" wx:for="{{taskList}}" wx:for-item="item" wx:key="index">
+  <navigator url="../../pages/currentActivity/currentActivity?activityId={{item.assignmentId}}">
+    <view class="taskItem">
+    <image src="../../static/images/lotteryEdit/prize.jpeg" mode="aspectFill"></image>
+    <view class="intro">
+      <text class="title">{{item.title}}</text>
+      <view></view>
+      <text class="iconfont icon-shebeimingcheng introTitle">  活动名称：{{item.title}}</text>
+      <!-- <text class="iconfont icon-right"></text> -->
+      <view></view>
+      <text class="introTitle iconfont icon-detailsoriginator">  活动发起人：{{item.organizationName}}</text>
+      <view></view>
+      <text class="iconfont icon-didiandingwei introTitle">  活动地点：{{item.place}}</text>
+      <view></view>
+      <text class="iconfont icon-suggest introTitle lastline">  活动状态：{{status}}</text>
+    </view>
+  </view>
+  
+  </navigator>
+</view>
+  

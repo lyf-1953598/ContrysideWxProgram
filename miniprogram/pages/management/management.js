@@ -115,7 +115,7 @@ Page({
       closingLottery: [],
     })
     try {
-      await this.getLottery()
+      await this.getVolunteerActivity()
       for (let i = 0; i < this.data.id_list.length; i++) {
         await this.selectPrize(i)
       }
@@ -134,57 +134,96 @@ Page({
     })
   },
 
-  getLottery() {
+  getVolunteerActivity() {
     return new Promise(resolve => {
       const that = this
-      wx.cloud.callFunction({
-        name: 'showLottery',
-        env: 'draw-a-lottery-0gptvzfw661e55d1',
-        success: res => {
-          //将返回的数据转化成ShowList格式
-          //len = res.result.data.length
-          for (let i = 0; i < res.result.data.length; i++) {
-
-
-            //时间转化
-            var s_time = Date.parse(new Date())
-            var e_time = Date.parse(new Date(res.result.data[i].end_time))
-            var usedTime = e_time - s_time
-            var days = parseInt(usedTime / (24 * 3600 * 1000))
-            var leave1 = usedTime % (24 * 3600 * 1000)
-            var hours = parseInt(leave1 / (3600 * 1000))
-
-
-            let tempT = that.data.tempTime
-            tempT.push({
-              day: days,
-              hour: hours
-            })
-            that.setData({
-              tempT
-            })
-
-            if(days<=-7)
-            { 
-              this.clearLottery(res.result.data[i]._id)
+      wx.request({
+        url: 'http://localhost:8080/task/getMyTaskDetails',
+        method:'GET',
+        data:{
+        // userId:options.openID
+        organizerId:'odWjH4qlWkZ0hNwaVRSexGVd-0Dc'
+      },
+        success:(res)=> {
+          console.log(res);
+          var curTime = Date.parse(new Date());
+          for (var i = 0; i < res.data.data.list.length; i++) {
+            var startTime = Date.parse(res.data.data.list[i].startTime)
+            var endTime = Date.parse(res.data.data.list[i].endTime)
+            console.log(curTime);
+            console.log(startTime);
+            console.log(endTime);
+            if(curTime>endTime){
+              that.data.pastTaskList.push(res.data.data.list[i]);
+              continue;
             }
-            //记录抽奖id
-            else{
-            let id = that.data.id_list
-            let l_id = res.result.data[i]._id
-            id.push(l_id)
-            that.setData({
-              id
-            })
+            if(curTime<startTime){
+              that.data.taskList.push(res.data.data.list[i]);
+              continue;
+            }
+            if(curTime>=startTime&&curTime<=endTime){
+              that.data.currentList.push(res.data.data.list[i]);
+              continue;
+            }
           }
-          }
-          resolve()
-        },
-        fail: err => {
-          console.log(err)
-          // rejects()
-        }
-      })
+         that.setData({
+          currentList: that.data.currentList,
+          pastTaskList:that.data.pastTaskList,
+          taskList:that.data.taskList
+         })
+      },
+        fail:function(res){
+          console.log("接口调取失败！");
+      }
+    })
+      // wx.cloud.callFunction({
+      //   name: 'showLottery',
+      //   env: 'draw-a-lottery-0gptvzfw661e55d1',
+      //   success: res => {
+      //     //将返回的数据转化成ShowList格式
+      //     //len = res.result.data.length
+      //     for (let i = 0; i < res.result.data.length; i++) {
+
+
+      //       //时间转化
+      //       var s_time = Date.parse(new Date())
+      //       var e_time = Date.parse(new Date(res.result.data[i].end_time))
+      //       var usedTime = e_time - s_time
+      //       var days = parseInt(usedTime / (24 * 3600 * 1000))
+      //       var leave1 = usedTime % (24 * 3600 * 1000)
+      //       var hours = parseInt(leave1 / (3600 * 1000))
+
+
+      //       let tempT = that.data.tempTime
+      //       tempT.push({
+      //         day: days,
+      //         hour: hours
+      //       })
+      //       that.setData({
+      //         tempT
+      //       })
+
+      //       if(days<=-7)
+      //       { 
+      //         this.clearLottery(res.result.data[i]._id)
+      //       }
+      //       //记录抽奖id
+      //       else{
+      //       let id = that.data.id_list
+      //       let l_id = res.result.data[i]._id
+      //       id.push(l_id)
+      //       that.setData({
+      //         id
+      //       })
+      //     }
+      //     }
+      //     resolve()
+      //   },
+      //   fail: err => {
+      //     console.log(err)
+      //     // rejects()
+      //   }
+      // })
     })
   },
 

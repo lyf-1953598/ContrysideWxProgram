@@ -45,14 +45,14 @@
     </view>
     <view class="intro">
       <view class="iconfont icon-didiandingwei"></view>
-      <text class="introTitle">活动地点:</text>
+      <text class="introTitle">活动地点： </text>
       <text>{{taskList[0].place}}</text>
     </view>
-    <view class="descintro">
+    <!-- <view class="descintro">
       <view class="iconfont icon-jianjie"></view>
       <text class="introTitle">活动简介：</text>
       <text class="descContent">{{taskList[0].description}}</text>
-    </view>
+    </view> -->
   </view>
   <view class="item" bindtap="toDetail" data-index="{{1}}">
     <image src="/static/images/lotteryEdit/prize.jpeg" mode="widthFix"></image>
@@ -68,14 +68,14 @@
     </view>
     <view class="intro">
       <view class="iconfont icon-didiandingwei"></view>
-      <text class="introTitle">活动地点:</text>
+      <text class="introTitle">活动地点： </text>
       <text>{{taskList[1].place}}</text>
     </view>
-    <view class="descintro">
+    <!-- <view class="descintro">
       <view class="iconfont icon-jianjie"></view>
       <text class="introTitle">活动简介：</text>
       <text class="descContent">{{taskList[1].description}}</text>
-    </view>
+    </view> -->
   </view>
   <view class="item" bindtap="toDetail" data-index="{{2}}">
     <image src="/static/images/lotteryEdit/prize.jpeg" mode="widthFix"></image>
@@ -91,14 +91,14 @@
     </view>
     <view class="intro">
       <view class="iconfont icon-didiandingwei"></view>
-      <text class="introTitle">活动地点:</text>
+      <text class="introTitle">活动地点：</text>
       <text>{{taskList[2].place}}</text>
     </view>
-    <view class="descintro">
+    <!-- <view class="descintro">
       <view class="iconfont icon-jianjie"></view>
       <text class="introTitle">活动简介：</text>
       <text class="descContent">{{taskList[2].description}}</text>
-    </view>
+    </view> -->
   </view>
   <view class="item" bindtap="toDetail" data-index="{{3}}">
     <image src="/static/images/lotteryEdit/prize.jpeg" mode="widthFix"></image>
@@ -114,14 +114,14 @@
     </view>
     <view class="intro">
       <view class="iconfont icon-didiandingwei"></view>
-      <text class="introTitle">活动地点:</text>
+      <text class="introTitle">活动地点： </text>
       <text>{{taskList[3].place}}</text>
     </view>
-    <view class="descintro">
+    <!-- <view class="descintro">
       <view class="iconfont icon-jianjie"></view>
       <text class="introTitle">活动简介：</text>
       <text class="descContent">{{taskList[3].description}}</text>
-    </view>
+    </view> -->
   </view>
   <button type="default" plain="true" bindtap="toMoreActivity">
     <text>查看更多活动</text>

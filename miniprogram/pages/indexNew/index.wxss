@@ -81,12 +81,20 @@
 }
 .item{
   display: block;
-  padding: 10px;
+  margin: 10px;
   /* border: 1px solid blue; */
-  height: 350px;
+  /* height: 350px; */
   /* width: 80%; */
   justify-content: center;
+  padding-bottom: 10px;
+  border-bottom: #A2B38B 1px dashed;
+  /* border-right:#A2B38B 1px solid; */
 }
+.item image{
+  width: 100%;
+}
+
+
 .item text{
   display: block;
 }
@@ -103,12 +111,26 @@
   height: 2px;
   background: #eeeeee;
 }
+
+.intro{
+  padding-left:5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  font-size:14px;
+}
+.iconfont {
+  align-items: center;
+  color: #A2B38B;
+} 
+
 .introTitle{
-  width: 100px;
-  height: 30px;
+  /* width: 100px;
+  height: 30px; */
+  padding-left: 5px;
+
 }
 .descintro{
-  height: 70px;
+  /* height: 70px; */
 }
 .descContent{
   width: 220px;

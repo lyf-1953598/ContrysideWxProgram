@@ -32,6 +32,20 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/taskRecord/taskRecord",
+          "query": "openID=oln6h4lnZLCd56x_c_FpXsAgcpNA",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/indexNew/index",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

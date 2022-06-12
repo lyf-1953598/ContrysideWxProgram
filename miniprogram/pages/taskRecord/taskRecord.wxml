@@ -1,0 +1,26 @@
+<!--pages/lotteryRecord/lotteryRecord.wxml-->
+<!--抽奖页面-->
+<view class="recordListContainer">
+  <view class="divider">
+  <text class="divideTitle">未开始:</text>
+  </view>
+  <taskList wx:if="{{taskList.length}}" status="未开始" taskList="{{taskList}}">
+  </taskList>
+  <view class="divider">
+    <text class="divideTitle">进行中:</text>
+    </view>
+  <taskList wx:if="{{taskList.length}}" status="进行中" taskList="{{currentList}}">
+  </taskList>
+  <view class="divider">
+    <text class="divideTitle">已结束:</text>
+    </view>
+  <taskList wx:if="{{taskList.length}}" status="已结束" taskList="{{pastTaskList}}">
+  </taskList>
+  <!-- <taskList wx:if="{{pastlotteryList.length}}" title="已开奖" lotteryList="{{pastlotteryList}}">
+  </taskList>
+  <view class="empty" wx:if="{{!taskList.length && !lotteryList.length}}">
+    <text class="iconfont icon-empty"></text>
+    <text>这里什么都没有</text>
+    <text>快去首页参与志愿活动吧</text>
+  </view> -->
+</view>

@@ -22,8 +22,9 @@
     "pages/management/management",
     "pages/participants/participants",
     "pages/contact/contact",
-    "pages/lotteryRecord/lotteryRecord",
-    "pages/help/help"
+    "pages/taskRecord/taskRecord",
+    "pages/help/help",
+    "pages/moreActivity/moreActivity"
 
   ],
 

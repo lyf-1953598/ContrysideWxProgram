@@ -135,6 +135,9 @@ Page({
   wx.request({
     url: 'http://localhost:8080/task/getHomepageTask',
     method:'GET',
+    data:{
+      pagenum:0
+    },
     success:(res)=> {
       console.log(res.data)
       this.setData({
