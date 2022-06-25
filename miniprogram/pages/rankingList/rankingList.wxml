@@ -20,7 +20,7 @@
   <image src="{{ranklist[1].avatar}}"></image>
 </view>
 <view style="font-size:medium;margin-top: 6px;">{{ranklist[1].name}}</view>
-<view style="font-size:x-small;color:grey" wx:if="{{rankList.length>1}}">{{ranklist[1].timeSum}}h</view>
+<view style="font-size:x-small;color:grey" wx:if="{{ranklist.length>1}}">{{ranklist[1].timeSum}}h</view>
 </view>
 <view class="rank-1">
   <view class="iconfont icon-guanjun"></view>
@@ -28,7 +28,7 @@
     <image src="{{ranklist[0].avatar}}"></image>
 </view>
 <view style="font-size:medium;margin-top: 6px;">{{ranklist[0].name}}</view>
-<view style="font-size:x-small;color:grey" wx:if="{{rankList.length>0}}">{{ranklist[0].timeSum}}h</view>
+<view style="font-size:x-small;color:grey" wx:if="{{ranklist.length>0}}">{{ranklist[0].timeSum}}h</view>
 </view>
 <view class="rank-23">
   <view class="iconfont icon-jijun"></view>
@@ -36,16 +36,16 @@
   <image src="{{ranklist[2].avatar}}"></image>
 </view>
 <view style="font-size:medium;margin-top: 6px;">{{ranklist[2].name}}</view>
-<view style="font-size:x-small;color:grey" wx:if="{{rankList.length>2}}">{{ranklist[2].timeSum}}h</view>
+<view style="font-size:x-small;color:grey" wx:if="{{ranklist.length>2}}">{{ranklist[2].timeSum}}h</view>
 </view>
 </view>
 
-<view class="nextList" style="margin-top:70rpx" wx:if="{{rankList.length>3}}">
-  <view class="listItem" style="flex-direction:row;display:flex;" wx:for="{{ranklist}}" wx:key="index" >
+<view class="nextList" style="margin-top:70rpx" wx:if="{{ranklist.length>3}}">
+  <view class="listItem" style="flex-direction:row;display:flex;" wx:for="{{ranklist}}" wx:key="index" wx:if="{{index<(ranklist.length-4)}}">
   <view style="width:20rpx;margin-left: 30rpx;margin-right: 30rpx;">{{index+4}}</view>
   <image src="{{ranklist[index+4].avatar}}"></image>
    <view style="margin-left:40rpx">{{ranklist[index+4].name}}</view>
-   <view style="font-size:x-small;margin-left:10rpx">{{ranklist[index+4].timeSum}}</view>
+   <view style="font-size:x-small;margin-left:20rpx;color:grey">{{ranklist[index+4].timeSum}}h</view>
   </view>
 </view>
 </view>
