@@ -22,6 +22,7 @@ Page({
       { id: 7, label: '医疗' },
     ],
     setIndex:-1,
+    srcI:'',
     dateTimeArray: null,
     endDateTimeArray:null,
     endDateTime:null,
@@ -30,6 +31,47 @@ Page({
       endYear: 2050,
       currentTime:mydate.getFullYear()+'-'+mydate.getMonth()+'-'+mydate.getDate()+' '+mydate.getHours()+':'+mydate.getMinutes()+':'+mydate.getSeconds(),
       endCurrentTime:mydate.getFullYear()+'-'+mydate.getMonth()+'-'+mydate.getDate()+' '+mydate.getHours()+':'+mydate.getMinutes()+':'+mydate.getSeconds(),
+  },
+  setIntroImg:function(){
+    var that = this
+    wx.chooseMedia({
+      count: 9,
+      mediaType: ['image','video'],
+      sourceType: ['album', 'camera'],
+      maxDuration: 30,
+      camera: 'back',
+      success(res) {
+        console.log(res)
+        console.log(res.tempFiles[0].tempFilePath)
+        console.log(res.tempFiles[0].size)
+        that.setData({
+          srcI:res.tempFiles[0].tempFilePath
+        })
+      }
+    })
+  },
+  async uploadFile(userID){
+    var that = this
+    wx.uploadFile({
+      url: 'http://localhost:8080/task/createTask', 
+      filePath: that.data.srcI,                  //要传的图片路径
+      name: 'file',                  //获取图片二进制文件的key
+      formData: {
+          'description': this.data.desc,
+          'startStr': this.data.currentTime,
+          'endStr':this.data.endCurrentTime,
+          'number':this.data.number,
+          'place':this.data.address,
+          'signinCode':this.data.code,
+          'title':this.data.name,
+          'type':this.data.activityArr[this.data.setIndex].label,
+          'organizer_id':userID,                //其他需要携带的参数
+      },
+      success (res){
+        console.log(res.data)
+        //do something
+      }
+    })
   },
   addressGetValue(e){
     this.setData({
@@ -69,8 +111,65 @@ Page({
   },
   commit:function(e){
     var userId=wx.getStorageSync('openID')
-    var number=parseInt(this.data.number)
-    console.log(number)
+    if(this.data.name==''){
+      wx.showToast({
+        title: '请填写活动名称',
+        icon:'error',
+        duration:1500
+      })
+      return false
+    }
+    else if(this.data.code==''){
+      wx.showToast({
+        title: '请填写签到码',
+        icon:'error',
+        duration:1500
+      })
+      return false
+    }
+    else if(this.data.address==''){
+      wx.showToast({
+        title: '请填写活动地点',
+        icon:'error',
+        duration:1500
+      })
+      return false
+    }
+    else if(this.data.number==null){
+      wx.showToast({
+        title: '请填写参与人数',
+        icon:'error',
+        duration:1500
+      })
+      return false
+    }
+    else if(this.data.setIndex==-1){
+      wx.showToast({
+        title: '请选择活动类型',
+        icon:'error',
+        duration:1500
+      })
+      return false
+    }
+    else if(this.data.desc==''){
+      wx.showToast({
+        title: '请填写活动描述',
+        icon:'error',
+        duration:1500
+      })
+      return false
+    }
+    else if(this.data.srcI==''){
+      wx.showToast({
+        title: '请上传图片',
+        icon:'error',
+        duration:1500
+      })
+      return false
+    }
+    else{
+      this.uploadFile(userId)
+    }
     console.log(this.data.name)
     console.log(this.data.code)
     console.log(this.data.address)
@@ -79,31 +178,8 @@ Page({
     console.log(typeof(this.data.number))
     console.log(this.data.activityArr[this.data.setIndex].label)
     console.log(this.data.desc)
-    wx.request({
-      url: 'http://localhost:8080/task/releaseTask',
-      method: 'POST',
-      header: {
-        'content-type': 'application/x-www-form-urlencoded',
-        // 'Content-Type': 'application/json'
-      },
-      data:{
-        description: this.data.desc,
-        startStr: this.data.currentTime,
-        endStr:this.data.endCurrentTime,
-        number:number,
-        place:this.data.address,
-        signinCode:this.data.code,
-        title:this.data.name,
-        type:this.data.activityArr[this.data.setIndex].label,
-        organizer_id:userId,
-      },
-      success:  (res)=>  {
-        console.log(res.data)
-      },
-      fail: function (res) {
-        console.log(res.data)
-      }
-    })
+
+    
   },
   /**
    * 生命周期函数--监听页面加载
