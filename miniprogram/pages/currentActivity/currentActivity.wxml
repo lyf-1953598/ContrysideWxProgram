@@ -91,6 +91,8 @@
 </view>
 
 <!--发布抽奖-->
-<view class="releaseButton" bindtap="signUp">报名参加！</view>
+<view wx:if="{{isCurrent==0}}"class="releaseButton" bindtap="signUp">报名参加！</view>
+<view wx:if="{{isCurrent==1}}"class="releaseButton" bindtap="signOut">活动签退</view>
+
 </view>
 
