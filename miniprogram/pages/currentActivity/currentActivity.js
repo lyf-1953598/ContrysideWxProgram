@@ -71,6 +71,11 @@ Page({
       },
       success:  (res)=>  {
         console.log(res.data)
+        wx.showToast({
+          title: res.data.data.msg,
+          icon: 'error',
+          duration: 2000
+        })   
       },
       fail: function (res) {
         console.log(res.data)
