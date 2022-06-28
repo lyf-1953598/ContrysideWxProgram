@@ -107,6 +107,10 @@
   <textarea class="reasonInput" placeholder="请输入活动详情说明" placeholder-class="textPlacehold"
     value="{{desc}}" bindinput="descGetValue" maxlength="-1"></textarea>
   <view class="divider"></view>
+  <view class="addImg" bindtap="setIntroImg">
+      <text class="iconfont icon-image"> </text>
+      ＋添加图片
+    </view>
 </view>
 
 <!--发布抽奖-->
