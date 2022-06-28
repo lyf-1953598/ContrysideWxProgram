@@ -5,6 +5,8 @@ var util = require('../../utils/util'); //参数是util.js所在的路径，参�
 var recorderManager = wx.getRecorderManager()
 const audioCtx = wx.createInnerAudioContext()
 var tempFilePath = ''
+
+
 //开始录音回调
 recorderManager.onStart(() => {
   console.log('开始录音')
@@ -147,6 +149,29 @@ async uploadFile(){
      actionSheetHidden1: !this.data.actionSheetHidden1
     })
   },
+  async setd(){
+    var that = this
+    var list = that.data.recordContent
+    // list = Array.from(that.data.recordContent)
+    console.log(list)
+    // var l = [{id:1,name:"xx"},{id:3,name:"lyf"},{id:2,name:"chj"}]
+    // var l1 = l.sort(function(a,b){
+    //   console.log(a.id)
+    //   return a.id - b.id
+    // })
+    // console.log(l1)
+    var list1 = list.sort(function(a,b){
+      console.log(a.msgId)
+      return a.msgId - b.msgId
+    })
+    console.log(that.data.recordContent.length)
+    console.log(list1)
+    that.setData({
+      recordContent:list1,
+      toView: 'msg-' + (list.length - 1)
+  })
+  console.log( that.data.recordContent)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -157,11 +182,10 @@ async uploadFile(){
       openID:options.openID,
       avatar:options.withAvatar,
       name:options.withName
-
     })
     this.getopenID()
     this.getMessages()
-    this.getPic()
+    // this.setd()
 
 
   },
@@ -195,7 +219,7 @@ async uploadFile(){
     var that = this
     console.log(that.data.userId)
     console.log(that.data.openID)
-    wx.request({
+   await wx.request({
       url: 'http://localhost:8080/message/getmessageList?',
       method: 'GET',
       data: {
@@ -209,51 +233,96 @@ async uploadFile(){
         });
         console.log(that.data.messageList);
         var list = that.data.recordContent
+       
         for(var i = 0;i<that.data.messageList.length;i++)
         {
           if(that.data.messageList[i].fromId == that.data.openID)
           {
             if(that.data.messageList[i].type=='text')
             {
-              var obj = {id:"1",contactText:that.data.messageList[i].content,time:that.data.messageList[i].sendTime,type:'text'}
+              var obj = {id:"1",msgId:that.data.messageList[i].msgId,contactText:that.data.messageList[i].content,time:that.data.messageList[i].sendTime,type:'text'}
+              list.push(obj)
+              that.setData({
+                recordContent:list
+              })
             }
             else if(that.data.messageList[i].type=='image')
             {
-              that.getPic(that.data.messageList[i].content);
-              var obj = {id:"1",contactText:that.data.picPath,time:that.data.messageList[i].sendTime,type:'image'}
+              // that.getPic(that.data.messageList[i].content);
+              // var obj = {id:"1",contactText:that.data.picPath,time:that.data.messageList[i].sendTime,type:'image'}
+              that.getPic(that.data.messageList[i].content,i).then(
+                res=>{
+                  console.log(res);
+                  var index = res.index
+                  var path = res.picPath
+                  var obj = {id:"1",msgId:that.data.messageList[index].msgId,contactText:path,time:that.data.messageList[index].sendTime,type:'image'}
+                  console.log(obj);
+                  list.push(obj)
+                  console.log(list);
+                  that.setData({
+                    recordContent:list
+                  })
+                }
+              )
             }
             else if(that.data.messageList[i].type=='record')
             {
-              that.getPic(that.data.messageList[i].content);
-              var obj = {id:"1",contactText:that.data.picPath,time:that.data.messageList[i].sendTime,type:'record'}
+              var obj = {id:"1",msgId:that.data.messageList[i].msgId,contactText:that.data.messageList[i].content,time:that.data.messageList[i].sendTime,type:'record'}
+              list.push(obj)
+              that.setData({
+                recordContent:list
+              })
             }
-            list.push(obj)
           }
           else if(that.data.messageList[i].fromId == that.data.userId)
           {
             if(that.data.messageList[i].type=='text')
             {
-              var obj = {id:"2",contactText:that.data.messageList[i].content,time:that.data.messageList[i].sendTime,type:'text'}
+              var obj = {id:"2",msgId:that.data.messageList[i].msgId,contactText:that.data.messageList[i].content,time:that.data.messageList[i].sendTime,type:'text'}
+              list.push(obj)
+              that.setData({
+                recordContent:list
+              })
             }
             else if(that.data.messageList[i].type=='image')
             {
-              that.getPic(that.data.messageList[i].content);
-              var obj = {id:"2",contactText:that.data.picPath,time:that.data.messageList[i].sendTime,type:'image'}
+              that.getPic(that.data.messageList[i].content,i).then(
+                res=>{
+                  console.log(res);
+                  var index = res.index
+                  var path = res.picPath
+                  var obj = {id:"2",msgId:that.data.messageList[index].msgId,contactText:path,time:that.data.messageList[index].sendTime,type:'image'}
+                  console.log(obj);
+                  list.push(obj)
+                  console.log(list);
+                  that.setData({
+                    recordContent:list
+                  })
+                }
+              )
             }
             else if(that.data.messageList[i].type=='record')
             {
-              that.getPic(that.data.messageList[i].content);
-              var obj = {id:"1",contactText:that.data.picPath,time:that.data.messageList[i].sendTime,type:'record'}
+              var obj = {id:"2",msgId:that.data.messageList[i].msgId,contactText:that.data.messageList[i].content,time:that.data.messageList[i].sendTime,type:'record'}
+              list.push(obj)
+              that.setData({
+                recordContent:list
+              })
             }
-            list.push(obj)
           }
         }
+        
+         console.log(that.data.recordContent)
+         var list1 = list.sort(function(a,b){
+          // console.log(a.msgId)
+          return a.msgId - b.msgId
+        })
         that.setData({
-          recordContent:list,
+          recordContent:list1,
           toView: 'msg-' + (that.data.recordContent.length - 1),
 
         })
-        console.log(that.data.recordContent)
+        console.log(that.data.recordContent.length)
       },
       fail: function () {
         console.log("调用接口失败");
@@ -261,26 +330,32 @@ async uploadFile(){
     })
   
   },
-  async getPic(filename){
+  
+  async getPic(filename,i){
     var that = this
-    wx.downloadFile({
-      url: 'http://localhost:8080/message/download/'+filename, 
-      // header: {
-      //   'Content-Type': 'multipart/form-data',
-      // },
-      success (res) {
-        // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
-        console.log(res)
-        that.setData({
-          picPath : res.tempFilePath
-        })
-        // if (res.statusCode === 200) {
-        //   wx.playVoice({
-        //     filePath: res.tempFilePath
-        //   })
-        // }
-      }
+    return new Promise(function (resolve, reject) {
+      wx.downloadFile({
+        url: 'http://localhost:8080/message/download/'+filename, 
+        // header: {
+        //   'Content-Type': 'multipart/form-data',
+        // },
+        success (res) {
+          // 只要服务器有响应数据，就会把响应内容写入文件并进入 success 回调，业务需要自行判断是否下载到了想要的内容
+          console.log(res)
+          that.setData({
+            picPath : res.tempFilePath
+          })
+          var trans = {picPath:res.tempFilePath,index:i};
+          resolve(trans)
+          // if (res.statusCode === 200) {
+          //   wx.playVoice({
+          //     filePath: res.tempFilePath
+          //   })
+          // }
+        }
+      })
     })
+  
     // wx.request({
     //   url: 'http://localhost:8080/message/download/38.jpg',
     //   method: 'POST',
@@ -292,6 +367,7 @@ async uploadFile(){
     //   }
     // })
   },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
