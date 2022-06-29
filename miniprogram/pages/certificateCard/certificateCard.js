@@ -58,12 +58,9 @@ Page({
           canvasWidth: imgW
         })
         // 绘制底图 用原图的宽高比绘制
-        console.log(imgW);
-        console.log(imgH);
         ctx.drawImage(imgPath, 0, 0, imgW, imgH)
 
         //获取个人信息及个人时长
-        console.log(that.data.voluteerName);
 
   
         // ctx.setFontSize(20)
@@ -94,7 +91,6 @@ Page({
 
       canvasId: 'certificateCanvas',
       success(res) {
-        console.log(res.tempFilePath)
         that.data.imgUrl = res.tempFilePath
         wx.saveImageToPhotosAlbum({
           filePath: res.tempFilePath,
@@ -119,7 +115,6 @@ Page({
                 success: modalSuccess => {
                   wx.openSetting({
                     success(settingdata) {
-                      console.log("settingdata", settingdata)
                       if (settingdata.authSetting['scope.writePhotosAlbum']) {
                         wx.showModal({
                           title: '提示',
@@ -151,7 +146,6 @@ Page({
    */
   onLoad(options) {
     var that = this
-    console.log(options);
     // http://localhost:8080/user/getInfo?userId=oln6h4lnZLCd56x_c_FpXsAgcpNA
     wx.request({
       url: 'http://localhost:8080/user/getInfo',
@@ -160,12 +154,10 @@ Page({
         userId: options.openID
       },
       success: function (res) {
-        console.log(res.data.data.info);
         that.setData({
           voluteerTime: res.data.data.info.voluntaryAllhour,
           voluteerName:res.data.data.info.name
         });
-        console.log(that.data);
         that.savePhoto()
       },
       fail: function () {

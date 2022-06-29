@@ -17,7 +17,6 @@ Page({
    */
   onLoad(options) {
     var that = this
-    console.log(options.openID);
     wx.request({
       url: 'http://localhost:8080/task/getMyTaskDetails',
       method:'GET',
@@ -26,7 +25,6 @@ Page({
       organizerId:options.openID
     },
       success:(res)=> {
-        console.log(res);
         // that.setData({
         //   taskList:res.data.data.list
         // })
@@ -47,7 +45,6 @@ Page({
             continue;
           }
         }
-       console.log(that.data);
        that.setData({
         currentList: that.data.currentList,
         pastTaskList:that.data.pastTaskList,
