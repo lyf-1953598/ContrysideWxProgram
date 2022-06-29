@@ -14,8 +14,8 @@
             </view>
             <view class="info">
                 <view class="info-content" wx:if="{{item.type=='text'}}">{{ item.contactText }}</view>
-                <image wx:if="{{item.type=='image'}}" style="height:30px" mode="aspectFill" src="{{item.contactText}}"></image>
-                <image wx:if="{{item.type=='record'}}" style="height:30px" mode="aspectFill" ></image>
+                <image wx:if="{{item.type=='image'}}" style="height:150px;width:150px" mode="aspectFill" src="{{item.contactText}}"></image>
+                <view class="info-content" wx:if="{{item.type=='record'}}"  >{{ item.contactText }}</view>
             </view>
             <view class="time">
             {{item.time}}
@@ -29,8 +29,11 @@
            </view>
             <view class="info">
               <view class="info-content" wx:if="{{item.type=='text'}}">{{ item.contactText }}</view>
-                <image wx:if="{{item.type=='image'}}" style="height:150px;width:150px"  src="{{item.contactText}}"></image>
-            </view> <view>
+                <image wx:if="{{item.type=='image'}}" style="height:150px;max-width:150px"  src="{{item.contactText}}"></image>
+                <view class="info-content" wx:if="{{item.type=='record'}}"  >{{ item.contactText }}</view>
+            </view>
+           
+             <view>
                 <image class="avater" src="{{myavatar}}" />
             </view>
         </view>

@@ -31,7 +31,7 @@
     <view class="divider-y"></view>
     <view class="apply">
       <view class="iconfont icon-apply"></view>
-      <text class="applyButton" bindtap="toApply" style="font-weight:bold;font-size:medium;color:#a2b38b;margin-left:5px">{{applyLabel}}</text>
+      <text class="applyButton" bindtap="toApply" style="font-weight:bold;color:#a2b38b;margin-left:5px">{{applyLabel}}</text>
     </view>
   </view>
   <view class="divider-x"></view>

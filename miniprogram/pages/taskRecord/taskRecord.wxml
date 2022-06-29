@@ -1,4 +1,4 @@
-<!--pages/lotteryRecord/lotteryRecord.wxml-->
+<!--pages/taskRecord/taskRecord.wxml-->
 <!--抽奖页面-->
 <view class="recordListContainer">
   <view class="divider">
@@ -9,12 +9,12 @@
   <view class="divider">
     <text class="divideTitle">进行中:</text>
     </view>
-  <taskList wx:if="{{taskList.length}}" status="进行中" taskList="{{currentList}}">
+  <taskList wx:if="{{currentList.length}}" status="进行中" taskList="{{currentList}}">
   </taskList>
   <view class="divider">
     <text class="divideTitle">已结束:</text>
     </view>
-  <taskList wx:if="{{taskList.length}}" status="已结束" taskList="{{pastTaskList}}">
+  <taskList wx:if="{{pastTaskList.length}}" status="已结束" taskList="{{pastTaskList}}">
   </taskList>
   <!-- <taskList wx:if="{{pastlotteryList.length}}" title="已开奖" lotteryList="{{pastlotteryList}}">
   </taskList>

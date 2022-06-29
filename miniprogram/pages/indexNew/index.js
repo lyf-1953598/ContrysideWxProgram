@@ -23,7 +23,7 @@ Page({
     }
     else{
       wx.navigateTo({
-        url: '/pages/currentActivity/currentActivity?activityId='+this.data.currentActivityID,
+        url: '/pages/currentActivity/currentActivity?activityId='+this.data.currentActivityID+"&isCurrent=1",
       })
     }
     
@@ -32,7 +32,7 @@ Page({
     var index = e.currentTarget.dataset.index
     var activityId=this.data.taskList[index].assignmentId
     wx.navigateTo({
-      url: '/pages/currentActivity/currentActivity?activityId='+activityId,
+      url: '/pages/currentActivity/currentActivity?activityId='+activityId+"&isCurrent=0",
     })
     console.log(activityId)
   },

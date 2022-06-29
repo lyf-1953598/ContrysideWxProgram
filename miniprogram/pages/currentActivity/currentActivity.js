@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    isCurrent:0,
     activityID:'',
     activityName:'',
     activityCode:'',
@@ -21,6 +22,41 @@ Page({
       url: '/pages/lotteryDetails/lotteryDetails',
     })
   },
+  signOut:function(e){
+    wx.request({
+      url: 'http://localhost:8080/task/signOutWithCode',
+      method: 'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+        // 'Content-Type': 'application/json'
+      },
+      data:{
+        assignmentId:this.data.activityID,
+        userId:wx.getStorageSync('openID')
+      },
+      success:  (res)=>  {
+        console.log(res.data)
+        if(res.data.data.info!='签退成功'){
+          wx.showToast({
+            title: res.data.data.info,
+            icon: 'error',
+            duration: 2000
+          })   
+        }
+        else{
+          wx.showToast({
+            title: res.data.data.info,
+            icon: 'success',
+            duration: 2000
+          })   
+        }
+           
+      },
+      fail: function (res) {
+        console.log(res.data)
+      }
+    })
+  },
   signUp:function(e){
     wx.request({
       url: 'http://localhost:8080/task/signUp',
@@ -35,6 +71,11 @@ Page({
       },
       success:  (res)=>  {
         console.log(res.data)
+        wx.showToast({
+          title: res.data.data.msg,
+          icon: 'error',
+          duration: 2000
+        })   
       },
       fail: function (res) {
         console.log(res.data)
@@ -47,8 +88,10 @@ Page({
   onLoad(options) {
     console.log(options)
     this.setData({
-      activityID:options.activityId
+      activityID:options.activityId,
+      isCurrent:options.isCurrent
     })
+    console.log(this.data.isCurrent)
     wx.request({
       url: 'http://localhost:8080/task/getOneTask',
       method:'GET',
