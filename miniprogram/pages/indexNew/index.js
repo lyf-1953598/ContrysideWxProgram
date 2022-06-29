@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    openID:'',
+    userID:'',
     ifLogin:false,
     userInfo:null,
     activityName:'请先登录！',
@@ -13,9 +13,39 @@ Page({
     canApply:0,
     applyLabel:'申请成为主办方',
     taskList:[],
+    code:''
+  },
+  codeGetValue(e){
+    this.setData({
+      code:e.detail.value
+    })
+    console.log(this.data.code)
   },
   signIn:function(e){
-    console.log("test")
+    console.log(this.data.userID)
+    console.log(this.data.code)
+    wx.request({
+      url: 'http://localhost:8080/task/signInWithCode',
+      method:'POST',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded',
+      },
+      data:{
+        userId:this.data.userID,
+        signinCode:this.data.code
+    },
+      success:(res)=> {
+        wx.showToast({
+          title: res.data.msg,
+          icon:'none',
+          duration:1500
+        })
+        
+    },
+      fail:function(res){
+        console.log("接口调取失败！");
+    }
+  })
   },
   toCurrent: function (e) {
     if(this.data.currentActivityID==''){
@@ -73,7 +103,9 @@ Page({
       this.data.userInfo=StorageUserInfo
       console.log(this.data.userInfo)
       var openID = wx.getStorageSync('openID')
-      this.data.openID=openID
+      this.setData({
+        userID:openID
+      })
       console.log(openID)
       wx.request({
         url: 'http://localhost:8080/task/getVolunteersTask',

@@ -40,7 +40,6 @@ Page({
         userId:wx.getStorageSync('openID')
       },
       success:  (res)=>  {
-        console.log(res.data)
         if(res.data.data.info!='签退成功'){
           wx.showToast({
             title: res.data.data.info,
@@ -75,7 +74,6 @@ Page({
         userId:wx.getStorageSync('openID')
       },
       success:  (res)=>  {
-        console.log(res.data)
         wx.showToast({
           title: res.data.data.msg,
           icon: 'error',
@@ -91,12 +89,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    console.log(options)
     this.setData({
       activityID:options.activityId,
       isCurrent:options.isCurrent
     })
-    console.log(this.data.isCurrent)
     wx.request({
       url: 'http://localhost:8080/task/getOneTask',
       method:'GET',
@@ -104,7 +100,6 @@ Page({
         assignmentId:this.data.activityID
     },
       success:(res)=> {
-        console.log(res.data.data)
         this.setData({
           activityName:res.data.data.info.title,
           activityCode:res.data.data.info.signinCode,

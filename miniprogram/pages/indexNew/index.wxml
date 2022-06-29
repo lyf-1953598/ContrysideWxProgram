@@ -21,7 +21,7 @@
 
       <view class="sinInContent" style="display:flex;flex-direction:row">
       <view>
-        <input type="text" placeholder="请输入签到码" placeholder-class="placehold" class="signInBox" style="width:90px"></input>
+        <input type="text" placeholder="请输入签到码" placeholder-class="placehold" class="signInBox" style="width:90px" bindinput="codeGetValue"></input>
       </view>
       <view style="margin-left:8px">
       <button type="plain" style="width:38px;font-size:small;padding:0;background-color:#a2b38b;height:30px;padding:4px;color:whitesmoke" bindtap="signIn">签到</button>

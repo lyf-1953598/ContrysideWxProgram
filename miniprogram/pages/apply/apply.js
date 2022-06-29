@@ -11,9 +11,6 @@ Page({
       userID:''
   },
   commit:function(e){
-    console.log(this.data.name)
-    console.log(this.data.address)
-    console.log(this.data.reason)
     wx.request({
       url: 'http://localhost:8080/user/apply',
       method: 'POST',
@@ -55,7 +52,6 @@ Page({
    */
   onLoad(options) {
     this.data.userID=wx.getStorageSync('openID')
-    console.log(this.data.userID)
     
   },
 
