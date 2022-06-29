@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    openID:'',
     isCurrent:0,
     activityID:'',
     activityName:'',
@@ -15,6 +16,10 @@ Page({
     activityNumber:'',
     activityType:'',
     activityDescription:'',
+    organizer:'',
+    oID:'',
+    oName:'',
+    oAvatar:''
 
   },
   tolotteryDetails:function(e){
@@ -109,14 +114,57 @@ Page({
           activityNumber:res.data.data.info.number,
           activityType:res.data.data.info.type,
           activityDescription:res.data.data.info.description,
+          organizer:res.data.data.info.organizerId
         })
+        wx.request({
+          url: 'http://localhost:8080/user/getInfo',
+          method:'GET',
+          data:{
+            userId:res.data.data.info.organizerId
+        },
+          success:(res)=> {
+            console.log(res.data.data)
+            this.setData({
+              
+              organizer:res.data.data.info.name,
+              oName:res.data.data.info.name,
+              oID:res.data.data.info.userId,
+              oAvatar:res.data.data.info.avatar
+            })
+            
+        },
+          fail:function(res){
+            console.log("接口调取失败！");
+        }
+      })
     },
       fail:function(res){
         console.log("接口调取失败！");
     }
   })
+  this.getopenID()
   },
-
+  async getopenID(){
+    var that = this
+    wx.getStorage({
+      key:'openID',
+      success (res) {
+        console.log(res);
+        that.data.openID = res.data
+        that.setData({
+          openID:res.data});
+          console.log(that.data.openID)
+         that.getChatList()
+  
+        }
+      })
+  },
+  
+  tomessage(){
+    wx.navigateTo({
+      url: '/pages/messageDetail/messagesDetail?userId='+this.data.oID+'&openID='+this.data.openID+'&withAvatar='+this.data.oAvatar+'&withName='+this.data.oName,
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

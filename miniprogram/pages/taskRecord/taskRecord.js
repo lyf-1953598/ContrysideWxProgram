@@ -60,6 +60,7 @@ Page({
         pastTaskList:that.data.pastTaskList,
         taskList:that.data.taskList
        })
+       console.log(that.data.currentList)
     },
       fail:function(res){
         console.log("接口调取失败！");

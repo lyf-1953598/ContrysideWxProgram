@@ -5,6 +5,7 @@ var util = require('../../utils/util'); //参数是util.js所在的路径，参�
 var recorderManager = wx.getRecorderManager()
 const audioCtx = wx.createInnerAudioContext()
 var tempFilePath = ''
+var duration = ''
 
 
 //开始录音回调
@@ -20,6 +21,7 @@ recorderManager.onStop((res) => {
   console.log('录音停止', res)
   console.log('录音保存路径' + res.tempFilePath)
   tempFilePath = res.tempFilePath
+  duration = res.duration
 
 })
 
@@ -36,6 +38,7 @@ Page({
     picPath:'',
     files:'',
     tempFilePath:'',
+    duration:'',
     recordText:'点击开始录音',
     // recordText1:'点击回放录音',
     btnimg:'../../static/images/messagesDetail/mic-line.png',
@@ -429,7 +432,7 @@ async uploadFile(){
      console.log(that.data.userId)
      console.log(that.data.openID)
     console.log(that.data.inputVal)
-    if(that.data.inputVal===null)
+    if(that.data.inputVal==='')
     {
       wx.showToast({
         title: '不能发送空消息',
@@ -461,7 +464,7 @@ async uploadFile(){
     // });
 
       var list = that.data.recordContent
-          var obj = {id:"1",contactText:that.data.inputVal,time:currenTime}
+          var obj = {id:"1",msgId:'',contactText:that.data.inputVal,time:currenTime,type:'text'}
           list.push(obj)
       that.setData({
         recordContent:list,
@@ -492,17 +495,29 @@ async uploadFile(){
     }
     else if(this.data.status === 'stop'){
       //发送
+      var that = this
       wx.uploadFile({
         url: 'http://localhost:8080/message/uploadRecord', 
         filePath: tempFilePath,                  //要传的图片路径
         name: 'file',                  //获取图片二进制文件的key
         formData: {
-          'fromId' : this.data.openID,
-          'targetId' :  this.data.userId                //其他需要携带的参数
+          'fromId' : that.data.openID,
+          'targetId' :  that.data.userId                //其他需要携带的参数
           // 'user': 'test'
         },
         success (res){
+          var currenTime= util.formatTime(new Date());
           console.log(res.data)
+          var list = that.data.recordContent
+          var obj = {id:"1",msgId:'',contactText:'语音消息',time:currenTime,type:'record'}
+          list.push(obj)
+      that.setData({
+        recordContent:list,
+        toView: 'msg-' + (that.data.recordContent.length - 1),
+        inputVal : '',
+        actionSheetHidden:true,
+        actionSheetHidden1:true
+      })
           //do something
         }
       })

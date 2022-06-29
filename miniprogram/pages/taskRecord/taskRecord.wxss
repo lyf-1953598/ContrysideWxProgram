@@ -1,4 +1,4 @@
-/* pages/lotteryRecord/lotteryRecord.wxss */
+/* pages/taskRecord/taskRecord.wxss */
 .recordListContainer {
   
   margin-top: 10px;

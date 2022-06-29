@@ -51,8 +51,8 @@
 .inputContainer {
   display: flex;
   align-items: center;
-  height: 90rpx;
-  padding: 0 30rpx;
+  height: 80rpx;
+  padding: 0 10rpx;
 }
 .inputContainer text {
   font-size: 28rpx;
@@ -83,18 +83,18 @@
 
 /* 抽奖说明 */
 .reasonContainer {
-  padding: 20rpx;
+  padding: 10rpx;
   padding-bottom: 0;
   background: #fff;
   border-radius: 10rpx;
   margin-bottom: 20rpx;
 }
 .reasonContainer .title {
-  font-size: 32rpx;
+  font-size: 28rpx;
   font-weight: 550;
   height: 50rpx;
   line-height: 50rpx;
-  color: #303030;
+  color:#A2B38B;
 }
 .reasonContainer .reasonInput {
   font-size: 28rpx;
@@ -154,11 +154,11 @@
 
 
 .itemContainer {
-  padding: 20rpx;
+  padding: 10rpx;
   padding-bottom: 0;
   background: #fff;
   border-radius: 10rpx;
-  border-bottom: #A2B38B 1px dashed;
+  /* border-bottom: #A2B38B 1px dashed; */
 }
 .itemContainer .title {
   font-size: 32rpx;
@@ -173,8 +173,8 @@
 .itemTitle{
   font-size: 32rpx;
   font-weight: 550;
-  color: #303030;
-  width: 100px;
+  color:#a2b38b;
+  width: 80px;
 }
 .timePicker {
   flex: 1;
@@ -196,8 +196,8 @@
   border-radius: 40rpx;
 }
 .nameInput{
-  margin-left: 70px;
-  width: 200px;
+font-size: 35rpx;
+  /* width: 200px; */
 }
 .placehold{
   font-size: 28rpx;
