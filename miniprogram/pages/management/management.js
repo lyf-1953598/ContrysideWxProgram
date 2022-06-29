@@ -138,7 +138,7 @@ Page({
     return new Promise(resolve => {
       const that = this
       wx.request({
-        url: 'http://localhost:8080/task/getMyTaskDetails',
+        url: 'http://47.97.99.93:8080/task/getMyTaskDetails',
         method:'GET',
         data:{
         // userId:options.openID

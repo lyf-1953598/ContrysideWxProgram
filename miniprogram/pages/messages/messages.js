@@ -44,7 +44,7 @@ async getopenID(){
 async getChatList(){
   var that = this
   wx.request({
-    url: 'http://localhost:8080/message/getchatList?',
+    url: 'http://47.97.99.93:8080/message/getchatList?',
     method: 'GET',
     data: {
       myId: that.data.openID

@@ -53,7 +53,7 @@ Page({
   async uploadFile(userID){
     var that = this
     wx.uploadFile({
-      url: 'http://localhost:8080/task/createTask', 
+      url: 'http://47.97.99.93:8080/task/createTask', 
       filePath: that.data.srcI,                  //要传的图片路径
       name: 'file',                  //获取图片二进制文件的key
       formData: {

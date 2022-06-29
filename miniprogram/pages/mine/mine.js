@@ -52,7 +52,7 @@ Page({
           //如果表中已经存在唯一openID不应该再反复存储
         if (userInfo) { //获取成功则更新到页面
         wx.request({
-          url: 'http://localhost:8080/user/getInfo',
+          url: 'http://47.97.99.93:8080/user/getInfo',
           method:'GET',
           data:{
           userId:userInfo.openID
@@ -114,7 +114,7 @@ Page({
                 updateInfo.openID = res.data.openid
                 console.log(userInfo.openID);
                 wx.request({
-                  url: 'http://localhost:8080/user/login',
+                  url: 'http://47.97.99.93:8080/user/login',
                   method: 'POST',
                   data: {
                     avatar: userInfo.avatarUrl,
@@ -127,7 +127,7 @@ Page({
                       console.log("登录成功！")
                     }
                     wx.request({
-                      url: 'http://localhost:8080/user/getInfo',
+                      url: 'http://47.97.99.93:8080/user/getInfo',
                       method: 'GET',
                       data: {
                         userId: userInfo.openID
@@ -196,7 +196,7 @@ Page({
     //               this.data.userInfo.openID = res.data.openid
     //               // console.log(this.data.userInfo);
     //               wx.request({
-    //                 url: 'http://localhost:8080/user/login',
+    //                 url: 'http://47.97.99.93:8080/user/login',
     //                 method: 'POST',
     //                 data: {
     //                   avatar: this.data.userInfo.avatarUrl,
@@ -219,7 +219,7 @@ Page({
     // }).then(()=>{
     //   return new Promise((reslove,reject)=>{
     //   wx.request({
-    //     url: 'http://localhost:8080/user/getInfo',
+    //     url: 'http://47.97.99.93:8080/user/getInfo',
     //     method: 'GET',
     //     data: {
     //       userId: this.data.userInfo.openID
@@ -249,7 +249,7 @@ Page({
     //             this.data.userInfo.openID = res.data.openid
     //             // console.log(this.data.userInfo);
     //             wx.request({
-    //               url: 'http://localhost:8080/user/login',
+    //               url: 'http://47.97.99.93:8080/user/login',
     //               method: 'POST',
     //               data: {
     //                 avatar: this.data.userInfo.avatarUrl,
@@ -271,7 +271,7 @@ Page({
     // })
     // var updateData = new Promise((reslove,reject)=>{
     //   wx.request({
-    //     url: 'http://localhost:8080/user/getInfo',
+    //     url: 'http://47.97.99.93:8080/user/getInfo',
     //     method: 'GET',
     //     data: {
     //       userId: this.data.userInfo.openID
@@ -305,7 +305,7 @@ Page({
     // console.log(userInfo.openID);
     console.log(openID);
     wx.request({
-      url: 'http://localhost:8080/user/getInfo',
+      url: 'http://47.97.99.93:8080/user/getInfo',
       method:'GET',
       data:{
         userId:openID
@@ -407,7 +407,7 @@ Page({
         if(res.data){
           var openId = res.data
           wx.request({
-            url: 'http://localhost:8080/user/getAuthorizationStatus',
+            url: 'http://47.97.99.93:8080/user/getAuthorizationStatus',
             method:'GET',
             data:{
             userId:openId

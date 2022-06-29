@@ -146,9 +146,9 @@ Page({
    */
   onLoad(options) {
     var that = this
-    // http://localhost:8080/user/getInfo?userId=oln6h4lnZLCd56x_c_FpXsAgcpNA
+    // http://47.97.99.93:8080/user/getInfo?userId=oln6h4lnZLCd56x_c_FpXsAgcpNA
     wx.request({
-      url: 'http://localhost:8080/user/getInfo',
+      url: 'http://47.97.99.93:8080/user/getInfo',
       method: 'GET',
       data: {
         userId: options.openID

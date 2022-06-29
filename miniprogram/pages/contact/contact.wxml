@@ -1,2 +1,19 @@
 <!--pages/contact/contact.wxml-->
-<web-view src="https://mp.weixin.qq.com/s/epk6F4gstLnuGDcvM5Kpvg"></web-view>
+<!-- <web-view src="https://mp.weixin.qq.com/s/epk6F4gstLnuGDcvM5Kpvg"></web-view> -->
+<view style="display:flex;justify-content: center;padding-top:100rpx">
+<image src="../../static/images/github.jpeg" style="height:300rpx;width:300rpx"></image>
+</view>
+<view style="display:flex;justify-content: center;padding-top:30rpx;font-size:x-large">
+项 目 组
+</view>
+<view style="margin-top:60px">
+<view style="display:flex;justify-content: center;padding-top:30rpx">
+https://github.com/lyf-1953598
+</view>
+<view style="display:flex;justify-content: center;padding-top:30rpx">
+https://github.com/starryCcchj
+</view>
+<view style="display:flex;justify-content: center;padding-top:30rpx">
+https://github.com/Tj-qingniao
+</view>
+</view>

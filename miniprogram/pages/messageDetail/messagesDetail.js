@@ -76,7 +76,7 @@ Page({
   async uploadFile1(){
     var that = this
     wx.uploadFile({
-      url: 'http://localhost:8080/message/uploadFile', 
+      url: 'http://47.97.99.93:8080/message/uploadFile', 
       filePath: files.path,                  //要传的图片路径
       name: 'file',                  //获取图片二进制文件的key
       formData: {
@@ -113,7 +113,7 @@ Page({
 async uploadFile(){
   var that = this
   wx.uploadFile({
-    url: 'http://localhost:8080/message/uploadImage', 
+    url: 'http://47.97.99.93:8080/message/uploadImage', 
     filePath: that.data.srcI,                  //要传的图片路径
     name: 'file',                  //获取图片二进制文件的key
     formData: {
@@ -223,7 +223,7 @@ async uploadFile(){
     console.log(that.data.userId)
     console.log(that.data.openID)
    await wx.request({
-      url: 'http://localhost:8080/message/getmessageList?',
+      url: 'http://47.97.99.93:8080/message/getmessageList?',
       method: 'GET',
       data: {
         fromId: that.data.userId,
@@ -338,7 +338,7 @@ async uploadFile(){
     var that = this
     return new Promise(function (resolve, reject) {
       wx.downloadFile({
-        url: 'http://localhost:8080/message/download/'+filename, 
+        url: 'http://47.97.99.93:8080/message/download/'+filename, 
         // header: {
         //   'Content-Type': 'multipart/form-data',
         // },
@@ -360,7 +360,7 @@ async uploadFile(){
     })
   
     // wx.request({
-    //   url: 'http://localhost:8080/message/download/38.jpg',
+    //   url: 'http://47.97.99.93:8080/message/download/38.jpg',
     //   method: 'POST',
     //   data: {
     //     fileName:'38.jpg'
@@ -443,7 +443,7 @@ async uploadFile(){
     }
     
   wx.request({
-    url: 'http://localhost:8080/message/sendMessage',
+    url: 'http://47.97.99.93:8080/message/sendMessage',
     method: 'POST',
     header: {
       'content-type': 'application/x-www-form-urlencoded',
@@ -497,7 +497,7 @@ async uploadFile(){
       //发送
       var that = this
       wx.uploadFile({
-        url: 'http://localhost:8080/message/uploadRecord', 
+        url: 'http://47.97.99.93:8080/message/uploadRecord', 
         filePath: tempFilePath,                  //要传的图片路径
         name: 'file',                  //获取图片二进制文件的key
         formData: {

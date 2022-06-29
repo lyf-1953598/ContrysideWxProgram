@@ -29,7 +29,7 @@ Page({
   },
   signOut:function(e){
     wx.request({
-      url: 'http://localhost:8080/task/signOutWithCode',
+      url: 'http://47.97.99.93:8080/task/signOutWithCode',
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
@@ -63,7 +63,7 @@ Page({
   },
   signUp:function(e){
     wx.request({
-      url: 'http://localhost:8080/task/signUp',
+      url: 'http://47.97.99.93:8080/task/signUp',
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
@@ -94,7 +94,7 @@ Page({
       isCurrent:options.isCurrent
     })
     wx.request({
-      url: 'http://localhost:8080/task/getOneTask',
+      url: 'http://47.97.99.93:8080/task/getOneTask',
       method:'GET',
       data:{
         assignmentId:this.data.activityID
@@ -112,7 +112,7 @@ Page({
           organizer:res.data.data.info.organizerId
         })
         wx.request({
-          url: 'http://localhost:8080/user/getInfo',
+          url: 'http://47.97.99.93:8080/user/getInfo',
           method:'GET',
           data:{
             userId:res.data.data.info.organizerId
@@ -149,7 +149,6 @@ Page({
         that.setData({
           openID:res.data});
           console.log(that.data.openID)
-         that.getChatList()
   
         }
       })
