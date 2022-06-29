@@ -13,7 +13,7 @@
   </view>
 </view>
 
-<view class="itemContainer">
+<!-- <view class="itemContainer">
   <view class="inputContainer">
   <view class="itemTitle">
     <text>签到码:</text>
@@ -22,7 +22,7 @@
     <input disabled="" type="text" class="nameInput" value="{{activityCode}}" bindinput="codeGetValue"
     placeholder-class="placehold" placeholder="请输入签到码"/>
   </view>
-</view>
+</view> -->
 
 <view class="itemContainer">
   <view class="inputContainer">

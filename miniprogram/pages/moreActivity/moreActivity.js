@@ -9,11 +9,11 @@ Page({
     keyword:''
   },
   toDetail(e){
-    var test = e.currentTarget.dataset.activityid
-    // wx.navigateTo({
-    //   url: '/pages/currentActivity/currentActivity?activityId='+activityId,
-    // })
-    console.log(test)
+    var activityid = e.currentTarget.dataset.activityid
+    console.log(activityid)
+    wx.navigateTo({
+      url: '/pages/currentActivity/currentActivity?activityId='+activityid,
+    })
   },
   search:function(e){
     wx.request({
