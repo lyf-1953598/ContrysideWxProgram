@@ -1,0 +1,35 @@
+/* pages/taskRecord/taskRecord.wxss */
+.recordListContainer {
+  
+  margin-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.divideTitle{
+  font-size:14px;
+  color: #A2B38B;
+  font-weight:bold;
+}
+
+.divider {
+  /* height: 40rpx; */
+  border-bottom: 2px dashed #A2B38B;
+}
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-size: 36rpx;
+  height: calc(100vh - 80rpx);
+  color: #909090;
+}
+.empty text {
+  line-height: 70rpx;
+}
+.empty .iconfont {
+  font-size: 300rpx;
+  line-height: 280rpx;
+}

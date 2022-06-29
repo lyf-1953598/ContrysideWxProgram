@@ -1,0 +1,44 @@
+/* pages/help/help.wxss */
+.helpContainer {
+  padding: 20rpx;
+  margin-top: 20rpx;
+}
+
+.helpItem {
+  line-height: 60rpx;
+  background: #fff;
+  margin-bottom: 10rpx;
+  padding: 20rpx;
+}
+
+.QA {
+  display: flex;
+}
+.QA .question {
+  flex: 1;
+  color: #303030;
+}
+.QA .iconQ {
+  font-size: 40rpx;
+  width: 50rpx;
+  height: 50rpx;
+  color: #A2B38B;
+}
+
+.iconA {
+  font-size: 40rpx;
+  width: 50rpx;
+  height: 50rpx;
+  color: #45b97c;
+}
+
+.answerContainer {
+  padding-top: 15rpx;
+  margin-top: 15rpx;
+  border-top: 1rpx solid #707070;
+}
+
+.answer {
+  font-size: 28rpx;
+  color: #707070;
+}

@@ -1,0 +1,43 @@
+pages/management/management.wxml
+<!--顶部导航栏-->
+<view class="navBar">
+  <view class="nav ongoing {{!selectNav && 'selected'}}" bindtap="selectOngoing">进行中志愿活动</view>
+  <!-- <view><text class="iconfont icon-add-solid" bindtap="toReleaseLottery"></text></view> -->
+  <view class="nav closing {{selectNav && 'selected'}}" bindtap="selectClosing">已结束志愿活动</view>
+  
+</view>
+
+<!--抽奖信息-->
+<view class="lotteryListContainer">
+  <view class="lotteryItem" wx:for="{{showList}}" wx:key="index">
+    <image class="cover" src="{{item.cover}}"></image>
+    <view class="prizeList" wx:for="{{item.prizeList}}" wx:key="index" wx:for-item="pItem">
+      <view class="prizeItem" style="{{(index == 0) && 'color: #ee3f4d;'}}">
+        <text>{{pItem.prize}}</text>
+        <text class="number">{{'×' + pItem.num + '份'}}</text>
+      </view>
+    </view>
+    <view class="bottomContainer">
+      <view class="detailsCard">
+        <text>距离开奖剩余</text>
+        <text class="time" wx:if="{{item.remainningTime.day}}"> {{item.remainningTime.day}} </text>
+        <text wx:if="{{item.remainningTime.day}}">天</text>
+        <text class="time"> {{item.remainningTime.hour}} </text>
+        <text>小时</text>
+      </view>
+      <view class="viewInfo" bindtap="{{selectNav ? 'toResult' : 'toEditLottery'}}" id="{{index}}">
+        <text class="iconfont icon-view"></text>
+        查看详情
+      </view>
+    </view>
+  </view>
+
+  <!--发起新的抽奖活动-->
+  <!-- <view class="addNew" wx:if="{{!selectNav}}" bindtap="toReleaseLottery">
+    <view><text class="iconfont icon-add"></text></view>
+    <text>发起抽奖活动</text>
+  </view> -->
+</view>
+
+<!--暂无活动-->
+<view class="noVolunteer" wx:if="{{selectNav && !showList.length}}">暂无组织的已结束志愿活动</view>

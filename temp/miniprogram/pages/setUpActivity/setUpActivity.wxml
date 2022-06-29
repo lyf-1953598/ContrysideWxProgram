@@ -1,0 +1,119 @@
+<!--pages/apply/apply.wxml-->
+<view class="pageContainer">
+
+<view class="itemContainer">
+  <view class="inputContainer">
+  <view class="itemTitle">
+    <text>活动名称:</text>
+    <text style="color: #ee3f4d;width: 10rpx">*</text>
+  </view>
+    <input type="text" class="nameInput" value="{{name}}" bindinput="nameGetValue"
+    placeholder-class="placehold" placeholder="请输入活动名称"/>
+  </view>
+</view>
+
+<view class="itemContainer">
+  <view class="inputContainer">
+  <view class="itemTitle">
+    <text>签到码:</text>
+    <text style="color: #ee3f4d;width: 10rpx">*</text>
+  </view>
+    <input type="text" class="nameInput" value="{{code}}" bindinput="codeGetValue"
+    placeholder-class="placehold" placeholder="请输入签到码"/>
+  </view>
+</view>
+
+<view class="itemContainer">
+  <view class="inputContainer">
+    <view class="itemTitle">
+    <text>活动地址:</text>
+    <text style="color: #ee3f4d;width: 10rpx">*</text>
+  </view>
+    <input type="text" class="nameInput" value="{{address}}" bindinput="addressGetValue"
+    placeholder-class="placehold" placeholder="请输入活动地址"/>
+  </view>
+</view>
+
+<view class="itemContainer">
+  <view class="inputContainer">
+  <view class="itemTitle">
+    <text>开始时间:</text>
+    <text style="color: #ee3f4d;width: 10rpx">*</text>
+  </view>
+  <picker class="startPicker"
+          mode="multiSelector" 
+          value="{{dateTime}}" 
+          bindtap="pickerTap" 
+          bindchange="changeDateTime" 
+          bindcolumnchange="changeDateTimeColumn" 
+          range="{{dateTimeArray}}">
+    {{!!currentTime?currentTime:'----'}}
+</picker>
+  </view>
+</view>
+
+<view class="itemContainer">
+  <view class="inputContainer">
+  <view class="itemTitle">
+    <text>截止时间:</text>
+    <text style="color: #ee3f4d;width: 10rpx">*</text>
+  </view>
+  <picker class="endPicker"
+          mode="multiSelector" 
+          value="{{endDateTime}}" 
+          bindtap="pickerTap" 
+          bindchange="changeEndDateTime" 
+          bindcolumnchange="changeEndDateTimeColumn" 
+          range="{{endDateTimeArray}}">
+    {{!!endCurrentTime?endCurrentTime:'----'}}
+</picker>
+  </view>
+</view>
+
+<view class="itemContainer">
+  <view class="inputContainer">
+  <view class="itemTitle">
+    <text>人数要求:</text>
+    <text style="color: #ee3f4d;width: 10rpx">*</text>
+  </view>
+    <input type="text" class="nameInput" value="{{number}}" bindinput="numberGetValue"
+    placeholder-class="placehold" placeholder="请输入正整数"/>
+  </view>
+</view>
+
+<view class="itemContainer">
+  <view class="inputContainer">
+  <view class="itemTitle">
+    <text>活动类型:</text>
+    <text style="color: #ee3f4d;width: 10rpx">*</text>
+  </view>
+  <picker bindchange="bindPickerChange" class="typePicker"
+      value="{{setIndex}}"
+      range="{{activityArr}}"
+      range-key="label">
+        <view class="picker">
+          {{setIndex==-1? '请选择类型':activityArr[setIndex].label}}
+        </view>
+  </picker>
+  </view>
+</view>
+
+<!--信息填写-->
+<view class="reasonContainer">
+  <view class="title">
+    活动详情说明
+    <text style="color: #ee3f4d;">*</text>
+  </view>
+  <textarea class="reasonInput" placeholder="请输入活动详情说明" placeholder-class="textPlacehold"
+    value="{{desc}}" bindinput="descGetValue" maxlength="-1"></textarea>
+  <view class="divider"></view>
+  <view class="addImg" bindtap="setIntroImg">
+      <text class="iconfont icon-image"> </text>
+      ＋添加图片
+    </view>
+</view>
+
+<!--发布抽奖-->
+<view class="releaseButton" bindtap="commit">确认提交</view>
+</view>
+

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "taskList":"../../components/volunteerList/volunteerList"
+  },
+  "navigationBarTitleText": "志愿活动记录"
+}

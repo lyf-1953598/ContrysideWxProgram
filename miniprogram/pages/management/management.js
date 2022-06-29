@@ -145,14 +145,14 @@ Page({
         organizerId:'odWjH4qlWkZ0hNwaVRSexGVd-0Dc'
       },
         success:(res)=> {
-          console.log(res);
+          // console.log(res);
           var curTime = Date.parse(new Date());
           for (var i = 0; i < res.data.data.list.length; i++) {
             var startTime = Date.parse(res.data.data.list[i].startTime)
             var endTime = Date.parse(res.data.data.list[i].endTime)
-            console.log(curTime);
-            console.log(startTime);
-            console.log(endTime);
+            // console.log(curTime);
+            // console.log(startTime);
+            // console.log(endTime);
             if(curTime>endTime){
               that.data.pastTaskList.push(res.data.data.list[i]);
               continue;
@@ -233,53 +233,7 @@ Page({
   onShow: function () {
   },
 
-  selectPrize(i) {
-    var mlen = 0
-    const that = this
-    wx.cloud.callFunction({
-      name: 'getPrize',
-      env: 'draw-a-lottery-0gptvzfw661e55d1',
-      data: {
-        lottery_id: that.data.id_list[i]
-      },
-      success: res => {
-        let p_tri = []
-        for (let j = 0; j < res.result.data.length; j++) {
-          p_tri.push({
-            num: res.result.data[j].count,
-            prize: res.result.data[j].type + ':' + res.result.data[j].name,
 
-          })
-        }
-
-        let show = []
-        if (that.data.tempTime[i].hour < 0||that.data.tempTime[i].day<0) {
-          show = that.data.closingLottery
-        } else {
-          show = that.data.ongoingLottery
-        }
-
-        show.push({
-          prizeList: p_tri,
-          remainningTime: that.data.tempTime[i],
-          lottery_id: that.data.id_list[i]
-        })
-        that.setData({
-          show
-        })
-      },
-      fail: err => {
-        console.log(err)
-      }
-    })
-
-    return new Promise(resolve => {
-      let time = parseInt(1000 * Math.random())
-      setTimeout(() => {
-        resolve()
-      }, time)
-    })
-  },
 
   setShow() {
 
@@ -314,16 +268,5 @@ Page({
 
   },
 
-  clearLottery(id){
-    console.log('删除前的数据',id)
-        wx.cloud.callFunction({
-          name:'deleteLotteryInfo',
-          data:{
-            lottery_id:id
-          },success:res=>{
 
-          }
-        })
-      
-  }
 })

@@ -1,0 +1,49 @@
+/* pages/myinfo/myinfo.wxss */
+.nav {
+  background-color: #fff;
+}
+
+.top {
+  width: 250rpx;
+  height: 250rpx;
+  margin: 0 auto;
+  padding-top: 5vh;
+
+}
+
+.nickname {
+  /* margin-bottom: 10rpx; */
+  text-align: center;
+  padding-top: 2vh;
+  padding-bottom: 5vh;
+}
+
+.item {
+  height: 70rpx;
+  background-color: #fff;
+  margin: 20rpx;
+  display: flex;
+  border-radius: 20rpx;
+  line-height: center;
+}
+
+.left {
+  display: flex;
+  justify-content: flex-start;
+  flex-grow: 1;
+  color: #A2B38B;
+  justify-content: center;
+  flex-direction: column;
+  font-size: 16px;
+  padding-left: 4px;
+}
+
+.right {
+  display: flex;
+  justify-content: flex-end;
+  flex-grow: 1;
+  color: rgb(0, 0, 0);
+  margin-right: 20rpx;
+
+  align-self:center;
+}

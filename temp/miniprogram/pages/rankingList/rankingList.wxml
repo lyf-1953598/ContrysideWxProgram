@@ -1,0 +1,65 @@
+<!--pages/rankingList/rankingList.wxml-->
+<view class="background"></view>
+<view class="pageContainer">
+  <!-- 选择器 -->
+  <view class="section">
+  <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+    <view class="picker" style="flex-direction:row;display:flex;align-items: center;">
+        <view>{{array[index]}}</view>
+        <view class="iconfont icon-down" style="font-size:small"></view>
+    </view>
+  </picker>
+</view>
+<!-- 前三名 -->
+<view style="flex-direction:row;display:flex;margin-top:16rpx">
+<view class="rank-23">
+  <view class="iconfont icon-yajun"></view>
+
+  <view class="avatar23">
+  
+  <image wx:if="{{ranklist.length>1}}" src="{{ranklist[1].avatar}}"></image>
+  <image wx:else src="../../static/images/moren.jpeg"></image>
+
+</view>
+<view wx:if="{{ranklist.length>1}}" style="font-size:medium;margin-top: 6px;">{{ranklist[1].name}}</view>
+<view style="font-size:x-small;color:grey" wx:if="{{ranklist.length>1}}">{{ranklist[1].timeSum}}h</view>
+<view wx:else style="font-size:x-small;color:grey">虚位以待中</view>
+
+</view>
+<view class="rank-1">
+  <view class="iconfont icon-guanjun"></view>
+  <view class="avatar1" >
+    <image wx:if="{{ranklist.length>0}}" src="{{ranklist[0].avatar}}"></image>
+    <image wx:else src="../../static/images/moren.jpeg"></image>
+</view>
+<view wx:if="{{ranklist.length>0}}" style="font-size:medium;margin-top: 6px;">{{ranklist[0].name}}</view>
+
+<view style="font-size:x-small;color:grey" wx:if="{{ranklist.length>0}}">{{ranklist[0].timeSum}}h</view>
+<view wx:else style="font-size:x-small;color:grey">虚位以待中</view>
+
+</view>
+<view class="rank-23">
+  <view class="iconfont icon-jijun"></view>
+  <view class="avatar23">
+  <image wx:if="{{ranklist.length>2}}" src="{{ranklist[2].avatar}}"></image>
+  <image wx:else src="../../static/images/moren.jpeg"></image>
+
+</view>
+<view wx:if="{{ranklist.length>2}}" style="font-size:medium;margin-top: 6px;">{{ranklist[2].name}}</view>
+
+<view style="font-size:x-small;color:grey" wx:if="{{ranklist.length>2}}">{{ranklist[2].timeSum}}h</view>
+<view wx:else style="font-size:x-small;color:grey">虚位以待中</view>
+
+</view>
+</view>
+
+<view class="nextList" style="margin-top:70rpx" wx:if="{{ranklist.length>3}}">
+  <view class="listItem" style="flex-direction:row;display:flex;" wx:for="{{ranklist}}" wx:key="index" wx:if="{{index<(ranklist.length-4)}}">
+  <view style="width:20rpx;margin-left: 30rpx;margin-right: 30rpx;">{{index+4}}</view>
+  <image src="{{ranklist[index+4].avatar}}"></image>
+   <view style="margin-left:40rpx">{{ranklist[index+4].name}}</view>
+   <view style="font-size:x-small;margin-left:20rpx;color:grey">{{ranklist[index+4].timeSum}}h</view>
+  </view>
+</view>
+</view>
+

@@ -1,0 +1,108 @@
+<!--pages/messageDetail/messagesDetail.wxml-->
+<view class="background"></view>
+<view style="font-size:medium;justify-content:center;display:flex;padding:20rpx">{{name}}</view>
+
+<view class="chat-content"  id="mycontent" style="height: calc(100vh - 100px);">
+  <scroll-view scroll-y scroll-into-view='{{toView}}' style="height:100%">
+    <!-- <scroll-view style="width:100%;height:100%" scroll-top ="{{topNum}}" scroll-y="true"> -->
+    <!-- recordContent 聊天记录数组 -->
+    <view wx:for="{{recordContent}}" wx:key="index">
+        <!-- 对方 -->
+        <view class="word" wx:if="{{item.id == 2}}" id='msg-{{index}}'>
+            <view>
+                <image class="avater" src="{{avatar}}" />
+            </view>
+            <view class="info">
+                <view class="info-content" wx:if="{{item.type=='text'}}">{{ item.contactText }}</view>
+                <image wx:if="{{item.type=='image'}}" style="height:150px;width:150px" mode="aspectFill" src="{{item.contactText}}"></image>
+                <view class="info-content" wx:if="{{item.type=='record'}}"  >{{ item.contactText }}</view>
+            </view>
+            <view class="time">
+            {{item.time}}
+            </view>
+        </view>
+        <!-- 我的 -->
+        <view class="word-my" wx:else id='msg-{{index}}'>
+           <view class="time">
+            {{item.time}}
+
+           </view>
+            <view class="info">
+              <view class="info-content" wx:if="{{item.type=='text'}}">{{ item.contactText }}</view>
+                <image wx:if="{{item.type=='image'}}" style="height:150px;max-width:150px"  src="{{item.contactText}}"></image>
+                <view class="info-content" wx:if="{{item.type=='record'}}"  >{{ item.contactText }}</view>
+            </view>
+           
+             <view>
+                <image class="avater" src="{{myavatar}}" />
+            </view>
+        </view>
+    </view>
+    </scroll-view>
+</view>
+<view style="flex-direction:row;display:flex;align-items:center;position:fixed;bottom:0;padding-left:10rpx;height:42px">
+  <view class="page-section" style="width: 550rpx;height:90rpx;display:flex;align-content:center">
+    <!-- <view class="weui-cells__title">{{inputValue}}</view> -->
+      <view class="weui-cell weui-cell_input" style="height: 90rpx;">
+        <textarea cursor-spacing='200' class="weui-input" bindinput="bindKeyInput" value="{{inputVal}}" placeholder="输入您要发送的消息" style="height: 70rpx;border: 1px solid lightgrey;width: 550rpx;font-size:small;border-radius:8px"/>
+    </view>
+  </view>
+  <view style="display:flex;align-content:center">
+    <button class="mini-btn" type="plain" size="mini" style="font-size:38rpx;margin-left:18rpx;margin-right:18rpx;padding:0;background-color:transplant" bindtap="listenerButton">
+    <view   class="iconfont icon-tianjia" style="font-size:20px;height:38px;background-color:transplant"  ></view>
+    </button>
+  </view>
+  <view style="display:flex;align-content:center">
+    <button class="mini-btn" type="primary" size="mini" bindtap="sendButton">
+      <view class="iconfont icon-icon_sent"></view>
+</button>  </view>
+</view>
+
+<!--默认action-sheet为隐藏，由button触发-->
+<action-sheet hidden="{{actionSheetHidden}}" bindchange="listenerActionSheet" >
+	<view style="flex-direction:row;display:flex;height:80px;align-items:center" >
+    <button type="default" style="width:80rpx;display: flex;justify-content: center;background-color:white" bindtap="choosePicture">
+    <view class="iconfont icon-picture" style="font-size:50rpx">
+    </view></button>
+    <button type="default" style="width:80rpx;display: flex;justify-content: center;background-color:white" bindtap="chooseFile">
+    <view class="iconfont icon-file" style="font-size:50rpx">
+    </view></button>
+    <button type="default" style="width:80rpx;display: flex;justify-content: center;background-color:white" bindtap="listenerButton1">
+    <view class="iconfont icon-yuyin" style="font-size:50rpx">
+    </view></button>
+    <!-- <button type="default" style="width:80rpx;display: flex;justify-content: center;background-color:white">
+    <view class="iconfont icon-video">
+    </view></button> -->
+	</view>
+	<!--自动隐藏action-sheet-->
+	<!-- <action-sheet-cancel bindtap="showInput">确认</action-sheet-cancel> -->
+</action-sheet>
+
+<!-- 录音 -->
+<action-sheet hidden="{{actionSheetHidden1}}" bindchange="listenerActionSheet1" >
+<view  style="display:flex;flex-direction:row;justify-content:center">
+	<view wx:if="{{status==='stop'}}" style="flex-direction:column;display:flex;height:140px;align-items:center;margin-right:20px" >
+  <view style="width:100%;margin-top:20px">
+    <button type="default" style="width:140rpx;padding:0;" bindtap="recordManage1">
+    <image style="height:80rpx;width:80rpx;margin:20rpx" src="../../static/images/messagesDetail/play-circle-fill.png"></image>
+    </button>
+    
+	</view>
+  <view style="font-size:small">点击回放录音</view>
+
+</view>
+<view style="flex-direction:column;display:flex;height:140px;align-items:center" >
+  <view style="width:100%;margin-top:20px">
+    <button type="default" style="width:140rpx;padding:0;" bindtap="recordManage">
+    <image style="height:80rpx;width:80rpx;margin:20rpx" src="{{btnimg}}"></image>
+    </button>
+    
+	</view>
+  <view style="font-size:small">{{recordText}}</view>
+
+</view>
+</view>
+	<!--自动隐藏action-sheet-->
+	<!-- <action-sheet-cancel bindtap="showInput">确认</action-sheet-cancel> -->
+</action-sheet>
+

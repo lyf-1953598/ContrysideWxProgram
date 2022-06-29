@@ -1,0 +1,39 @@
+<!--pages/apply/apply.wxml-->
+<view class="pageContainer">
+
+  <view class="nameContainer">
+    <view class="inputContainer">
+    <view class="itemTitle">
+      <text>组织名称:</text>
+      <text style="color: #ee3f4d;width: 10rpx">*</text>
+    </view>
+      <input type="text" class="nameInput" value="{{applyInfo.name}}" bindinput="nameGetValue"
+      placeholder-class="placehold" placeholder="请输入组织名称"/>
+    </view>
+  </view>
+
+  <view class="nameContainer">
+    <view class="inputContainer">
+      <view class="itemTitle">
+      <text>地址:</text>
+      <text style="color: #ee3f4d;width: 10rpx">*</text>
+    </view>
+      <input type="text" class="nameInput" value="{{applyInfo.address}}" bindinput="addressGetValue"
+      placeholder-class="placehold" placeholder="请输入地址"/>
+    </view>
+  </view>
+  <!--信息填写-->
+  <view class="reasonContainer">
+    <view class="title">
+      申请原因说明
+      <text style="color: #ee3f4d;">*</text>
+    </view>
+    <textarea class="reasonInput" placeholder="请输入申请说明" placeholder-class="textPlacehold"
+      value="{{applyInfo.reason}}" bindinput="reasonGetValue" maxlength="-1"></textarea>
+    <view class="divider"></view>
+  </view>
+
+  <!--发布抽奖-->
+  <view class="releaseButton" bindtap="commit">确认提交</view>
+</view>
+

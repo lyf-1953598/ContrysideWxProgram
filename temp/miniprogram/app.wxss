@@ -1,0 +1,8 @@
+/**app.wxss**/
+@import "./static/iconfont/iconfont.wxss";
+@import "./static/iconfont/iconfont1";
+/* @import "./static/fontawesome/css/font-awesome.min.wxss"; */
+@import "./static/iconfont/iconfont2";
+page {
+  background: #fafafa;
+}

@@ -1,0 +1,29 @@
+<!--导航条--> 
+<view class="navbar"> 
+ <text wx:for="{{navbar}}" data-idx="{{index}}" class="item {{currentTab==index ? 'active' : ''}}" wx:key="unique" bindtap="navbarTap">{{item}}</text> 
+</view> 
+ 
+<!--未开始--> 
+<view hidden="{{currentTab!==0}}"> 
+  <view class="recordListContainer"> 
+  <taskList wx:if="{{taskList.length}}" status="未开始" taskList="{{taskList}}">
+  </taskList> 
+  </view>
+ 
+</view> 
+ 
+<!--进行中--> 
+<view hidden="{{currentTab!==1}}"> 
+  <view class="recordListContainer"> 
+  <taskList wx:if="{{taskList.length}}" status="进行中" taskList="{{currentList}}">
+  </taskList> 
+  </view>
+</view> 
+ 
+<!--已结束--> 
+<view hidden="{{currentTab!==2}}"> 
+  <view class="recordListContainer"> 
+  <taskList wx:if="{{taskList.length}}" status="进行中" taskList="{{pastTaskList}}">
+  </taskList> 
+  </view>
+</view> 

@@ -1,0 +1,90 @@
+<!--pages/mine/mine.wxml-->
+<!--渐变背景-->
+<view class="background">
+  <image class="userInfoBackground" src="../../images/2.png"></image>
+</view>
+
+<!--页面详情内容-->
+<view class="pageContainer">
+  <!--用户信息卡片-->
+  <view class="userInfoContainer">
+  
+    <view class="userInfo">
+      <image src="{{userInfo.avatarUrl}}"></image>
+      <view class="syncInfo">
+        <text class="userName">{{userInfo.nickName}}</text>
+        <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile" class="iconfont icon-sync syncWX"> 同步微信资料
+        </button>
+        <button wx:else open-type="getUserInfo" bindgetuserinfo="getUserInfo" class="iconfont icon-sync syncWX"> 同步微信资料
+        </button>
+        <!-- <button wx:if="{{canIUse}}" bindgetuserinfo="getInformation" open-type="getUserInfo" class="iconfont icon-sync syncWX">同步微信资料</button> -->
+      </view>
+    </view>
+    <!-- <view class="recordContainer">
+      <view class="record" bindtap="toLottery">
+        <text class="number">{{joinNum}}</text>
+        参与抽奖
+      </view>
+      <view class="record" bindtap="toWinning">
+        <text class="number">{{winNum}}</text>
+        中奖记录
+      </view>
+    </view> -->
+  </view>
+
+  <!--工具栏-->
+  <view class="toolsContainer">
+    <!-- <view class="divider"></view> -->
+    <view class="buttonItems" bindtap="toUserInfo">
+      <view class="bioItem"><text class="iconfont icon-mine-copy buttonImage"></text>
+      <text class="buttonText">个人信息</text>
+      </view>
+      <view class="bioItem" bindtap="toRecord"><text class="iconfont icon-star buttonImage"></text>
+      <text class="buttonText">志愿活动记录</text>
+      </view>
+    </view>
+    <view class="buttonItems" >
+      <view class="bioItem" ><text class="buttonImage" id="smileVolTime" >{{volunteerTime}}</text>
+      <text class="buttonText" id="smileVolText">志愿时长</text>
+      </view>
+      <!-- 111动态渲染 -->
+      <view class="bioItem" ><text class=" buttonImage" id="smileCreGrade"  >{{creditGrade}}</text>
+      <text class="buttonText" id="smileCreText">信用等级</text>
+      </view>
+    </view>
+
+    <view class="divider"></view>
+    <view class="toolItem" bindtap="toCertificate">
+      <text class="iconfont icon-gift2"></text>
+      申请志愿者证书
+      <text class="detailsButton">></text>
+    </view>
+    <view class="divider"></view>
+    <view class="toolItem" bindtap="toHelp">
+      <text class="iconfont icon-QA"></text>
+      常见问题
+      <text class="detailsButton">></text>
+    </view>
+    <view class="divider"></view>
+    <view class="toolItem" bindtap="toContact">
+      <text class="iconfont icon-we"></text>
+      联系我们
+      <text class="detailsButton">></text>
+    </view>
+    <view class="divider"></view>
+    <view wx:if="{{isAdmin}}" class="toolItem" bindtap="toManagement">
+      <text class="iconfont icon-setting"></text>
+      我组织的志愿活动
+      <text class="detailsButton">></text>
+    </view>
+  </view>
+</view>
+
+<!--底部信息-->
+<view class="bottomInfo">
+  <button class="feedback" open-type="feedback">
+    意见反馈
+  </button>
+  <view class="miniProg">一 抽奖吧 一</view>
+  <view class="producer">两只羊脱口秀</view>
+</view>
