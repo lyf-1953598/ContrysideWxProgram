@@ -25,7 +25,7 @@ Page({
     // console.log(this.data.userID)
     // console.log(this.data.code)
     wx.request({
-      url: 'http://47.97.99.93:8080/task/signInWithCode',
+      url: 'https://cs.realloved.cn:8080/task/signInWithCode',
       method:'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded',
@@ -108,7 +108,7 @@ Page({
       })
       // console.log(openID)
       wx.request({
-        url: 'http://47.97.99.93:8080/task/getVolunteersTask',
+        url: 'https://cs.realloved.cn:8080/task/getVolunteersTask',
         method:'GET',
         data:{
         userId:openID
@@ -131,7 +131,7 @@ Page({
               data:this.currentActivityID
             })
             wx.request({
-              url: 'http://47.97.99.93:8080/task/getOneTask',
+              url: 'https://cs.realloved.cn:8080/task/getOneTask',
               method:'GET',
               data:{
                 assignmentId:this.data.currentActivityID
@@ -154,7 +154,7 @@ Page({
     })
     }
     wx.request({
-      url: 'http://47.97.99.93:8080/user/getAuthorizationStatus',
+      url: 'https://cs.realloved.cn:8080/user/getAuthorizationStatus',
       method:'GET',
       data:{
       userId:openID
@@ -186,7 +186,7 @@ Page({
     }
   })
   wx.request({
-    url: 'http://47.97.99.93:8080/task/getHomepageTask',
+    url: 'https://cs.realloved.cn:8080/task/getHomepageTask',
     method:'GET',
     data:{
       pagenum:0

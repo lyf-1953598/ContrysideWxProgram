@@ -14,3 +14,20 @@
   /* box-shadow: 2px 2px 2px 2px rgba(128, 128, 128, 0.249); */
   background-color: rgba(128, 128, 128, 0.112);
 }
+
+.empty {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  font-size: 36rpx;
+  height: calc(100vh - 80rpx);
+  color: #909090;
+}
+.empty text {
+  line-height: 70rpx;
+}
+.empty .iconfont {
+  font-size: 300rpx;
+  line-height: 280rpx;
+}

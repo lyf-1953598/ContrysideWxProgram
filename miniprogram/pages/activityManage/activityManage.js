@@ -18,7 +18,7 @@ Page({
   onLoad(options) {
     var that = this
     wx.request({
-      url: 'http://47.97.99.93:8080/task/getMyTaskDetails',
+      url: 'https://cs.realloved.cn:8080/task/getMyTaskDetails',
       method:'GET',
       data:{
         // organizerId:"odWjH4qlWkZ0hNwaVRSexGVd-0Dc"

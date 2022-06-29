@@ -24,7 +24,7 @@ Page({
     // console.log(options);
     // console.log(options.openID);
     wx.request({
-      url: 'http://47.97.99.93:8080/task/getVolunteersTaskDeatails',
+      url: 'https://cs.realloved.cn:8080/task/getVolunteersTaskDeatails',
       method:'GET',
       data:{
       userId:options.openID

@@ -35,8 +35,8 @@
   <!--工具栏-->
   <view class="toolsContainer">
     <!-- <view class="divider"></view> -->
-    <view class="buttonItems" bindtap="toUserInfo">
-      <view class="bioItem"><text class="iconfont icon-mine-copy buttonImage"></text>
+    <view class="buttonItems" >
+      <view class="bioItem" bindtap="toUserInfo"><text class="iconfont icon-mine-copy buttonImage"></text>
       <text class="buttonText">个人信息</text>
       </view>
       <view class="bioItem" bindtap="toRecord"><text class="iconfont icon-star buttonImage"></text>
@@ -85,6 +85,6 @@
   <button class="feedback" open-type="feedback">
     意见反馈
   </button>
-  <view class="miniProg">一 抽奖吧 一</view>
-  <view class="producer">两只羊脱口秀</view>
+  <view class="miniProg">一 乡村志愿者平台 一</view>
+  <view class="producer">同济大学项目开发组</view>
 </view>

@@ -10,7 +10,8 @@ Page({
     myinfo: null,
     userInfo: {
       openID: ''
-    }
+    },
+    firstInfo:null
 
   },
 
@@ -18,12 +19,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var info = wx.getStorageSync('userProfile')
+    console.log(info);
+    this.setData({
+      firstInfo:info
+    })
     var that = this
     // console.log(this);
     // console.log(options);
-    // http://47.97.99.93:8080/user/getInfo?userId=oln6h4lnZLCd56x_c_FpXsAgcpNA
+    // https://cs.realloved.cn:8080/user/getInfo?userId=oln6h4lnZLCd56x_c_FpXsAgcpNA
     wx.request({
-      url: 'http://47.97.99.93:8080/user/getInfo',
+      url: 'https://cs.realloved.cn:8080/user/getInfo',
       method: 'GET',
       data: {
         userId: options.openID
@@ -91,7 +97,7 @@ Page({
           if (res.content != that.data.myinfo.name) {
             value.name = res.content
             wx.request({
-              url: 'http://47.97.99.93:8080/user/updateUserName',
+              url: 'https://cs.realloved.cn:8080/user/updateUserName',
               method: 'POST',
               header: {
                 'content-type': 'application/x-www-form-urlencoded',
@@ -164,7 +170,7 @@ Page({
           if (res.content != that.data.myinfo.age) {
             value.age = res.content
             wx.request({
-              url: 'http://47.97.99.93:8080/user/updateUserAge',
+              url: 'https://cs.realloved.cn:8080/user/updateUserAge',
               method: 'POST',
               header: {
                 'content-type': 'application/x-www-form-urlencoded',
@@ -233,7 +239,7 @@ Page({
           if (res.content != that.data.myinfo.sex) {
             value.sex = res.content
             wx.request({
-              url: 'http://47.97.99.93:8080/user/updateUserSex',
+              url: 'https://cs.realloved.cn:8080/user/updateUserSex',
               method: 'POST',
               header: {
                 'content-type': 'application/x-www-form-urlencoded',
@@ -304,7 +310,7 @@ Page({
           if (res.content != that.data.myinfo.phone) {
             value.phone = res.content
             wx.request({
-              url: 'http://47.97.99.93:8080/user/updateUserPhone',
+              url: 'https://cs.realloved.cn:8080/user/updateUserPhone',
               method: 'POST',
               header: {
                 'content-type': 'application/x-www-form-urlencoded',

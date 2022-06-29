@@ -52,7 +52,7 @@ Page({
           //如果表中已经存在唯一openID不应该再反复存储
         if (userInfo) { //获取成功则更新到页面
         wx.request({
-          url: 'http://47.97.99.93:8080/user/getInfo',
+          url: 'https://cs.realloved.cn:8080/user/getInfo',
           method:'GET',
           data:{
           userId:userInfo.openID
@@ -102,19 +102,26 @@ Page({
         // console.log(this.data.userInfo);
         wx.login({
           success:  (res)=> {
-            // console.log(res);
+            console.log(res);
             let code = res.code
             wx.request({
-              url: `https://api.weixin.qq.com/sns/jscode2session?` +
-                `appid=wx09dd702f9906ed15&secret=321a8586a876a2c88c158ddf932780e1&js_code=${code}&grant_type=authorization_code`,
+              url:"https://cs.realloved.cn:8080/user/getOpenID",
+              method: 'GET',
+              data:{
+                code:res.code
+              },
+              // url: `https://api.weixin.qq.com/sns/jscode2session?` +
+                // `appid=wx09dd702f9906ed15&secret=321a8586a876a2c88c158ddf932780e1&js_code=${code}&grant_type=authorization_code`,
               success:  (res)=> {
-                // console.log(res);
-                userInfo.openID = res.data.openid
-                this.data.userInfo.openID = res.data.openid
-                updateInfo.openID = res.data.openid
+                console.log(res);
+                var tempId = res.data.data.openid
+                console.log(tempId);
+                userInfo.openID = tempId
+                this.data.userInfo.openID = tempId
+                updateInfo.openID = tempId
                 // console.log(userInfo.openID);
                 wx.request({
-                  url: 'http://47.97.99.93:8080/user/login',
+                  url: 'https://cs.realloved.cn:8080/user/login',
                   method: 'POST',
                   data: {
                     avatar: userInfo.avatarUrl,
@@ -127,7 +134,7 @@ Page({
                       console.log("登录成功！")
                     }
                     wx.request({
-                      url: 'http://47.97.99.93:8080/user/getInfo',
+                      url: 'https://cs.realloved.cn:8080/user/getInfo',
                       method: 'GET',
                       data: {
                         userId: userInfo.openID
@@ -196,7 +203,7 @@ Page({
     //               this.data.userInfo.openID = res.data.openid
     //               // console.log(this.data.userInfo);
     //               wx.request({
-    //                 url: 'http://47.97.99.93:8080/user/login',
+    //                 url: 'https://cs.realloved.cn:8080/user/login',
     //                 method: 'POST',
     //                 data: {
     //                   avatar: this.data.userInfo.avatarUrl,
@@ -219,7 +226,7 @@ Page({
     // }).then(()=>{
     //   return new Promise((reslove,reject)=>{
     //   wx.request({
-    //     url: 'http://47.97.99.93:8080/user/getInfo',
+    //     url: 'https://cs.realloved.cn:8080/user/getInfo',
     //     method: 'GET',
     //     data: {
     //       userId: this.data.userInfo.openID
@@ -249,7 +256,7 @@ Page({
     //             this.data.userInfo.openID = res.data.openid
     //             // console.log(this.data.userInfo);
     //             wx.request({
-    //               url: 'http://47.97.99.93:8080/user/login',
+    //               url: 'https://cs.realloved.cn:8080/user/login',
     //               method: 'POST',
     //               data: {
     //                 avatar: this.data.userInfo.avatarUrl,
@@ -271,7 +278,7 @@ Page({
     // })
     // var updateData = new Promise((reslove,reject)=>{
     //   wx.request({
-    //     url: 'http://47.97.99.93:8080/user/getInfo',
+    //     url: 'https://cs.realloved.cn:8080/user/getInfo',
     //     method: 'GET',
     //     data: {
     //       userId: this.data.userInfo.openID
@@ -305,7 +312,7 @@ Page({
     // console.log(userInfo.openID);
     // console.log(openID);
     wx.request({
-      url: 'http://47.97.99.93:8080/user/getInfo',
+      url: 'https://cs.realloved.cn:8080/user/getInfo',
       method:'GET',
       data:{
         userId:openID
@@ -407,7 +414,7 @@ Page({
         if(res.data){
           var openId = res.data
           wx.request({
-            url: 'http://47.97.99.93:8080/user/getAuthorizationStatus',
+            url: 'https://cs.realloved.cn:8080/user/getAuthorizationStatus',
             method:'GET',
             data:{
             userId:openId

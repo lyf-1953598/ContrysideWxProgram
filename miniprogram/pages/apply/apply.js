@@ -12,7 +12,7 @@ Page({
   },
   commit:function(e){
     wx.request({
-      url: 'http://47.97.99.93:8080/user/apply',
+      url: 'https://cs.realloved.cn:8080/user/apply',
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded',

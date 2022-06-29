@@ -8,13 +8,13 @@ Page({
     openID:'',
     list1:[],
     messageList:[
-      {
-        withName:"系统通知",
-        withAvatar:'../../static/images/notice.png',
-        messageContent:'你被举报了！！！',
-        sendTime:'2020-05-16 12:00',
-        withId:'oln6h4lnZLCd56x_c_FpXsAgcpNA'
-      }
+      // {
+      //   withName:"系统通知",
+      //   withAvatar:'../../static/images/notice.png',
+      //   messageContent:'你被举报了！！！',
+      //   sendTime:'2020-05-16 12:00',
+      //   withId:'oln6h4lnZLCd56x_c_FpXsAgcpNA'
+      // }
 
     ]
   },
@@ -44,7 +44,7 @@ async getopenID(){
 async getChatList(){
   var that = this
   wx.request({
-    url: 'http://47.97.99.93:8080/message/getchatList?',
+    url: 'https://cs.realloved.cn:8080/message/getchatList?',
     method: 'GET',
     data: {
       myId: that.data.openID

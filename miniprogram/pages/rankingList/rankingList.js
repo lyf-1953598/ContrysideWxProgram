@@ -80,7 +80,7 @@ Page({
     var that = this
     // console.log(that.data.index+1)
     wx.request({
-      url: 'http://47.97.99.93:8080/rank/getRankList',
+      url: 'https://cs.realloved.cn:8080/rank/getRankList',
       method: 'POST',
       header: {
         'content-type': 'application/x-www-form-urlencoded',

@@ -17,7 +17,7 @@ Page({
   },
   search:function(e){
     wx.request({
-      url: 'http://47.97.99.93:8080/task/getTaskByKeyword',
+      url: 'https://cs.realloved.cn:8080/task/getTaskByKeyword',
       method:'GET',
       data:{
         keyword:this.data.keyword
@@ -44,7 +44,7 @@ Page({
    */
   onLoad(options) {
     wx.request({
-      url: 'http://47.97.99.93:8080/task/getAllTask',
+      url: 'https://cs.realloved.cn:8080/task/getAllTask',
       method:'GET',
       success:(res)=> {
         // console.log(res.data.data.list)

@@ -4,10 +4,11 @@
 <view class='content'>
   <view class='nav'>
     <view class='top'>
-      <open-data type="userAvatarUrl"></open-data>
+      <!-- <open-data type="userAvatarUrl"></open-data> -->
+      <image src="{{firstInfo.avatarUrl}}"></image>
     </view>
     <view class='nickname'>
-      <open-data type="userNickName"></open-data> 
+     <text>{{firstInfo.nickName}}</text>
     </view>
   </view>
   <view class='item' bindtap='editName'>
