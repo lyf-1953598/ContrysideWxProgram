@@ -5,14 +5,57 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    activities:[],
+    keyword:''
   },
-
+  toDetail(e){
+    var test = e.currentTarget.dataset.activityid
+    // wx.navigateTo({
+    //   url: '/pages/currentActivity/currentActivity?activityId='+activityId,
+    // })
+    console.log(test)
+  },
+  search:function(e){
+    wx.request({
+      url: 'http://localhost:8080/task/getTaskByKeyword',
+      method:'GET',
+      data:{
+        keyword:this.data.keyword
+      },
+      success:(res)=> {
+        console.log(res.data.data.list)
+        this.setData({
+          activities:res.data.data.list
+        })
+    },
+      fail:function(res){
+        console.log("接口调取失败！");
+    }
+  })
+  },
+  keyWordGetValue(e){
+    this.setData({
+      keyword:e.detail.value
+    })
+    console.log(this.data.keyword)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    wx.request({
+      url: 'http://localhost:8080/task/getAllTask',
+      method:'GET',
+      success:(res)=> {
+        console.log(res.data.data.list)
+        this.setData({
+          activities:res.data.data.list
+        })
+    },
+      fail:function(res){
+        console.log("接口调取失败！");
+    }
+  })
   },
 
   /**

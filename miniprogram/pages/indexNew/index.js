@@ -12,7 +12,10 @@ Page({
     currentActivityID:'',
     canApply:0,
     applyLabel:'申请成为主办方',
-    taskList:[]
+    taskList:[],
+  },
+  signIn:function(e){
+    console.log("test")
   },
   toCurrent: function (e) {
     if(this.data.currentActivityID==''){
@@ -83,7 +86,7 @@ Page({
           if(activityList.length==0){  
             console.log("没有志愿活动")      
             that.setData({
-              activityName:'还未报名活动哦，快去参加志愿活动吧！'
+              activityName:'还未报名活动哦，快去参加志愿活动吧!'
             })
           }
           else{

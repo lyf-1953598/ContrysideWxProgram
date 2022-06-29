@@ -1,16 +1,39 @@
 <!--pages/moreActivity/moreActivity.wxml-->
 <view class="pageContainer">
   <view class="searchBox">
-    <text>搜索</text>
-    <view class="divider-x"></view>
-    <input type="text" placeholder="请输入活动名称" placeholder-class="placehold" class="search"></input>
+    <input type="text" placeholder="请输入关键字(支持地址，需求类型查找)" bindinput="keyWordGetValue" placeholder-class="placehold" class="searchInput"></input>
+    <button type="plain" style="width:58px;font-size:small;padding:0;background-color:#a2b38b;height:30px;padding:4px;color:whitesmoke" bindtap="search">确认</button>
   </view>
-  <view class="searchCondition">
+
+  <!-- <view class="searchCondition">
     <text>当前分类：</text>
     <picker class="timePicker" header-text="请选择活动分类类型" mode="multiSelector" bindtap='initPicker'
         bindchange="pickerChange" bindcolumnchange="pickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}"
         style="{{(lotteryTime) && 'color: #303030;'}}">
         <text>{{lotteryTime? lotteryTime : '请选择活动分类类型'}}</text>
       </picker>
-  </view>
+  </view> -->
+  <view class="divider-x"></view>
+  <scroll-view class="allActivities" scroll-y scroll-into-view='{{toView}}' style="height:100%">
+    <!-- recordContent 所有活动 -->
+    <view class="everyItem" wx:for="{{activities}}" wx:key="index" bindtap="toDetail" 
+    data-activityid="{{item.assignmentId}}">
+      <image src="/static/images/lotteryEdit/prize.jpeg" mode="widthFix"></image>
+        <view class="intro">
+          <view class="iconfont icon-shebeimingcheng"></view>
+          <text class="introTitle">活动名称：</text>
+          <text>{{item.title}}</text>
+        </view>
+        <view class="intro">
+          <view class="iconfont icon-detailsoriginator"></view>
+          <text class="introTitle">活动开始时间：</text>
+          <text>{{item.startTime}}</text>
+        </view>
+        <view class="intro">
+          <view class="iconfont icon-didiandingwei"></view>
+          <text class="introTitle">活动地点： </text>
+          <text>{{item.place}}</text>
+      </view>
+    </view>
+    </scroll-view>
 </view>
