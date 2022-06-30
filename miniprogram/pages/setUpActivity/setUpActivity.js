@@ -70,6 +70,17 @@ Page({
       success (res){
         // console.log(res.data)
         //do something
+        wx.showToast({
+          title: '发布成功',
+          icon:'success',
+          duration:1500
+        }).then(
+          wx.switchTab({
+            url: '/pages/indexNew/index',
+          })
+        )
+        
+
       }
     })
   },
